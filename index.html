@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LBBR Governance Hub - Portal Corporativo de Compliance, PLD/FTP, Integridade e Governanca do Grupo LBBR." />
+  <title>LBBR Governance Hub</title>
+  <style id="lbbr-style">
+/* =========================================================
+   LBBR GOVERNANCE HUB - style.css
+   Biblioteca normativa corporativa
+   ========================================================= */
+
+:root {
+  /* Marca */
+  --brand: #1A4A7A;
+  --brand-700: #143b62;
+  --brand-600: #1f5894;
+  --brand-100: #e8f0f8;
+  --brand-50: #f3f7fb;
+
+  /* Neutros */
+  --ink: #14202e;
+  --ink-2: #3c4a5a;
+  --muted: #647488;
+  --muted-2: #8a97a6;
+  --line: #e4e8ee;
+  --line-2: #eef1f5;
+  --bg: #ffffff;
+  --bg-soft: #f6f8fb;
+  --bg-sidebar: #fbfcfe;
+
+  /* Status */
+  --st-vigente: #1f8a52;
+  --st-vigente-bg: #e7f5ec;
+  --st-revisao: #b07400;
+  --st-revisao-bg: #fbf2dd;
+  --st-revogado: #9aa4b1;
+  --st-revogado-bg: #eef1f4;
+  --st-substituido: #6b5bb5;
+  --st-substituido-bg: #efecf9;
+
+  /* Tipografia */
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+  --serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", sans-serif;
+
+  --topbar-h: 66px;
+  --sidebar-w: 276px;
+  --radius: 10px;
+  --radius-sm: 7px;
+  --shadow-sm: 0 1px 2px rgba(20,32,46,.05), 0 1px 3px rgba(20,32,46,.04);
+  --shadow-md: 0 4px 18px rgba(20,32,46,.08);
+  --shadow-lg: 0 18px 50px rgba(20,32,46,.16);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--brand-600); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+::selection { background: var(--brand-100); color: var(--brand-700); }
+
+/* ===================== TOPBAR ===================== */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(150%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 22px;
+  z-index: 50;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none; border: none; cursor: pointer;
+  padding: 6px;
+}
+.menu-toggle span { width: 20px; height: 2px; background: var(--ink-2); border-radius: 2px; }
+
+.brand { display: flex; align-items: center; gap: 12px; color: var(--ink); }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: 13px;
+  color: #fff;
+  background: linear-gradient(150deg, var(--brand) 0%, var(--brand-700) 100%);
+  padding: 9px 11px;
+  border-radius: 8px;
+  line-height: 1;
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.brand-text small { font-size: 11px; color: var(--muted); letter-spacing: .02em; }
+
+.topbar-search {
+  flex: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.topbar-search svg {
+  position: absolute; left: 15px;
+  width: 18px; height: 18px;
+  fill: none; stroke: var(--brand); stroke-width: 2; stroke-linecap: round;
+  pointer-events: none;
+}
+.topbar-search input {
+  width: 100%;
+  border: 1.5px solid var(--brand-100);
+  background: #fff;
+  border-radius: 11px;
+  padding: 11px 16px 11px 44px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(16,40,70,.06);
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+.topbar-search input::placeholder { color: var(--muted); }
+.topbar-search input:hover { border-color: var(--brand-600); }
+.topbar-search input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--brand-600);
+  box-shadow: 0 0 0 4px var(--brand-100);
+}
+.topbar-search kbd {
+  position: absolute; right: 12px;
+  font-family: var(--sans); font-size: 11.5px; font-weight: 600; color: var(--brand-700);
+  border: 1px solid var(--brand-100); border-radius: 6px;
+  padding: 2px 8px; background: var(--brand-50);
+}
+
+.topbar-meta { display: flex; align-items: center; }
+.env-pill {
+  font-size: 11px; font-weight: 500; color: var(--brand-700);
+  background: var(--brand-50); border: 1px solid var(--brand-100);
+  padding: 5px 11px; border-radius: 20px; white-space: nowrap;
+}
+
+/* ===================== LAYOUT ===================== */
+.layout { display: flex; padding-top: var(--topbar-h); }
+
+.sidebar {
+  position: fixed;
+  top: var(--topbar-h);
+  bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 40;
+}
+.sidebar-backdrop {
+  display: none;
+  position: fixed; inset: var(--topbar-h) 0 0 0;
+  background: rgba(20,32,46,.35);
+  z-index: 35;
+}
+
+.nav { padding: 18px 14px; flex: 1; }
+.nav-item {
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 2px;
+  transition: background .12s, color .12s;
+  border: 1px solid transparent;
+}
+.nav-item:hover { background: var(--brand-50); color: var(--brand-700); text-decoration: none; }
+.nav-item.active {
+  background: var(--brand-100);
+  color: var(--brand-700);
+  font-weight: 600;
+  border-color: #d6e4f2;
+}
+.nav-item svg { width: 17px; height: 17px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+.nav-group-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted-2);
+  padding: 16px 12px 7px;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+}
+.sidebar-footer p { margin: 0; font-weight: 600; font-size: 13px; color: var(--ink); }
+.sidebar-footer small { color: var(--muted); font-size: 12px; }
+
+/* ===================== CONTENT ===================== */
+.content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+  min-height: calc(100vh - var(--topbar-h));
+  padding: 38px max(28px, calc((100% - 1600px) / 2)) 90px;
+  outline: none;
+}
+
+/* Breadcrumb */
+.crumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; flex-wrap: wrap; }
+.crumb a { color: var(--muted); }
+.crumb a:hover { color: var(--brand-600); }
+.crumb span.sep { color: var(--muted-2); }
+.crumb .cur { color: var(--ink-2); font-weight: 500; }
+
+/* Page header */
+.page-head { margin-bottom: 30px; }
+.page-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--brand-600); margin-bottom: 8px; }
+.page-title { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: -.015em; color: var(--ink); margin: 0 0 12px; }
+.page-lead { font-size: 16px; color: var(--ink-2); margin: 0; line-height: 1.65; text-align: justify; text-justify: inter-word; }
+
+h2.sec-title { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: -.01em; color: var(--ink); margin: 40px 0 16px; }
+h3.sub-title { font-size: 15px; font-weight: 600; color: var(--ink); margin: 24px 0 10px; }
+
+.lead-divider { height: 1px; background: var(--line); border: 0; margin: 0 0 30px; }
+
+/* ===================== HERO (home) ===================== */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(120% 140% at 88% 8%, rgba(31,88,148,.10), transparent 55%),
+    linear-gradient(155deg, var(--brand) 0%, var(--brand-700) 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 46px 44px;
+  overflow: hidden;
+  margin-bottom: 34px;
+}
+.hero::after {
+  content: "";
+  position: absolute; right: -40px; top: -40px;
+  width: 280px; height: 280px;
+  background-image: radial-gradient(circle, rgba(255,255,255,.10) 1.5px, transparent 1.6px);
+  background-size: 18px 18px;
+  opacity: .6;
+  transform: rotate(8deg);
+}
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 4vw, 42px); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 14px; position: relative; }
+.hero p { font-size: 16px; color: rgba(255,255,255,.86); margin: 0 0 26px; line-height: 1.6; position: relative; text-align: justify; text-justify: inter-word; }
+.hero-search { position: relative; max-width: 560px; }
+.hero-search input {
+  width: 100%; border: none; border-radius: 11px;
+  padding: 15px 18px 15px 48px;
+  font-family: var(--sans); font-size: 15px; color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+.hero-search input:focus { outline: none; box-shadow: 0 0 0 4px rgba(255,255,255,.25), var(--shadow-md); }
+.hero-search svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 19px; height: 19px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+
+/* Quick links */
+.quick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.quick-card {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.quick-card:hover { border-color: #cfe0f0; box-shadow: var(--shadow-md); transform: translateY(-2px); text-decoration: none; }
+.quick-card .qc-ico {
+  width: 38px; height: 38px; border-radius: 9px;
+  background: var(--brand-50); color: var(--brand);
+  display: grid; place-items: center;
+}
+.quick-card .qc-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.quick-card strong { font-size: 14px; font-weight: 600; color: var(--ink); }
+.quick-card span { font-size: 12.5px; color: var(--muted); }
+
+/* Home columns */
+.home-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+
+/* List rows */
+.doc-list { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
+.doc-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line-2);
+  cursor: pointer;
+  transition: background .12s;
+}
+.doc-row:last-child { border-bottom: none; }
+.doc-row:hover { background: var(--brand-50); text-decoration: none; }
+.doc-row .dr-ico {
+  width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+  background: var(--bg-soft); color: var(--brand);
+  display: grid; place-items: center;
+}
+.doc-row .dr-ico svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.doc-row .dr-main { flex: 1; min-width: 0; }
+.doc-row .dr-title { font-size: 14.5px; font-weight: 600; color: var(--ink); display: block; }
+.doc-row .dr-sub { font-size: 12.5px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 2px; }
+.doc-row .dr-meta { font-size: 12px; color: var(--muted-2); white-space: nowrap; }
+.doc-row .arrow { color: var(--muted-2); }
+.doc-row .arrow svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* Code chip */
+.code-chip { font-family: var(--sans); font-size: 11.5px; font-weight: 600; color: var(--brand-700); background: var(--brand-50); border: 1px solid var(--brand-100); padding: 1px 7px; border-radius: 5px; letter-spacing: .02em; }
+
+/* Status badge */
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badge.vigente { color: var(--st-vigente); background: var(--st-vigente-bg); }
+.badge.em-revisao { color: var(--st-revisao); background: var(--st-revisao-bg); }
+.badge.revogado { color: var(--st-revogado); background: var(--st-revogado-bg); }
+.badge.substituido { color: var(--st-substituido); background: var(--st-substituido-bg); }
+
+/* Section cards (landing) */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.info-card {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; padding: 22px; transition: border-color .15s, box-shadow .15s;
+}
+.info-card:hover { border-color: #cfe0f0; box-shadow: var(--shadow-sm); }
+.info-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; color: var(--ink); }
+.info-card p { margin: 0 0 14px; font-size: 13.5px; color: var(--muted); }
+
+.panel {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; padding: 22px 24px; margin-bottom: 18px;
+}
+.panel h3 { margin-top: 0; }
+
+/* Filters */
+.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+.filters label { font-size: 12px; color: var(--muted); font-weight: 500; }
+.filters select, .filters input[type=search] {
+  font-family: var(--sans); font-size: 13.5px; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: #fff;
+}
+.filters select:focus, .filters input:focus { outline: none; border-color: var(--brand-600); box-shadow: 0 0 0 3px var(--brand-100); }
+.gloss-letra { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--brand-700); border-bottom: 1px solid var(--line); padding: 18px 2px 6px; margin-bottom: 10px; }
+.gloss-item { display: grid; grid-template-columns: 230px 1fr; gap: 18px; padding: 13px 2px; border-bottom: 1px solid var(--bg-soft); }
+.gloss-item dt { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.gloss-item dd { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; text-align: justify; text-justify: inter-word; }
+@media (max-width: 720px) { .gloss-item { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Comunicado card */
+.com-list { display: flex; flex-direction: column; gap: 14px; }
+.com-card {
+  display: block;
+  border: 1px solid var(--line); border-left: 3px solid var(--brand); border-radius: var(--radius);
+  background: #fff; padding: 20px 22px; cursor: pointer;
+  transition: box-shadow .15s, border-color .15s;
+}
+.com-card:hover { box-shadow: var(--shadow-md); }
+.com-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.com-num { font-weight: 700; font-size: 13px; color: var(--brand-700); }
+.com-date { font-size: 12.5px; color: var(--muted); }
+.tag { font-size: 11px; font-weight: 600; color: var(--ink-2); background: var(--bg-soft); border: 1px solid var(--line); padding: 2px 9px; border-radius: 20px; }
+.com-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
+.com-card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+/* ===================== DOCUMENT PAGE ===================== */
+.doc-layout { display: grid; grid-template-columns: 1fr 296px; gap: 40px; align-items: start; }
+.doc-main {}
+.doc-title-block { border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 26px; }
+.doc-title-block h1 { font-family: var(--serif); font-weight: 600; font-size: 32px; line-height: 1.15; letter-spacing: -.015em; margin: 10px 0 14px; }
+.doc-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-size: 13.5px; font-weight: 600;
+  padding: 10px 16px; border-radius: 9px; cursor: pointer;
+  border: 1px solid var(--line); background: #fff; color: var(--ink-2);
+  transition: background .12s, border-color .12s, color .12s;
+}
+.btn:hover { text-decoration: none; border-color: #cfe0f0; background: var(--brand-50); color: var(--brand-700); }
+.btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn.primary:hover { background: var(--brand-700); border-color: var(--brand-700); color: #fff; }
+.btn.disabled { opacity: .55; cursor: not-allowed; }
+
+.doc-section { margin-bottom: 30px; }
+.doc-section h2 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 0 0 12px; color: var(--ink); }
+.doc-section p { margin: 0 0 12px; color: var(--ink-2); text-align: justify; text-justify: inter-word; }
+.doc-title-block p { text-align: justify; text-justify: inter-word; }
+
+/* Metadata sidebar */
+.meta-card {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-sidebar);
+  padding: 20px; position: sticky; top: calc(var(--topbar-h) + 24px);
+}
+.meta-card h4 { margin: 0 0 14px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.meta-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; }
+.meta-row:last-child { border-bottom: none; }
+.meta-row .ml { color: var(--muted); }
+.meta-row .mv { color: var(--ink); font-weight: 500; text-align: right; }
+
+/* Version history table */
+.vtable { width: 100%; border-collapse: collapse; font-size: 13.5px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.vtable th { text-align: left; background: var(--bg-soft); color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.vtable td { padding: 12px 14px; border-bottom: 1px solid var(--line-2); color: var(--ink-2); vertical-align: top; }
+.vtable tr:last-child td { border-bottom: none; }
+.vtable td.vcode { font-weight: 600; color: var(--brand-700); white-space: nowrap; }
+
+/* Related */
+.rel-list { display: flex; flex-direction: column; gap: 8px; }
+.rel-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; transition: border-color .12s, background .12s; }
+.rel-item:hover { border-color: #cfe0f0; background: var(--brand-50); text-decoration: none; }
+.rel-item svg { width: 16px; height: 16px; fill: none; stroke: var(--brand); stroke-width: 1.7; }
+.rel-item .ri-t { display: block; font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.rel-item .ri-c { display: block; margin-top: 2px; font-size: 12px; color: var(--muted); }
+
+/* Trilha de evidencias */
+.trilha { display: flex; flex-direction: column; gap: 0; margin-top: 6px; }
+.trilha-node { display: flex; gap: 16px; }
+.trilha-rail { display: flex; flex-direction: column; align-items: center; }
+.trilha-dot { width: 13px; height: 13px; border-radius: 50%; border: 3px solid var(--brand); background: #fff; flex-shrink: 0; margin-top: 4px; }
+.trilha-line { width: 2px; flex: 1; background: var(--line); min-height: 20px; }
+.trilha-body { padding-bottom: 20px; flex: 1; }
+.trilha-body strong { display: block; font-size: 13.5px; color: var(--ink); }
+.trilha-body span { font-size: 12.5px; color: var(--muted); }
+.trilha-node:last-child .trilha-line { display: none; }
+
+/* Notice / placeholder */
+.notice {
+  display: flex; gap: 14px; align-items: flex-start;
+  border: 1px dashed #c9d6e4; background: var(--brand-50);
+  border-radius: var(--radius); padding: 18px 20px; color: var(--brand-700);
+}
+.notice svg { width: 22px; height: 22px; flex-shrink: 0; fill: none; stroke: var(--brand); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.notice strong { display: block; color: var(--ink); margin-bottom: 3px; }
+.notice p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+.ciencia { border: 1px solid var(--brand-100); background: var(--brand-50); border-radius: var(--radius); padding: 20px 22px; }
+.ciencia-head { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+.ciencia-head svg { width: 19px; height: 19px; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ciencia-head strong { font-size: 15px; color: var(--ink); }
+.ciencia p { margin: 0 0 16px; font-size: 13.5px; color: var(--ink-2); text-align: justify; }
+.ciencia .btn svg { width: 16px; height: 16px; }
+.cm-overlay { position: fixed; inset: 0; background: rgba(13,30,50,.5); display: none; align-items: flex-start; justify-content: center; padding: 9vh 18px 18px; z-index: 80; }
+.cm-overlay.open { display: flex; }
+.cm-panel { width: 100%; max-width: 520px; background: #fff; border-radius: 14px; box-shadow: var(--shadow-lg); padding: 22px 24px; }
+.cm-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.cm-head strong { font-size: 17px; color: var(--ink); }
+.cm-docref { margin: 0 0 16px; font-size: 13px; color: var(--brand-700); font-weight: 600; }
+.cm-label { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink-2); margin: 12px 0 5px; }
+.cm-input { width: 100%; border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; font-family: var(--sans); font-size: 14px; color: var(--ink); background: #fff; }
+.cm-input:focus { outline: none; border-color: var(--brand-600); box-shadow: 0 0 0 3px var(--brand-100); }
+.cm-checkline { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; font-size: 13px; color: var(--ink-2); line-height: 1.55; cursor: pointer; }
+.cm-checkline input { margin-top: 3px; width: 15px; height: 15px; accent-color: var(--brand); flex-shrink: 0; }
+.cm-msg { min-height: 20px; margin-top: 12px; font-size: 13px; }
+.cm-msg .cm-err { color: #a33; }
+.cm-msg .cm-ok { color: #1d7a3e; font-weight: 600; }
+.cm-msg .cm-info { color: var(--muted); }
+.cm-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+.cm-hint { margin: 6px 0 0; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.cm-quem { align-items: center; justify-content: space-between; gap: 10px; background: var(--brand-50); border: 1px solid var(--brand-100); border-radius: 9px; padding: 10px 12px; font-size: 13px; color: var(--ink-2); }
+.cm-quem strong { color: var(--brand-700); }
+.cm-trocar { border: none; background: none; color: var(--brand-600); font-family: var(--sans); font-size: 12.5px; font-weight: 600; cursor: pointer; padding: 0; }
+.cm-trocar:hover { text-decoration: underline; }
+
+/* Evidence groups */
+.ev-group { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; }
+.ev-group-head { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--bg-sidebar); border-bottom: 1px solid var(--line); }
+.ev-group-head h3 { margin: 0; font-size: 16px; }
+.ev-group-body { padding: 8px 20px 16px; }
+.ev-sub { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line-2); font-size: 13.5px; color: var(--ink-2); }
+.ev-sub:last-child { border-bottom: none; }
+.ev-sub svg { width: 15px; height: 15px; fill: none; stroke: var(--muted); stroke-width: 1.7; }
+
+/* FAQ */
+.faq-item { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; background: #fff; }
+.faq-q { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 17px 20px; cursor: pointer; font-weight: 600; font-size: 15px; color: var(--ink); }
+.faq-q:hover { background: var(--bg-soft); }
+.faq-q .chev { transition: transform .2s; color: var(--muted); }
+.faq-q .chev svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+.faq-item.open .faq-q .chev { transform: rotate(90deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+.faq-item.open .faq-a { max-height: 400px; }
+.faq-a-inner { padding: 0 20px 18px; color: var(--ink-2); font-size: 14px; }
+
+/* Stats strip */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 6px 0 4px; }
+.stat { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; background: #fff; }
+.stat .sn { font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--brand); line-height: 1; }
+.stat .sl { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+/* Search overlay */
+.search-overlay { position: fixed; inset: 0; background: rgba(20,32,46,.4); backdrop-filter: blur(3px); z-index: 100; display: none; padding-top: 90px; justify-content: center; }
+.search-overlay.open { display: flex; }
+.search-panel { width: min(640px, 92vw); background: #fff; border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; height: max-content; max-height: 70vh; display: flex; flex-direction: column; }
+.search-panel-head { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+.search-panel-head svg { width: 19px; height: 19px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+.search-panel-head input { flex: 1; border: none; font-family: var(--sans); font-size: 16px; color: var(--ink); }
+.search-panel-head input:focus { outline: none; }
+.search-close { border: 1px solid var(--line); background: var(--bg-soft); border-radius: 6px; padding: 4px 9px; font-size: 11.5px; color: var(--muted); cursor: pointer; font-family: var(--sans); }
+.search-results { overflow-y: auto; padding: 8px; }
+.sr-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 8px; cursor: pointer; }
+.sr-item:hover, .sr-item.sel { background: var(--brand-50); }
+.sr-item .sr-ico { width: 30px; height: 30px; border-radius: 7px; background: var(--bg-soft); color: var(--brand); display: grid; place-items: center; flex-shrink: 0; }
+.sr-item .sr-ico svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.sr-item > span:not(.sr-ico):not(.sr-cat) { flex: 1; min-width: 0; }
+.sr-item .sr-t { display: block; font-size: 14px; font-weight: 600; color: var(--ink); }
+.sr-item .sr-c { display: block; margin-top: 2px; font-size: 12px; color: var(--muted); }
+.sr-cat { margin-left: auto; font-size: 11px; color: var(--muted-2); text-transform: uppercase; letter-spacing: .04em; }
+.sr-empty { padding: 36px 18px; text-align: center; color: var(--muted); font-size: 14px; }
+.sr-section-label { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); padding: 12px 14px 6px; }
+
+/* Misc */
+.muted { color: var(--muted); }
+.spacer-lg { height: 14px; }
+ul.clean { padding-left: 20px; margin: 8px 0; }
+ul.clean li { margin-bottom: 7px; color: var(--ink-2); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1080px) {
+  .home-cols { grid-template-columns: 1fr; }
+  .doc-layout { grid-template-columns: 1fr; }
+  .meta-card { position: static; }
+}
+@media (max-width: 860px) {
+  .menu-toggle { display: flex; }
+  .topbar-search { display: none; }
+  .topbar-meta { display: none; }
+  .sidebar { transform: translateX(-100%); transition: transform .25s; }
+  .sidebar.open { transform: translateX(0); box-shadow: var(--shadow-lg); }
+  .sidebar.open + .sidebar-backdrop { display: block; }
+  .content { margin-left: 0; }
+  .brand-text small { display: none; }
+}
+@media (max-width: 520px) {
+  .content { padding: 24px 18px 70px; }
+  .hero { padding: 32px 24px; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#/inicio" class="brand" aria-label="LBBR Governance Hub - Inicio">
+      <span class="brand-mark">LBBR</span>
+      <span class="brand-text">
+        <strong>Governance Hub</strong>
+        <small>Compliance . PLD/FTP . Integridade . Governanca</small>
+      </span>
+    </a>
+    <div class="topbar-search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+      <input type="search" id="globalSearch" placeholder="Pesquisar politicas, procedimentos, comunicados, formularios..." autocomplete="off" />
+      <kbd>/</kbd>
+    </div>
+    <div class="topbar-meta">
+      <span class="env-pill">Ambiente Institucional</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <nav class="nav" id="mainNav" aria-label="Navegacao principal"></nav>
+      <div class="sidebar-footer">
+        <p>Grupo LBBR</p>
+        <small>Diretoria de Compliance</small>
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- CONTENT -->
+    <main class="content" id="content" tabindex="-1"></main>
+  </div>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-panel">
+      <div class="search-panel-head">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        <input type="search" id="overlaySearch" placeholder="Buscar em todo o portal..." autocomplete="off" />
+        <button class="search-close" id="searchClose" aria-label="Fechar busca">Esc</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- MODAL CONFIRMACAO DE LEITURA -->
+  <div class="cm-overlay" id="cienciaModal" aria-hidden="true">
+    <div class="cm-panel" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+      <div class="cm-head">
+        <strong id="cmTitle">Confirmação de leitura</strong>
+        <button class="search-close" onclick="fecharCiencia()" aria-label="Fechar">Esc</button>
+      </div>
+      <p class="cm-docref" id="cmDoc"></p>
+      <div id="cmEmailLinha">
+        <label class="cm-label" for="cmEmail">E-mail corporativo</label>
+        <input class="cm-input" type="email" id="cmEmail" autocomplete="email" placeholder="nome@lbbr.org" />
+        <p class="cm-hint">Você receberá um link neste e-mail para concluir o registro. Nas próximas confirmações neste navegador, o link não será necessário.</p>
+      </div>
+      <div class="cm-quem" id="cmQuem" style="display:none">
+        <span>Registrando como <strong id="cmQuemEmail"></strong></span>
+        <button class="cm-trocar" onclick="sairSessao()">Trocar e-mail</button>
+      </div>
+      <label class="cm-label" for="cmNome">Nome completo</label>
+      <input class="cm-input" type="text" id="cmNome" autocomplete="name" placeholder="Seu nome completo" />
+      <label class="cm-label" for="cmArea">Área</label>
+      <select class="cm-input" id="cmArea"><option value="">Selecione...</option></select>
+      <label class="cm-checkline">
+        <input type="checkbox" id="cmCheck" />
+        <span>Declaro que li e estou ciente do conteúdo desta versão do documento, comprometendo-me a observá-lo no exercício das minhas atividades.</span>
+      </label>
+      <div class="cm-msg" id="cmMsg"></div>
+      <div class="cm-actions">
+        <button class="btn" onclick="fecharCiencia()">Cancelar</button>
+        <button class="btn primary" id="cmEnviar" onclick="enviarCiencia()">Registrar leitura</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+/* =========================================================
+   LBBR GOVERNANCE HUB - data.js
+   Camada de conteudo. Para incluir um novo documento,
+   adicione um objeto em LBBR_DATA.documentos.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   CONFIRMACAO DE LEITURA (Supabase + link por e-mail)
+   1. Crie um projeto gratuito em https://supabase.com
+   2. No SQL Editor do projeto, execute o conteudo do arquivo
+      SUPABASE_SETUP.sql (acompanha este pacote).
+   3. Em Project Settings > API, copie e cole abaixo:
+      - url: a "Project URL"
+      - anonKey: a chave "anon public"
+   4. Em Authentication > URL Configuration, defina o
+      "Site URL" como o endereco publicado do portal
+      (ex.: https://usuario.github.io/repositorio/).
+   5. Em Authentication > SMTP Settings, configure um SMTP
+      proprio (ex.: Gmail/Google Workspace). Sem isso, o
+      Supabase nao envia e-mails para enderecos externos.
+   Funcionamento: o colaborador informa o e-mail corporativo,
+   recebe um link, e ao clicar o registro e gravado com o
+   e-mail comprovado. No mesmo navegador, as proximas
+   confirmacoes dispensam novo e-mail.
+   --------------------------------------------------------- */
+const CIENCIA_DB = {
+  url: "https://SEU-PROJETO.supabase.co",
+  anonKey: "COLE_A_CHAVE_ANON_AQUI",
+  tabela: "confirmacoes_leitura",
+  dominios: ["lbbr.org"]
+};
+
+const LBBR_DATA = {
+
+  /* -------------------- DOCUMENTOS (politicas e procedimentos) -------------------- */
+  documentos: [
+    {
+      id: "COMP-COD-001", codigo: "COMP-COD-001", titulo: "Código de Conduta e Ética",
+      area: "compliance", tipo: "Código", versao: "2.0", status: "vigente",
+      dataAprovacao: "12/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "12/02/2027",
+      resumo: "Estabelece os princípios éticos, os padrões de conduta e os compromissos de integridade exigidos de todos os colaboradores, administradores e parceiros do Grupo LBBR no exercício de suas atividades.",
+      conteudo: [
+        { t: "Propósito", p: "Definir o referencial ético do Grupo LBBR e orientar a tomada de decisão em situações não expressamente previstas em políticas específicas." },
+        { t: "Abrangência", p: "Aplica-se a todos os colaboradores, administradores, estagiários, prestadores de serviço e terceiros que atuem em nome do Grupo LBBR e de suas marcas luck.bet, 1pra1 e startbet." },
+        { t: "Compromissos", p: "Integridade, transparência, jogo responsável, prevenção à lavagem de dinheiro, combate à corrupção e respeito à legislação aplicável." }
+      ],
+      historico: [
+        { v: "v2.0", d: "12/02/2026", r: "Diretoria de Compliance", desc: "Adequação regulatória à Lei 14.790/2023 e portarias SPA/MF" },
+        { v: "v1.1", d: "08/2025", r: "Diretoria de Compliance", desc: "Ajustes de redação e inclusão do canal de denúncias" },
+        { v: "v1.0", d: "03/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-ANTIC-001", "POL-INTES-001", "PROC-DEN-001"]
+    },
+    {
+      id: "POL-COMP-001", codigo: "POL-COMP-001", titulo: "Política de Compliance",
+      area: "compliance", tipo: "Política", versao: "1.2", status: "vigente",
+      dataAprovacao: "20/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "20/01/2027",
+      resumo: "Define a estrutura, os papéis e as responsabilidades do programa de compliance do Grupo LBBR, além dos pilares de governança que sustentam a conformidade regulatória da operação de apostas de quota fixa.",
+      conteudo: [
+        { t: "Pilares do programa", p: "Comprometimento da alta administração, avaliação de riscos, políticas e procedimentos, comunicação e treinamento, monitoramento e melhoria contínua." },
+        { t: "Estrutura de governança", p: "A Diretoria de Compliance responde pela coordenação do programa, com independência funcional e acesso direto à alta administração." }
+      ],
+      historico: [
+        { v: "v1.2", d: "20/01/2026", r: "Diretoria de Compliance", desc: "Atualização da estrutura de governança" },
+        { v: "v1.0", d: "04/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["COMP-COD-001", "POL-RISCO-001", "POL-PLDFT-001"]
+    },
+    {
+      id: "POL-ANTIC-001", codigo: "POL-ANTIC-001", titulo: "Política Anticorrupção",
+      area: "compliance", tipo: "Política", versao: "1.1", status: "vigente",
+      dataAprovacao: "15/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "15/01/2027",
+      resumo: "Estabelece as diretrizes de prevenção e combate à corrupção, ao suborno e à fraude, em conformidade com a Lei 12.846/2013, vedando o oferecimento ou recebimento de vantagens indevidas.",
+      conteudo: [
+        { t: "Vedações", p: "É vedado oferecer, prometer, autorizar ou receber, direta ou indiretamente, qualquer vantagem indevida a agente público ou privado." },
+        { t: "Relação com o poder público", p: "Define controles específicos para interações com a Secretaria de Prêmios e Apostas e demais órgãos reguladores." }
+      ],
+      historico: [
+        { v: "v1.1", d: "15/01/2026", r: "Diretoria de Compliance", desc: "Inclusão de controles para relação com o regulador" },
+        { v: "v1.0", d: "04/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["COMP-COD-001", "POL-BRIND-001", "POL-INTES-001"]
+    },
+    {
+      id: "POL-INTES-001", codigo: "POL-INTES-001", titulo: "Política de Conflito de Interesses",
+      area: "compliance", tipo: "Política", versao: "1.0", status: "vigente",
+      dataAprovacao: "15/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "15/01/2027",
+      resumo: "Orienta a identificação, a declaração e o tratamento de situações de conflito de interesses, reais ou potenciais, envolvendo colaboradores e administradores do Grupo LBBR.",
+      conteudo: [
+        { t: "Dever de declaração", p: "Todo colaborador deve declarar tempestivamente qualquer situação que possa configurar conflito entre seus interesses pessoais e os interesses da organização." },
+        { t: "Tratamento", p: "A Diretoria de Compliance avalia as declarações e define medidas de mitigação, incluindo afastamento da decisão e segregação de funções." }
+      ],
+      historico: [
+        { v: "v1.0", d: "15/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["FORM-INTES-001", "FORM-PAREN-001", "COMP-COD-001"]
+    },
+    {
+      id: "POL-BRIND-001", codigo: "POL-BRIND-001", titulo: "Política de Brindes e Hospitalidades",
+      area: "compliance", tipo: "Política", versao: "1.0", status: "em-revisao",
+      dataAprovacao: "10/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "10/07/2026",
+      resumo: "Define limites, vedações e fluxos de aprovação para oferecimento e recebimento de brindes, presentes, hospitalidades e patrocínios, mitigando o risco de corrupção e conflito de interesses.",
+      conteudo: [
+        { t: "Limites", p: "Estabelece valores de referência e a necessidade de aprovação prévia pela Diretoria de Compliance acima dos limites definidos." }
+      ],
+      historico: [
+        { v: "v1.0", d: "10/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-ANTIC-001", "COMP-COD-001"]
+    },
+    {
+      id: "POL-DILIG-001", codigo: "POL-DILIG-001", titulo: "Política de Due Diligence de Terceiros",
+      area: "compliance", tipo: "Política", versao: "1.1", status: "vigente",
+      dataAprovacao: "18/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "18/01/2027",
+      resumo: "Estabelece o processo de avaliação de integridade de fornecedores, parceiros e demais terceiros (KYS, KYP e KYE), com classificação de risco e periodicidade de revisão.",
+      conteudo: [
+        { t: "Níveis de risco", p: "Classificação em Baixo, Médio, Alto e Muito Alto, com escopo de diligência e prazo de validade proporcionais ao risco identificado." },
+        { t: "Reavaliação", p: "Define a periodicidade de revisão das diligências conforme o nível de risco atribuído ao terceiro." }
+      ],
+      historico: [
+        { v: "v1.1", d: "18/01/2026", r: "Diretoria de Compliance", desc: "Inclusão de matriz de classificação de risco" },
+        { v: "v1.0", d: "05/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["FORM-DILIG-001", "POL-RISCO-001", "MAT-RISCO-001"]
+    },
+    {
+      id: "POL-PLDFT-001", codigo: "POL-PLDFT-001", titulo: "Política de PLD/FTP",
+      area: "pldftp", tipo: "Política", versao: "2.0", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Define as diretrizes de prevenção à lavagem de dinheiro, ao financiamento do terrorismo e ao financiamento da proliferação de armas de destruição em massa, em conformidade com a Lei 9.613/1998 e a regulamentação da SPA/MF.",
+      conteudo: [
+        { t: "Abordagem baseada em risco", p: "Os controles de PLD/FTP são calibrados conforme o risco do cliente, do produto e do canal, observada a avaliação interna de riscos." },
+        { t: "Pilares", p: "Conheça seu cliente, monitoramento de operações, detecção de operações suspeitas, comunicação ao Siscoaf e guarda de registros." },
+        { t: "Governança", p: "A Diretoria de Compliance é responsável pela política, pela sua disseminação e pela comunicação de operações suspeitas ao COAF." }
+      ],
+      historico: [
+        { v: "v2.0", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Adequação regulatória à Lei 14.790/2023 e portarias SPA/MF" },
+        { v: "v1.1", d: "09/2025", r: "Diretoria de Compliance", desc: "Ajustes de KYC e limites de monitoramento" },
+        { v: "v1.0", d: "03/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["PROC-KYC-001", "PROC-EDD-001", "PROC-MON-001", "PROC-COS-001", "AIR-PLDFT-001"]
+    },
+    {
+      id: "PROC-KYC-001", codigo: "PROC-KYC-001", titulo: "Procedimento de KYC",
+      area: "pldftp", tipo: "Procedimento", versao: "1.2", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Detalha o processo de identificação, qualificação e verificação de apostadores, incluindo coleta de dados cadastrais, validação documental e enquadramento em nível de risco.",
+      conteudo: [
+        { t: "Identificação", p: "Coleta e validação dos dados cadastrais mínimos exigidos pela regulamentação para abertura e manutenção de conta gráfica." },
+        { t: "Qualificação", p: "Classificação do apostador em nível de risco a partir de critérios objetivos, definindo a intensidade do monitoramento." }
+      ],
+      historico: [
+        { v: "v1.2", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Atualização de critérios de qualificação" },
+        { v: "v1.0", d: "03/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-PLDFT-001", "PROC-EDD-001"]
+    },
+    {
+      id: "PROC-EDD-001", codigo: "PROC-EDD-001", titulo: "Procedimento de EDD",
+      area: "pldftp", tipo: "Procedimento", versao: "1.1", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Estabelece a diligência aprofundada (Enhanced Due Diligence) aplicável a clientes de maior risco, incluindo pessoas expostas politicamente e operações de elevado volume ou complexidade.",
+      conteudo: [
+        { t: "Gatilhos", p: "Define as situações que exigem diligência aprofundada, como PEP, alto volume, inconsistência cadastral e alertas de monitoramento." },
+        { t: "Medidas reforçadas", p: "Verificação de origem de recursos, aprovação em nível superior e monitoramento intensificado." }
+      ],
+      historico: [
+        { v: "v1.1", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Inclusão de critérios para PEP" },
+        { v: "v1.0", d: "04/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-PLDFT-001", "PROC-KYC-001", "FORM-EDD-001"]
+    },
+    {
+      id: "PROC-MON-001", codigo: "PROC-MON-001", titulo: "Procedimento de Monitoramento",
+      area: "pldftp", tipo: "Procedimento", versao: "1.0", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Define as regras, os parâmetros e os fluxos de tratamento de alertas para o monitoramento contínuo das operações, com vistas à detecção de operações atípicas.",
+      conteudo: [
+        { t: "Regras de monitoramento", p: "Conjunto de cenários e limites parametrizados para identificação de operações incompatíveis com o perfil do apostador." },
+        { t: "Tratamento de alertas", p: "Fluxo de análise, classificação e encerramento de alertas, com registro de fundamentação e trilha de auditoria." }
+      ],
+      historico: [
+        { v: "v1.0", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-PLDFT-001", "PROC-COS-001", "MAT-RISCO-001"]
+    },
+    {
+      id: "PROC-COS-001", codigo: "PROC-COS-001", titulo: "Procedimento de COS",
+      area: "pldftp", tipo: "Procedimento", versao: "1.0", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Disciplina a análise de operações atípicas e o fluxo de comunicação de operações suspeitas (COS) ao Siscoaf, incluindo prazos, responsabilidades e guarda de evidências.",
+      conteudo: [
+        { t: "Análise", p: "Avaliação fundamentada da operação atípica para decisão quanto à comunicação ao Siscoaf, observado o sigilo legal." },
+        { t: "Comunicação", p: "Registro da comunicação ao Siscoaf, vedada a cientificação do comunicado, com guarda das evidências da análise." }
+      ],
+      historico: [
+        { v: "v1.0", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-PLDFT-001", "PROC-MON-001"]
+    },
+    {
+      id: "MAT-RISCO-001", codigo: "MAT-RISCO-001", titulo: "Matriz de Risco PLD/FTP",
+      area: "pldftp", tipo: "Matriz", versao: "1.1", status: "vigente",
+      dataAprovacao: "28/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "28/07/2026",
+      resumo: "Consolida os fatores de risco de cliente, produto, canal e geografia, com critérios de pontuação e enquadramento que orientam a intensidade dos controles de PLD/FTP.",
+      conteudo: [
+        { t: "Dimensões", p: "Avalia risco por cliente, produto, canal de distribuição e jurisdição, atribuindo pontuação consolidada." },
+        { t: "Enquadramento", p: "Classificação final em quatro níveis, vinculada à periodicidade de revisão e ao escopo de diligência." }
+      ],
+      historico: [
+        { v: "v1.1", d: "28/01/2026", r: "Diretoria de Compliance", desc: "Recalibração de pesos por dimensão" },
+        { v: "v1.0", d: "06/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["AIR-PLDFT-001", "POL-RISCO-001", "POL-PLDFT-001"]
+    },
+    {
+      id: "AIR-PLDFT-001", codigo: "AIR-PLDFT-001", titulo: "Avaliação Interna de Riscos",
+      area: "pldftp", tipo: "Avaliação", versao: "1.0", status: "vigente",
+      dataAprovacao: "28/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "28/01/2027",
+      resumo: "Documenta a avaliação interna de riscos de lavagem de dinheiro e financiamento do terrorismo do Grupo LBBR, identificando riscos inerentes, controles e risco residual.",
+      conteudo: [
+        { t: "Metodologia", p: "Identificação de riscos inerentes, avaliação da efetividade dos controles e mensuração do risco residual por categoria." },
+        { t: "Plano de ação", p: "Definição de medidas de mitigação para riscos residuais acima do apetite definido." }
+      ],
+      historico: [
+        { v: "v1.0", d: "28/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["MAT-RISCO-001", "POL-PLDFT-001", "POL-RISCO-001"]
+    },
+    {
+      id: "POL-RISCO-001", codigo: "POL-RISCO-001", titulo: "Política de Gestão de Riscos",
+      area: "pldftp", tipo: "Política", versao: "1.0", status: "vigente",
+      dataAprovacao: "22/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "22/01/2027",
+      resumo: "Estabelece o modelo de identificação, avaliação, tratamento e monitoramento de riscos do Grupo LBBR, incluindo riscos de compliance, regulatórios, operacionais e reputacionais.",
+      conteudo: [
+        { t: "Apetite a risco", p: "Define os limites de exposição aceitáveis e os critérios de escalonamento de riscos relevantes." },
+        { t: "Ciclo de gestão", p: "Identificar, avaliar, tratar, monitorar e reportar, em ciclos periódicos e sempre que houver evento relevante." }
+      ],
+      historico: [
+        { v: "v1.0", d: "22/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["AIR-PLDFT-001", "MAT-RISCO-001", "POL-COMP-001"]
+    },
+    {
+      id: "PROG-INTEG-001", codigo: "PROG-INTEG-001", titulo: "Programa de Integridade",
+      area: "integridade", tipo: "Programa", versao: "1.0", status: "vigente",
+      dataAprovacao: "16/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "16/01/2027",
+      resumo: "Descreve o conjunto de mecanismos e procedimentos de integridade do Grupo LBBR, voltado à prevenção, detecção e remediação de desvios éticos e atos lesivos.",
+      conteudo: [
+        { t: "Estrutura", p: "Reúne código de conduta, políticas, canal de denúncias, due diligence, treinamento e monitoramento em um programa único de integridade." },
+        { t: "Remediação", p: "Define o tratamento de violações, com aplicação de medidas disciplinares proporcionais e melhoria dos controles." }
+      ],
+      historico: [
+        { v: "v1.0", d: "16/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["COMP-COD-001", "PROC-DEN-001", "PROC-INV-001"]
+    },
+    {
+      id: "PROC-DEN-001", codigo: "PROC-DEN-001", titulo: "Canal de Denúncias",
+      area: "integridade", tipo: "Procedimento", versao: "1.1", status: "vigente",
+      dataAprovacao: "16/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "16/01/2027",
+      resumo: "Disciplina o funcionamento do canal de denúncias, garantindo anonimato, confidencialidade, não retaliação e tratamento independente dos relatos recebidos.",
+      conteudo: [
+        { t: "Garantias", p: "Anonimato opcional, confidencialidade do relato e vedação expressa à retaliação ao denunciante de boa-fé." },
+        { t: "Tratamento", p: "Recebimento, triagem, apuração e retorno, com registro de evidências e indicadores de eficácia do canal." }
+      ],
+      historico: [
+        { v: "v1.1", d: "16/01/2026", r: "Diretoria de Compliance", desc: "Atualização do fluxo de tratamento" },
+        { v: "v1.0", d: "05/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["PROG-INTEG-001", "PROC-INV-001", "COMP-COD-001"]
+    },
+    {
+      id: "PROC-INV-001", codigo: "PROC-INV-001", titulo: "Investigações Internas",
+      area: "integridade", tipo: "Procedimento", versao: "1.0", status: "vigente",
+      dataAprovacao: "16/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "16/01/2027",
+      resumo: "Estabelece a metodologia de condução de investigações internas, assegurando imparcialidade, devido processo, sigilo e preservação de evidências.",
+      conteudo: [
+        { t: "Condução", p: "Planejamento, coleta de evidências, entrevistas e relatório conclusivo, com cadeia de custódia preservada." },
+        { t: "Garantias", p: "Imparcialidade, presunção de boa-fé e direito de defesa do investigado." }
+      ],
+      historico: [
+        { v: "v1.0", d: "16/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["PROC-DEN-001", "PROG-INTEG-001"]
+    }
+  ],
+
+  /* -------------------- COMUNICADOS -------------------- */
+  comunicados: [
+    { num: "001", mes: "ABR", ano: "2026", periodo: "30/04/2026", tema: "PLD/FT - Conceitos Base", publico: "Todos os colaboradores", status: "publicado", link: "https://paulogsprtt-iga.github.io/COM/COMUNICADO_001_PLD_FT_LBBR.html" },
+    { num: "002", mes: "MAI", ano: "2026", periodo: "Maio/2026", tema: "Jogo Responsável", publico: "Todos os colaboradores (prioritário: Atendimento, CRM, Marketing, Produto)", status: "publicado", link: "https://paulogsprtt-iga.github.io/COM/COMUNICADO_002_JOGO_RESPONSAVEL_LBBR.html" },
+    { num: "003", mes: "JUN", ano: "2026", periodo: "Junho/2026", tema: "Ética, Integridade e Conflito de Interesses", publico: "Todos os colaboradores (prioritário: Liderança, Compras, Comercial, Jurídico)", status: "planejado", link: null },
+    { num: "004", mes: "JUL", ano: "2026", periodo: "Julho/2026", tema: "Fraude Interna e Externa", publico: "Todos os colaboradores (prioritário: Operações, Pagamentos, Risco, Segurança)", status: "planejado", link: null },
+    { num: "005", mes: "AGO", ano: "2026", periodo: "Agosto/2026", tema: "KYC, Cadastro e Diligência do Cliente", publico: "Todos os colaboradores (prioritário: KYC, Atendimento, Pagamentos, Fraude)", status: "planejado", link: null },
+    { num: "006", mes: "SET", ano: "2026", periodo: "Setembro/2026", tema: "Comunicação com Regulador, COAF e Preservação de Sigilo", publico: "Todos os colaboradores (prioritário: Compliance, Jurídico, PLD, Liderança)", status: "planejado", link: null },
+    { num: "007", mes: "OUT", ano: "2026", periodo: "Outubro/2026", tema: "Publicidade Responsável e Conduta de Afiliados", publico: "Todos os colaboradores (prioritário: Marketing, CRM, Afiliados, Comercial)", status: "planejado", link: null },
+    { num: "008", mes: "NOV", ano: "2026", periodo: "Novembro/2026", tema: "Monitoramento de Operações e Perfis de Risco (AML)", publico: "Todos os colaboradores (prioritário: Compliance, PLD, Risco, Pagamentos)", status: "planejado", link: null },
+    { num: "009", mes: "DEZ", ano: "2026", periodo: "Dezembro/2026", tema: "Terceiros Críticos e Due Diligence de Fornecedores", publico: "Todos os colaboradores (prioritário: Compras, Jurídico, Compliance, TI)", status: "planejado", link: null },
+    { num: "010", mes: "JAN", ano: "2027", periodo: "Janeiro/2027", tema: "Canal de Denúncias, Não Retaliação e Apuração", publico: "Todos os colaboradores (prioritário: Liderança, RH, Compliance)", status: "planejado", link: null },
+    { num: "011", mes: "FEV", ano: "2027", periodo: "Fevereiro/2027", tema: "Reciclagem Anual de Compliance Regulatório", publico: "Todos os colaboradores (e terceiros críticos conforme exigência)", status: "planejado", link: null },
+    { num: "012", mes: "MAR", ano: "2027", periodo: "Março/2027", tema: "Gestão Baseada em Risco (GBR)", publico: "Todos os colaboradores (prioritário: Produto, Operações, Risco, Compliance)", status: "planejado", link: null }
+  ],
+
+  /* -------------------- TREINAMENTOS -------------------- */
+  treinamentos: [
+    { id: "TRN-PLDFT-001", titulo: "Treinamento de PLD/FTP", tipo: "Apresentação", descricao: "Capacitação sobre prevenção à lavagem de dinheiro e financiamento do terrorismo no contexto de apostas de quota fixa, com estudos de caso.", publico: "Todos os colaboradores", data: "20/05/2026" },
+    { id: "TRN-COND-001", titulo: "Código de Conduta na prática", tipo: "Cartilha", descricao: "Material de apoio sobre a aplicação do código de conduta no dia a dia, com exemplos e orientações de decisão ética.", publico: "Todos os colaboradores", data: "12/03/2026" },
+    { id: "TRN-ANTI-001", titulo: "Anticorrupção e relação com o poder público", tipo: "Apresentação", descricao: "Diretrizes de prevenção à corrupção e controles para interações com órgãos reguladores.", publico: "Liderança e áreas de relacionamento institucional", data: "18/02/2026" },
+    { id: "TRN-INTE-001", titulo: "Integridade e canal de denúncias", tipo: "Cartilha", descricao: "Orientações sobre o programa de integridade, como reportar desvios e as garantias do denunciante.", publico: "Todos os colaboradores", data: "15/01/2026" }
+  ],
+
+  /* -------------------- FORMULARIOS -------------------- */
+  formularios: [
+    { id: "FORM-INTES-001", titulo: "Declaração de Conflito de Interesse", descricao: "Formulário para declaração de situações de conflito de interesses, reais ou potenciais.", relacionados: ["POL-INTES-001"] },
+    { id: "FORM-PAREN-001", titulo: "Declaração de Parentesco", descricao: "Formulário para declaração de relações de parentesco com colaboradores, parceiros ou agentes públicos.", relacionados: ["POL-INTES-001"] },
+    { id: "FORM-EDD-001", titulo: "Formulário de EDD", descricao: "Formulário de diligência aprofundada para clientes de maior risco.", relacionados: ["PROC-EDD-001"] },
+    { id: "FORM-DILIG-001", titulo: "Formulário de Due Diligence de Terceiros", descricao: "Formulário de coleta de informações para avaliação de integridade de fornecedores e parceiros.", relacionados: ["POL-DILIG-001"] },
+    { id: "FORM-SOL-001", titulo: "Solicitações Internas", descricao: "Formulário para solicitações diversas à Diretoria de Compliance, incluindo aprovação de brindes e hospitalidades.", relacionados: ["POL-BRIND-001"] }
+  ],
+
+  /* -------------------- MARCO REGULATORIO -------------------- */
+  marcoRegulatorio: {
+    legislacao: [
+      { ref: "Lei 14.790/2023", desc: "Dispõe sobre a modalidade lotérica de aposta de quota fixa e regula a exploração comercial no Brasil." },
+      { ref: "Lei 9.613/1998", desc: "Dispõe sobre os crimes de lavagem de dinheiro e cria o Conselho de Controle de Atividades Financeiras." },
+      { ref: "Lei 12.846/2013", desc: "Lei Anticorrupção. Responsabilização administrativa e civil de pessoas jurídicas por atos lesivos à administração pública." },
+      { ref: "Lei 13.709/2018", desc: "Lei Geral de Proteção de Dados Pessoais (LGPD)." }
+    ],
+    portarias: [
+      { ref: "Portaria SPA/MF 1.143/2024", desc: "Estabelece requisitos de prevenção à lavagem de dinheiro e ao financiamento do terrorismo para agentes operadores." },
+      { ref: "Portaria SPA/MF 722/2024", desc: "Dispõe sobre regras de autorização para exploração da aposta de quota fixa." },
+      { ref: "Portaria SPA/MF 827/2024", desc: "Dispõe sobre regras técnicas e de segurança da operação." }
+    ],
+    obrigacoes: [
+      { ref: "Comunicação ao Siscoaf", desc: "Comunicação de operações suspeitas e de operações em espécie, nos prazos e condições regulamentares." },
+      { ref: "Avaliação Interna de Riscos", desc: "Elaboração e revisão periódica da avaliação interna de riscos de PLD/FTP." },
+      { ref: "Guarda de registros", desc: "Manutenção de registros de cadastro e de operações pelo prazo regulamentar." },
+      { ref: "Jogo responsável", desc: "Implementação de medidas de jogo responsável e proteção ao apostador." }
+    ]
+  },
+
+  /* -------------------- EVIDENCIAS REGULATORIAS -------------------- */
+  evidencias: [
+    { grupo: "Governança", itens: ["Atas", "Aprovações", "Organogramas"] },
+    { grupo: "PLD/FTP", itens: ["Avaliação Interna de Riscos", "Relatórios", "Evidências de Monitoramento"] },
+    { grupo: "Treinamentos", itens: ["Certificados", "Listas de Presença", "Materiais"] },
+    { grupo: "Regulatório", itens: ["Protocolos", "Comunicações Oficiais", "Evidências de Cumprimento"] }
+  ],
+
+  /* -------------------- FAQ -------------------- */
+  glossario: [
+    { t: "Afiliado", d: "Parceiro que divulga a plataforma e capta apostadores em troca de remuneração. Sua atuação deve observar a publicidade responsável e as vedações regulatórias, sob responsabilidade do operador." },
+    { t: "Agente operador", d: "Pessoa jurídica autorizada pela SPA/MF a explorar a loteria de apostas de quota fixa no Brasil, nos termos da Lei 14.790/2023." },
+    { t: "Aposta de quota fixa", d: "Modalidade lotérica em que o apostador conhece, no momento da aposta, a taxa de retorno (odd) aplicável em caso de acerto. É o objeto da autorização federal das bets." },
+    { t: "Apostador", d: "Pessoa física, maior de 18 anos, cadastrada e verificada na plataforma, titular da conta de apostas. Cada apostador deve ter conta única por operador." },
+    { t: "Autoexclusão", d: "Mecanismo de jogo responsável pelo qual o apostador solicita o bloqueio do próprio acesso à plataforma por período determinado ou indeterminado." },
+    { t: "Beneficiário final", d: "Pessoa natural que, em última instância, possui, controla ou influencia significativamente uma pessoa jurídica, ou em nome da qual uma transação é conduzida. Sua identificação é obrigação de PLD/FT." },
+    { t: "Bonus abuse", d: "Exploração abusiva de bônus e promoções, em geral com múltiplas contas ou conluio, para extrair vantagem financeira sem risco real de aposta. Configura fraude contra o operador." },
+    { t: "Carding", d: "Uso de cartões de pagamento obtidos ilicitamente para depósitos na plataforma, frequentemente para testar cartões ou converter valores. Indicador relevante de fraude e lavagem." },
+    { t: "CDD", d: "Customer Due Diligence. Diligência padrão do cliente: identificação, qualificação, verificação de dados e classificação de risco no relacionamento." },
+    { t: "Chip dumping", d: "Transferência intencional de valores entre contas por meio de apostas combinadas, em que um jogador perde deliberadamente para outro. Tipologia clássica de lavagem em jogos." },
+    { t: "COAF", d: "Conselho de Controle de Atividades Financeiras. Unidade de inteligência financeira do Brasil, destinatária das comunicações de operações suspeitas e em espécie." },
+    { t: "Conta mula", d: "Conta de apostador cedida ou controlada por terceiro para movimentar recursos de origem ilícita, ocultando o verdadeiro beneficiário." },
+    { t: "COS", d: "Comunicação de Operação Suspeita. Reporte ao COAF, via Siscoaf, de operação ou proposta com indícios de lavagem de dinheiro ou financiamento do terrorismo." },
+    { t: "EDD", d: "Enhanced Due Diligence. Diligência reforçada aplicada a clientes e situações de maior risco, como PEPs e movimentações incompatíveis, com medidas adicionais de verificação e aprovação." },
+    { t: "FATF/GAFI", d: "Grupo de Ação Financeira Internacional. Organismo intergovernamental que define os padrões globais de prevenção à lavagem de dinheiro e ao financiamento do terrorismo." },
+    { t: "GGR", d: "Gross Gaming Revenue. Receita bruta de jogo: total apostado menos prêmios pagos. Base usual de tributação e de indicadores do setor." },
+    { t: "Jogo responsável", d: "Conjunto de políticas e ferramentas para prevenir o jogo problemático, como limites de depósito, alertas de tempo, autoexclusão e canais de apoio ao apostador." },
+    { t: "KYC", d: "Know Your Customer. Processo de identificação e verificação do apostador, incluindo validação cadastral, documental e biométrica, na entrada e ao longo do relacionamento." },
+    { t: "KYE", d: "Know Your Employee. Diligência sobre colaboradores, especialmente em funções sensíveis, para mitigar riscos de fraude interna e conflito de interesses." },
+    { t: "KYP", d: "Know Your Partner. Diligência sobre parceiros comerciais, como afiliados e provedores de jogo, avaliando integridade, reputação e conformidade." },
+    { t: "KYS", d: "Know Your Supplier. Diligência sobre fornecedores e prestadores de serviço, proporcional à criticidade do contrato e ao risco da relação." },
+    { t: "LGPD", d: "Lei Geral de Proteção de Dados (Lei 13.709/2018). Disciplina o tratamento de dados pessoais, aplicável a todo o ciclo de dados de apostadores e colaboradores." },
+    { t: "Manipulação de resultados", d: "Adulteração fraudulenta de evento esportivo ou de elemento dele (match-fixing) para beneficiar apostas. Crime e risco de integridade monitorado pelo operador." },
+    { t: "NGR", d: "Net Gaming Revenue. Receita líquida de jogo: GGR deduzido de bônus, impostos e outros ajustes definidos contratual ou regulatoriamente." },
+    { t: "Odds", d: "Cotação que expressa a probabilidade implícita e o multiplicador de retorno de uma aposta. Na quota fixa, é conhecida no momento da aposta." },
+    { t: "PEP", d: "Pessoa Exposta Politicamente. Quem desempenha ou desempenhou função pública relevante, bem como familiares e estreitos colaboradores. Exige diligência reforçada." },
+    { t: "PLD/FT", d: "Prevenção à Lavagem de Dinheiro e ao Financiamento do Terrorismo. Conjunto de políticas, procedimentos e controles exigidos pela Lei 9.613/1998 e pela regulamentação da SPA/MF." },
+    { t: "Siscoaf", d: "Sistema de Controle de Atividades Financeiras. Plataforma eletrônica do COAF para registro e envio das comunicações de operações suspeitas e em espécie." },
+    { t: "SIGAP", d: "Sistema de Gestão de Apostas da SPA/MF. Canal oficial de envio de informações operacionais e regulatórias dos operadores ao regulador." },
+    { t: "SPA/MF", d: "Secretaria de Prêmios e Apostas do Ministério da Fazenda. Órgão regulador do mercado de apostas de quota fixa no Brasil, responsável por autorização, regulação e fiscalização." }
+  ],
+  faq: [
+    { q: "Posso apostar nas plataformas do próprio Grupo (luck.bet, 1pra1 e startbet)?", a: "O Código de Conduta e Ética (COMP-COD-001) trata das apostas por colaboradores nas marcas do Grupo. A regra geral é a vedação para quem tem acesso a informações operacionais, de risco ou privilegiadas, de modo a evitar conflito de interesses e uso de informação privilegiada. Consulte o documento para os termos aplicáveis ao seu cargo e, em caso de dúvida, fale com o Compliance." },
+    { q: "O que caracteriza um conflito de interesses e quando devo declarar?", a: "Há conflito quando interesses pessoais, familiares ou financeiros podem influenciar, ainda que potencialmente, decisões que você toma em nome do Grupo. A declaração deve ser feita tempestivamente, sempre que a situação surgir, por meio do formulário de Declaração de Conflito de Interesse (FORM-INTES-001), conforme a POL-INTES-001." },
+    { q: "Posso receber brindes, presentes ou convites de fornecedores e parceiros?", a: "Cortesias de valor simbólico e ocasionais podem ser aceitas. Brindes acima dos limites definidos, convites para eventos ou qualquer oferta que possa influenciar uma decisão exigem aprovação prévia da Diretoria de Compliance, solicitada pelo formulário FORM-SOL-001, conforme a POL-BRIND-001. Na dúvida, recuse e consulte o Compliance." },
+    { q: "Posso indicar familiares ou pessoas próximas para trabalhar ou prestar serviço ao Grupo?", a: "A indicação não é proibida, mas deve ser transparente. Você não pode participar de decisões de contratação, gestão ou avaliação de pessoa com quem tenha relação pessoal ou familiar. Declare a situação pelo FORM-INTES-001, conforme a POL-INTES-001, para que se adotem medidas de segregação." },
+    { q: "Como devo tratar informações confidenciais e dados de apostadores?", a: "Informações internas e dados de clientes só podem ser usados para a finalidade legítima do trabalho, nunca para benefício próprio ou de terceiros. O sigilo deve ser preservado mesmo após o desligamento, observada a legislação de proteção de dados. Compartilhamento indevido é violação ao Código de Conduta e Ética (COMP-COD-001)." },
+    { q: "Recebi um pedido ou cortesia de agente público ou de pessoa ligada ao regulador. O que faço?", a: "Não ofereça, prometa ou aceite qualquer vantagem indevida, direta ou indireta, a agente público. Interações com o regulador devem seguir os canais oficiais. Comunique imediatamente o Compliance, conforme a Política Anticorrupção (POL-ANTIC-001)." },
+    { q: "O que faço se identificar sinais de jogo problemático em um cliente ou conhecido?", a: "Todos os colaboradores apoiam o jogo responsável. Ao identificar sinais de comportamento de risco, acione as ferramentas e os canais internos previstos e encaminhe a situação à área responsável. Não trate o caso por conta própria nem incentive a continuidade das apostas." },
+    { q: "Posso falar sobre o Grupo ou sobre apostas nas minhas redes sociais?", a: "Você não deve se apresentar como porta-voz do Grupo nem divulgar informações internas. Qualquer comunicação pública sobre as marcas deve observar a publicidade responsável, não direcionar apostas a públicos vedados e não prometer ganhos. Em caso de dúvida, consulte o Compliance antes de publicar." },
+    { q: "Como reporto uma conduta antiética ou uma suspeita de violação?", a: "Pelo canal de denúncias, com possibilidade de anonimato e garantia de não retaliação ao denunciante de boa-fé, conforme o procedimento PROC-DEN-001. O canal destina-se a relatos; dúvidas sobre os temas devem ser encaminhadas ao Compliance." },
+    { q: "Onde encontro o Código de Conduta e as políticas?", a: "O Código de Conduta e Ética e as demais políticas estão organizados nas seções Compliance, PLD/FTP e Integridade deste portal, sempre com a versão vigente, o histórico de versões e os documentos relacionados." }
+  ]
+};
+
+/* =========================================================
+   LBBR GOVERNANCE HUB - app.js
+   Roteamento por hash, renderizacao e busca global.
+   ========================================================= */
+
+const D = LBBR_DATA;
+
+/* ----------------- ICONES (SVG paths) ----------------- */
+const ICON = {
+  inicio: '<path d="M3 11l9-8 9 8M5 10v10h14V10"/>',
+  comunicados: '<path d="M3 8l9 6 9-6M5 5h14v14H5z"/>',
+  compliance: '<path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/>',
+  pldftp: '<path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M12 8v5M12 16h.01"/>',
+  integridade: '<path d="M12 3v18M5 7l7-4 7 4M5 7v6a7 7 0 0014 0V7"/>',
+  treinamentos: '<path d="M4 6h16v11H4z"/><path d="M2 19h20"/><path d="M9 10l3 2 3-2"/>',
+  formularios: '<path d="M7 3h10l3 3v15H4V3z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  marco: '<path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/>',
+  glossario: '<path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h13"/><path d="M9 7h6"/>',
+  evidencias: '<path d="M9 3h6l1 4H8z"/><path d="M6 7h12l1 14H5z"/><path d="M12 11v6M9 14h6"/>',
+  governanca: '<path d="M4 4h16v4H4zM4 12h16v4H4z"/><path d="M8 8v4M16 16v4M8 16v4M16 8v4"/>',
+  faq: '<path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M9.5 9a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 17h.01"/>',
+  doc: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  download: '<path d="M12 4v11M7 11l5 4 5-4M5 19h14"/>',
+  eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  arrow: '<path d="M9 5l7 7-7 7"/>',
+  pessoa: '<circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0113 0"/>',
+  chev: '<path d="M9 6l6 6-6 6"/>',
+  link: '<path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/>',
+  book: '<path d="M4 5a2 2 0 012-2h14v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h14"/>',
+  bell: '<path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9z"/><path d="M10 21a2 2 0 004 0"/>',
+  flag: '<path d="M4 21V4M4 4h12l-2 4 2 4H4"/>',
+  info: '<path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M12 11v5M12 8h.01"/>',
+  clock: '<path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M12 7v5l3 2"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+};
+
+const AREA_LABEL = { compliance: "Compliance", pldftp: "PLD/FTP", integridade: "Integridade" };
+const STATUS_LABEL = { vigente: "Vigente", "em-revisao": "Em Revisão", revogado: "Revogado", substituido: "Substituído" };
+
+/* ----------------- HELPERS ----------------- */
+const svg = (name) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[name] || ""}</svg>`;
+const docById = (id) => D.documentos.find(d => d.id === id);
+const comById = (num) => D.comunicados.find(c => c.num === num);
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const badge = (st) => `<span class="badge ${st}">${STATUS_LABEL[st] || st}</span>`;
+const comStatusBadge = (s) => s === "publicado" ? '<span class="badge vigente">Publicado</span>' : '<span class="badge em-revisao">Planejado</span>';
+const AREAS_LBBR = ["Atendimento","Comercial","Compliance","CRM","Diretoria","Financeiro","Fraude e Risco","Juridico","KYC","Marketing","Operações","Pagamentos","Produto","RH","Tecnologia","Outra"];
+
+function abrirCiencia(docId) {
+  const d = docById(docId);
+  if (!d) return;
+  const m = document.getElementById("cienciaModal");
+  m.dataset.doc = d.codigo;
+  m.dataset.titulo = d.titulo;
+  m.dataset.versao = d.versao;
+  m.dataset.docid = d.id;
+  document.getElementById("cmDoc").textContent = d.codigo + " - " + d.titulo + " (v" + d.versao + ")";
+  const perfil = lerPerfil();
+  document.getElementById("cmNome").value = perfil.nome || "";
+  document.getElementById("cmArea").value = perfil.area || "";
+  document.getElementById("cmCheck").checked = false;
+  document.getElementById("cmMsg").innerHTML = "";
+  document.getElementById("cmEnviar").disabled = false;
+  atualizarEstadoModal();
+  m.classList.add("open");
+  setTimeout(() => document.getElementById(sessaoAtiva() ? "cmNome" : "cmEmail").focus(), 50);
+}
+
+function fecharCiencia() { document.getElementById("cienciaModal").classList.remove("open"); }
+
+/* ---- sessao (link por e-mail) ---- */
+const SKEY = "lbbr_ciencia_sessao";
+const PKEY = "lbbr_ciencia_pendente";
+const FKEY = "lbbr_ciencia_perfil";
+
+function lerJson(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+function lerPerfil() { return lerJson(FKEY) || {}; }
+function jwtExp(t) { try { return (JSON.parse(atob(t.split(".")[1].replace(/-/g,"+").replace(/_/g,"/"))).exp || 0) * 1000; } catch (e) { return 0; } }
+function sessaoAtiva() { const s = lerJson(SKEY); return !!(s && s.access_token && jwtExp(s.access_token) > Date.now() + 30000); }
+function emailSessao() { const s = lerJson(SKEY); if (!s) return ""; try { return JSON.parse(atob(s.access_token.split(".")[1].replace(/-/g,"+").replace(/_/g,"/"))).email || ""; } catch (e) { return ""; } }
+function sairSessao() { localStorage.removeItem(SKEY); atualizarEstadoModal(); }
+function dbConfigurado() { return !(CIENCIA_DB.url.includes("SEU-PROJETO") || CIENCIA_DB.anonKey.includes("COLE_A")); }
+function dominioValido(email) { const d = (email.split("@")[1] || "").toLowerCase(); return CIENCIA_DB.dominios.some(x => d === x.toLowerCase()); }
+
+async function renovarSessao() {
+  const s = lerJson(SKEY);
+  if (!s || !s.refresh_token) return false;
+  try {
+    const r = await fetch(CIENCIA_DB.url.replace(/\/$/, "") + "/auth/v1/token?grant_type=refresh_token", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": CIENCIA_DB.anonKey },
+      body: JSON.stringify({ refresh_token: s.refresh_token })
+    });
+    if (!r.ok) throw 0;
+    const j = await r.json();
+    localStorage.setItem(SKEY, JSON.stringify({ access_token: j.access_token, refresh_token: j.refresh_token }));
+    return true;
+  } catch (e) { localStorage.removeItem(SKEY); return false; }
+}
+
+function atualizarEstadoModal() {
+  const logado = sessaoAtiva();
+  const linha = document.getElementById("cmEmailLinha");
+  const quem = document.getElementById("cmQuem");
+  const btn = document.getElementById("cmEnviar");
+  if (logado) {
+    linha.style.display = "none";
+    quem.style.display = "flex";
+    document.getElementById("cmQuemEmail").textContent = emailSessao();
+    btn.textContent = "Registrar leitura";
+  } else {
+    linha.style.display = "block";
+    quem.style.display = "none";
+    btn.textContent = "Enviar link de confirmação";
+  }
+}
+
+/* Captura o retorno do link de e-mail (tokens no endereco) */
+function capturarRetornoCiencia() {
+  const h = location.hash || "";
+  if (!h.includes("access_token=")) return false;
+  const q = new URLSearchParams(h.replace(/^#\/?/, ""));
+  const at = q.get("access_token"), rt = q.get("refresh_token");
+  if (at) localStorage.setItem(SKEY, JSON.stringify({ access_token: at, refresh_token: rt }));
+  const pend = lerJson(PKEY);
+  location.hash = (pend && pend.rota) ? pend.rota : "#/inicio";
+  if (pend) setTimeout(concluirPendente, 300);
+  return true;
+}
+
+async function concluirPendente() {
+  const pend = lerJson(PKEY);
+  if (!pend || !sessaoAtiva()) return;
+  abrirCiencia(pend.docId);
+  document.getElementById("cmNome").value = pend.nome || "";
+  document.getElementById("cmArea").value = pend.area || "";
+  document.getElementById("cmCheck").checked = true;
+  document.getElementById("cmMsg").innerHTML = '<span class="cm-info">E-mail confirmado. Registrando...</span>';
+  localStorage.removeItem(PKEY);
+  await registrarCiencia();
+}
+
+async function registrarCiencia() {
+  const m = document.getElementById("cienciaModal");
+  const msg = document.getElementById("cmMsg");
+  const btn = document.getElementById("cmEnviar");
+  if (!sessaoAtiva() && !(await renovarSessao())) { atualizarEstadoModal(); msg.innerHTML = '<span class="cm-err">Sessão expirada. Informe o e-mail para receber um novo link.</span>'; return; }
+  const nome = document.getElementById("cmNome").value.trim();
+  const area = document.getElementById("cmArea").value;
+  btn.disabled = true;
+  msg.innerHTML = '<span class="cm-info">Registrando...</span>';
+  try {
+    const tok = lerJson(SKEY).access_token;
+    const r = await fetch(CIENCIA_DB.url.replace(/\/$/, "") + "/rest/v1/" + CIENCIA_DB.tabela, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": CIENCIA_DB.anonKey, "Authorization": "Bearer " + tok, "Prefer": "return=minimal" },
+      body: JSON.stringify({
+        documento: m.dataset.doc,
+        titulo: m.dataset.titulo,
+        versao: "v" + m.dataset.versao,
+        nome: nome,
+        area: area,
+        email: emailSessao(),
+        declaracao: true,
+        origem: location.hostname || "local",
+        user_agent: navigator.userAgent || null
+      })
+    });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    localStorage.setItem(FKEY, JSON.stringify({ nome: nome, area: area }));
+    msg.innerHTML = '<span class="cm-ok">Leitura registrada com sucesso em nome de ' + esc(emailSessao()) + '. Obrigado.</span>';
+    setTimeout(fecharCiencia, 2200);
+  } catch (e) {
+    btn.disabled = false;
+    msg.innerHTML = '<span class="cm-err">Não foi possível registrar agora. Tente novamente ou comunique a Diretoria de Compliance.</span>';
+  }
+}
+
+async function enviarCiencia() {
+  const m = document.getElementById("cienciaModal");
+  const nome = document.getElementById("cmNome").value.trim();
+  const area = document.getElementById("cmArea").value;
+  const ok = document.getElementById("cmCheck").checked;
+  const msg = document.getElementById("cmMsg");
+  if (nome.length < 5 || !nome.includes(" ")) { msg.innerHTML = '<span class="cm-err">Informe o nome completo.</span>'; return; }
+  if (!area) { msg.innerHTML = '<span class="cm-err">Selecione a sua área.</span>'; return; }
+  if (!ok) { msg.innerHTML = '<span class="cm-err">Marque a declaração de leitura.</span>'; return; }
+  if (!dbConfigurado()) { msg.innerHTML = '<span class="cm-err">Registro indisponível: base de dados ainda não configurada. Comunique a Diretoria de Compliance.</span>'; return; }
+
+  if (sessaoAtiva() || (lerJson(SKEY) && await renovarSessao())) { await registrarCiencia(); return; }
+
+  const email = document.getElementById("cmEmail").value.trim().toLowerCase();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.innerHTML = '<span class="cm-err">Informe o e-mail corporativo.</span>'; return; }
+  if (!dominioValido(email)) { msg.innerHTML = '<span class="cm-err">Use o e-mail corporativo (@' + esc(CIENCIA_DB.dominios.join(", @")) + ').</span>'; return; }
+
+  const btn = document.getElementById("cmEnviar");
+  btn.disabled = true;
+  msg.innerHTML = '<span class="cm-info">Enviando link para ' + esc(email) + '...</span>';
+  try {
+    const redir = location.origin + location.pathname;
+    const r = await fetch(CIENCIA_DB.url.replace(/\/$/, "") + "/auth/v1/otp?redirect_to=" + encodeURIComponent(redir), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": CIENCIA_DB.anonKey },
+      body: JSON.stringify({ email: email, create_user: true })
+    });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    localStorage.setItem(PKEY, JSON.stringify({ docId: m.dataset.docid, nome: nome, area: area, rota: "#/doc/" + m.dataset.docid }));
+    localStorage.setItem(FKEY, JSON.stringify({ nome: nome, area: area }));
+    msg.innerHTML = '<span class="cm-ok">Link enviado para ' + esc(email) + '. Abra o e-mail e clique no link para concluir o registro.</span>';
+  } catch (e) {
+    btn.disabled = false;
+    msg.innerHTML = '<span class="cm-err">Não foi possível enviar o link agora. Verifique o e-mail digitado ou comunique a Diretoria de Compliance.</span>';
+  }
+}
+function comCard(c, full) {
+  const linkable = c.status === "publicado" && c.link;
+  const href = linkable ? c.link : "#/comunicados";
+  const attrs = linkable ? ' target="_blank" rel="noopener"' : '';
+  return `<a class="com-card" href="${href}"${attrs}>
+    <div class="com-head"><span class="com-num">${c.mes}/${c.ano}</span><span class="com-date">${esc(c.periodo)}</span>${comStatusBadge(c.status)}</div>
+    <h3>${esc(c.tema)}</h3>
+    ${full ? `<p>${esc(c.publico)}</p>` : ""}
+  </a>`;
+}
+
+function crumb(items) {
+  return `<nav class="crumb" aria-label="Trilha">${items.map((it, i) => {
+    const sep = i < items.length - 1 ? '<span class="sep">/</span>' : '';
+    return it.href
+      ? `<a href="${it.href}">${esc(it.label)}</a>${sep}`
+      : `<span class="cur">${esc(it.label)}</span>${sep}`;
+  }).join("")}</nav>`;
+}
+
+function docRow(d) {
+  return `<a class="doc-row" href="#/doc/${d.id}">
+    <span class="dr-ico">${svg("doc")}</span>
+    <span class="dr-main">
+      <span class="dr-title">${esc(d.titulo)}</span>
+      <span class="dr-sub"><span class="code-chip">${d.codigo}</span> ${badge(d.status)} <span>${esc(d.tipo)}</span></span>
+    </span>
+    <span class="dr-meta">v${d.versao}</span>
+    <span class="arrow">${svg("arrow")}</span>
+  </a>`;
+}
+
+/* ----------------- NAV ----------------- */
+const NAV = [
+  { route: "inicio", label: "Início", icon: "inicio" },
+  { route: "comunicados", label: "Comunicados", icon: "comunicados" },
+  { group: "Biblioteca normativa" },
+  { route: "compliance", label: "Compliance", icon: "compliance" },
+  { route: "pldftp", label: "PLD/FTP", icon: "pldftp" },
+  { route: "integridade", label: "Integridade", icon: "integridade" },
+  { group: "Conhecimento" },
+  { route: "treinamentos", label: "Treinamentos", icon: "treinamentos" },
+  { route: "formularios", label: "Formulários", icon: "formularios" },
+  { route: "marco-regulatorio", label: "Marco Regulatório", icon: "marco" },
+  { route: "glossario", label: "Glossário", icon: "glossario" },
+  { group: "Governança" },
+  { route: "governanca", label: "Governança Documental", icon: "governanca" },
+  { route: "faq", label: "FAQ", icon: "faq" },
+  { contact: true, label: "Fale com o Compliance", icon: "pessoa", href: "https://mail.google.com/mail/?view=cm&fs=1&to=compliance@lbbr.org&su=D%C3%BAvida%20de%20Compliance&body=Ol%C3%A1%2C%20equipe%20de%20Compliance%2C%0D%0A%0D%0AGostaria%20de%20esclarecer%20uma%20d%C3%BAvida%20sobre%20o%20seguinte%20tema%3A%0D%0A%0D%0A%28Compliance%2C%20Integridade%2C%20PLD/FTP%2C%20Jogo%20Respons%C3%A1vel%2C%20entre%20outros%29%0D%0A%0D%0A" },
+];
+
+function renderNav(active) {
+  const nav = document.getElementById("mainNav");
+  nav.innerHTML = NAV.map(item => {
+    if (item.group) return `<div class="nav-group-label">${item.group}</div>`;
+    if (item.contact) return `<a class="nav-item nav-contact" href="${item.href}" target="_blank" rel="noopener">${svg(item.icon)}<span>${item.label}</span></a>`;
+    const cls = item.route === active ? "nav-item active" : "nav-item";
+    return `<a class="${cls}" href="#/${item.route}">${svg(item.icon)}<span>${item.label}</span></a>`;
+  }).join("");
+}
+
+/* ----------------- PAGINAS ----------------- */
+function pageInicio() {
+  const recentes = D.documentos.slice().sort((a,b)=> b.versao.localeCompare(a.versao)).slice(0,5);
+  const maisConsultados = ["POL-PLDFT-001","COMP-COD-001","PROC-EDD-001","POL-DILIG-001","PROC-DEN-001"].map(docById).filter(Boolean);
+  const quick = [
+    { t: "Código de Conduta", s: "COMP-COD-001", icon: "book", href: "#/doc/COMP-COD-001" },
+    { t: "Política de Compliance", s: "POL-COMP-001", icon: "compliance", href: "#/doc/POL-COMP-001" },
+    { t: "Política PLD/FTP", s: "POL-PLDFT-001", icon: "pldftp", href: "#/doc/POL-PLDFT-001" },
+    { t: "Canal de Denúncias", s: "PROC-DEN-001", icon: "bell", href: "#/doc/PROC-DEN-001" },
+    { t: "Procedimento de EDD", s: "PROC-EDD-001", icon: "doc", href: "#/doc/PROC-EDD-001" },
+    { t: "Formulários", s: "Biblioteca", icon: "formularios", href: "#/formularios" },
+  ];
+
+  return `
+  <section class="hero">
+    <h1>LBBR Governance Hub</h1>
+    <p>Portal corporativo de Compliance, PLD/FTP, Integridade e Governança do Grupo LBBR. Uma biblioteca normativa única para colaboradores, gestores, auditorias, parceiros e reguladores consultarem políticas, procedimentos, comunicados e evidências com rastreabilidade.</p>
+  </section>
+
+  <h2 class="sec-title">Atalhos rápidos</h2>
+  <div class="quick-grid">
+    ${quick.map(q => `<a class="quick-card" href="${q.href}">
+      <span class="qc-ico">${svg(q.icon)}</span>
+      <strong>${q.t}</strong><span>${q.s}</span>
+    </a>`).join("")}
+  </div>
+
+  <div class="home-cols" style="margin-top:38px">
+    <div>
+      <h2 class="sec-title" style="margin-top:0">Documentos mais consultados</h2>
+      <div class="com-list">${maisConsultados.map(d => `<a class="com-card" href="#/doc/${d.id}">
+        <div class="com-head"><span class="com-num">${d.codigo}</span>${badge(d.status)}<span class="tag">${esc(d.tipo)}</span></div>
+        <h3>${esc(d.titulo)}</h3>
+      </a>`).join("")}</div>
+    </div>
+    <div>
+      <h2 class="sec-title" style="margin-top:0">Comunicados recentes</h2>
+      <div class="com-list">${[...D.comunicados.filter(c=>c.status==="publicado"), ...D.comunicados.filter(c=>c.status==="planejado")].slice(0,5).map(c => comCard(c)).join("")}</div>
+    </div>
+  </div>`;
+}
+
+function pageComunicados() {
+  const pub = D.comunicados.filter(c => c.status === "publicado").length;
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Comunicados"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Comunicação corporativa</div>
+    <h1 class="page-title">Comunicados</h1>
+    <p class="page-lead">Cronograma de comunicados de Compliance do Grupo LBBR (luck.bet, 1pra1 e startbet), de abril de 2026 a março de 2027. ${pub} comunicado(s) já publicado(s) e disponível(is) para leitura; os demais seguem planejados conforme o calendário aprovado.</p>
+  </div>
+  <div class="filters">
+    <label>Status</label>
+    <select id="fStatus"><option value="">Todos</option><option value="publicado">Publicado</option><option value="planejado">Planejado</option></select>
+    <label>Ano</label>
+    <select id="fAno"><option value="">Todos</option><option>2026</option><option>2027</option></select>
+  </div>
+  <div id="comList" class="com-list"></div>`;
+}
+
+function renderComList() {
+  const st = (document.getElementById("fStatus") || {}).value || "";
+  const ano = (document.getElementById("fAno") || {}).value || "";
+  const wrap = document.getElementById("comList");
+  if (!wrap) return;
+  const list = D.comunicados.filter(c => (!st || c.status === st) && (!ano || c.ano === ano));
+  if (!list.length) { wrap.innerHTML = `<div class="notice">${svg("info")}<div><strong>Nenhum comunicado</strong><p>Nenhum comunicado corresponde aos filtros selecionados.</p></div></div>`; return; }
+  wrap.innerHTML = list.map(c => comCard(c, true)).join("");
+}
+
+function pageArea(area) {
+  const docs = D.documentos.filter(d => d.area === area);
+  const label = AREA_LABEL[area];
+  const leads = {
+    compliance: "Políticas e códigos que estruturam o programa de compliance, anticorrupção, conflito de interesses e due diligence de terceiros do Grupo LBBR.",
+    pldftp: "Política, procedimentos e instrumentos de prevenção à lavagem de dinheiro e ao financiamento do terrorismo, incluindo KYC, EDD, monitoramento e comunicação de operações suspeitas.",
+    integridade: "Programa de integridade, canal de denúncias e investigações internas, voltados à prevenção, detecção e remediação de desvios."
+  };
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:label}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Biblioteca normativa</div>
+    <h1 class="page-title">${label}</h1>
+    <p class="page-lead">${leads[area]}</p>
+  </div>
+  <div class="doc-list">${docs.map(docRow).join("")}</div>`;
+}
+
+function docPage(id) {
+  const d = docById(id);
+  if (!d) return pageNotFound();
+  const rel = (d.relacionados || []).map(x => docById(x) || D.formularios.find(f=>f.id===x) || D.treinamentos.find(t=>t.id===x)).filter(Boolean);
+  const trilha = [
+    { strong: d.titulo, span: `${d.codigo} . versão ${d.versao}` },
+    { strong: "Ata de aprovação", span: "Evidência de governança - em implementação" },
+    { strong: "Comunicado interno", span: "Vinculação de comunicado - em implementação" },
+    { strong: "Treinamento", span: "Capacitação associada - em implementação" },
+    { strong: "Lista de presença e certificados", span: "Evidência de treinamento - em implementação" }
+  ];
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:AREA_LABEL[d.area],href:"#/"+d.area},{label:d.codigo}])}
+  <div class="doc-layout">
+    <div class="doc-main">
+      <div class="doc-title-block">
+        <div class="dr-sub" style="font-size:13px"><span class="code-chip">${d.codigo}</span> ${badge(d.status)} <span class="muted">${esc(d.tipo)}</span></div>
+        <h1>${esc(d.titulo)}</h1>
+        <p class="muted">${esc(d.resumo)}</p>
+        <div class="doc-actions">
+          <a class="btn primary" href="#/doc/${d.id}">${svg("eye")} Visualizar</a>
+          <a class="btn" href="assets/docs/${d.id}.pdf">${svg("download")} Download PDF</a>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h2>Resumo executivo</h2>
+        <p>${esc(d.resumo)}</p>
+      </div>
+
+      ${d.conteudo.map(s => `<div class="doc-section"><h2>${esc(s.t)}</h2><p>${esc(s.p)}</p></div>`).join("")}
+
+      <div class="doc-section">
+        <h2>Histórico de versões</h2>
+        <table class="vtable">
+          <thead><tr><th>Versão</th><th>Data</th><th>Responsável</th><th>Descrição da alteração</th></tr></thead>
+          <tbody>${d.historico.map(h=>`<tr><td class="vcode">${h.v}</td><td>${h.d}</td><td>${esc(h.r)}</td><td>${esc(h.desc)}</td></tr>`).join("")}</tbody>
+        </table>
+      </div>
+
+      <div class="doc-section">
+        <h2>Trilha de evidências</h2>
+        <div class="trilha">${trilha.map(n=>`<div class="trilha-node"><div class="trilha-rail"><div class="trilha-dot"></div><div class="trilha-line"></div></div><div class="trilha-body"><strong>${esc(n.strong)}</strong><span>${esc(n.span)}</span></div></div>`).join("")}</div>
+      </div>
+
+      <div class="doc-section">
+        <div class="ciencia">
+          <div class="ciencia-head">${svg("compliance")}<strong>Confirmação de leitura</strong></div>
+          <p>Declare que leu e está ciente desta versão do documento. A confirmação é validada pelo seu e-mail corporativo: na primeira vez, você recebe um link de confirmação; nas seguintes, basta um clique. O registro guarda nome, área, e-mail, data e hora, e fica disponível para a Diretoria de Compliance.</p>
+          <button class="btn primary" onclick="abrirCiencia('${d.id}')">${svg("compliance")} Confirmar leitura</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="meta-card">
+        <h4>Controle do documento</h4>
+        <div class="meta-row"><span class="ml">Código</span><span class="mv">${d.codigo}</span></div>
+        <div class="meta-row"><span class="ml">Versão</span><span class="mv">v${d.versao}</span></div>
+        <div class="meta-row"><span class="ml">Status</span><span class="mv">${STATUS_LABEL[d.status]}</span></div>
+        <div class="meta-row"><span class="ml">Aprovação</span><span class="mv">${d.dataAprovacao}</span></div>
+        <div class="meta-row"><span class="ml">Aprovador</span><span class="mv">${esc(d.aprovador)}</span></div>
+        <div class="meta-row"><span class="ml">Próxima revisão</span><span class="mv">${d.proximaRevisao}</span></div>
+      </div>
+      ${rel.length ? `<div class="meta-card" style="margin-top:16px"><h4>Documentos relacionados</h4><div class="rel-list">${rel.map(r=>`<a class="rel-item" href="#/doc/${r.id}">${svg("link")}<span><span class="ri-t">${esc(r.titulo)}</span><span class="ri-c">${r.codigo||r.id}</span></span></a>`).join("")}</div></div>` : ""}
+    </div>
+  </div>`;
+}
+
+function pageTreinamentos() {
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Treinamentos"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Centro de conhecimento</div>
+    <h1 class="page-title">Treinamentos</h1>
+    <p class="page-lead">Biblioteca de cartilhas, apresentações e materiais de capacitação. Estruturada para futura associação com evidências de treinamento.</p>
+  </div>
+  <div class="card-grid">
+    ${D.treinamentos.map(t=>`<div class="info-card">
+      <div class="dr-sub" style="margin-bottom:8px"><span class="tag">${esc(t.tipo)}</span><span class="muted" style="font-size:12px">${t.data}</span></div>
+      <h3>${esc(t.titulo)}</h3>
+      <p>${esc(t.descricao)}</p>
+      <div class="meta-row" style="border:none;padding:0"><span class="ml">Público-alvo</span><span class="mv">${esc(t.publico)}</span></div>
+      <div class="doc-actions" style="margin-top:14px"><a class="btn" href="assets/docs/${t.id}.pdf">${svg("download")} Download</a></div>
+    </div>`).join("")}
+  </div>`;
+}
+
+function pageFormularios() {
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Formulários"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Centro de conhecimento</div>
+    <h1 class="page-title">Formulários</h1>
+    <p class="page-lead">Modelos institucionais para declarações, due diligence e solicitações internas à Diretoria de Compliance.</p>
+  </div>
+  <div class="doc-list">
+    ${D.formularios.map(f=>`<a class="doc-row" href="assets/docs/${f.id}.pdf">
+      <span class="dr-ico">${svg("formularios")}</span>
+      <span class="dr-main"><span class="dr-title">${esc(f.titulo)}</span><span class="dr-sub"><span class="code-chip">${f.id}</span> <span>${esc(f.descricao)}</span></span></span>
+      <span class="arrow">${svg("download")}</span>
+    </a>`).join("")}
+  </div>`;
+}
+
+function pageMarco() {
+  const m = D.marcoRegulatorio;
+  const block = (title, arr) => `<h2 class="sec-title">${title}</h2><div class="doc-list">${arr.map(x=>`<div class="doc-row" style="cursor:default">
+    <span class="dr-ico">${svg("marco")}</span>
+    <span class="dr-main"><span class="dr-title">${esc(x.ref)}</span><span class="dr-sub"><span>${esc(x.desc)}</span></span></span>
+  </div>`).join("")}</div>`;
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Marco Regulatório"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Consulta regulatória</div>
+    <h1 class="page-title">Marco Regulatório</h1>
+    <p class="page-lead">Referência rápida da legislação, das portarias da SPA/MF e das obrigações regulatórias aplicáveis à operação de apostas de quota fixa do Grupo LBBR.</p>
+  </div>
+  ${block("Legislação aplicável", m.legislacao)}
+  ${block("Portarias SPA/MF", m.portarias)}
+  ${block("Obrigações regulatórias", m.obrigacoes)}
+  <h2 class="sec-title">Perguntas frequentes regulatórias</h2>
+  <div class="notice">${svg("info")}<div><strong>Comunicados regulatórios</strong><p>Os comunicados sobre temas regulatórios integram o cronograma disponível na seção Comunicados.</p></div></div>`;
+}
+
+function pageEvidencias() {
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Evidências Regulatórias"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Governança</div>
+    <h1 class="page-title">Evidências Regulatórias</h1>
+    <p class="page-lead">Repositório estruturado de evidências de cumprimento, organizado por área. Sustenta a rastreabilidade da operação perante auditorias e reguladores.</p>
+  </div>
+  <div class="notice" style="margin-bottom:22px">${svg("info")}<div><strong>Área em implementação</strong><p>A estrutura está disponível desde a primeira versão. O conteúdo será incorporado de forma incremental conforme a coleta de evidências.</p></div></div>
+  ${D.evidencias.map(g=>`<div class="ev-group">
+    <div class="ev-group-head">${svg("evidencias")}<h3>${esc(g.grupo)}</h3></div>
+    <div class="ev-group-body">${g.itens.map(i=>`<div class="ev-sub">${svg("doc")}<span>${esc(i)}</span><span class="sr-cat" style="margin-left:auto">Em implementação</span></div>`).join("")}</div>
+  </div>`).join("")}`;
+}
+
+function pageGovernanca() {
+  const fluxo = [
+    { t: "Criação", p: "Identificação da necessidade normativa e elaboração da minuta pela área técnica, observados o padrão documental e a base regulatória aplicável." },
+    { t: "Revisão", p: "Análise crítica de conteúdo, consistência e aderência regulatória pela Diretoria de Compliance." },
+    { t: "Aprovação", p: "Aprovação formal pela instância competente, com registro de data, aprovador e versão." },
+    { t: "Publicação", p: "Disponibilização no portal, com controle de versão e definição de vigência." },
+    { t: "Revisão periódica", p: "Reavaliação programada conforme a data de próxima revisão ou diante de evento regulatório relevante." }
+  ];
+  const estados = [
+    { e: "Vigente", st: "vigente", p: "Documento em vigor e de observância obrigatória." },
+    { e: "Em Revisão", st: "em-revisao", p: "Documento em processo de atualização, mantida a versão vigente até a aprovação da nova." },
+    { e: "Revogado", st: "revogado", p: "Documento sem efeito, mantido acessível para rastreabilidade." },
+    { e: "Substituído", st: "substituido", p: "Documento substituído por versão posterior, mantido para histórico." }
+  ];
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Governança Documental"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Governança</div>
+    <h1 class="page-title">Governança Documental</h1>
+    <p class="page-lead">Metodologia de gestão documental do Grupo LBBR: fluxos de criação, revisão e aprovação, controle de versões, controle de vigência e responsabilidades.</p>
+  </div>
+
+  <h2 class="sec-title">Fluxo documental</h2>
+  <div class="trilha">${fluxo.map(f=>`<div class="trilha-node"><div class="trilha-rail"><div class="trilha-dot"></div><div class="trilha-line"></div></div><div class="trilha-body"><strong>${f.t}</strong><span>${f.p}</span></div></div>`).join("")}</div>
+
+  <h2 class="sec-title">Controle de versões</h2>
+  <div class="panel">
+    <p class="muted">Cada documento mantém histórico com versão, data, responsável e descrição da alteração.</p>
+    <table class="vtable">
+      <thead><tr><th>Versão</th><th>Descrição</th></tr></thead>
+      <tbody>
+        <tr><td class="vcode">v1.0</td><td>Criação</td></tr>
+        <tr><td class="vcode">v1.1</td><td>Ajustes de KYC</td></tr>
+        <tr><td class="vcode">v2.0</td><td>Adequação regulatória</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-title">Controle de vigência</h2>
+  <div class="card-grid">
+    ${estados.map(e=>`<div class="info-card"><h3 style="display:flex;align-items:center;gap:10px">${badge(e.st)}</h3><p>${e.p}</p></div>`).join("")}
+  </div>
+
+  <h2 class="sec-title">Responsabilidades</h2>
+  <div class="panel">
+    <ul class="clean">
+      <li>Diretoria de Compliance: coordenação da gestão documental, revisão de conteúdo e guarda das versões.</li>
+      <li>Áreas técnicas: elaboração e atualização das minutas de sua competência.</li>
+      <li>Instância aprovadora: aprovação formal e definição de vigência.</li>
+      <li>Colaboradores: leitura, ciência e observância dos documentos vigentes.</li>
+    </ul>
+  </div>`;
+}
+
+function pageGlossario() {
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"Glossário"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Conhecimento</div>
+    <h1 class="page-title">Glossário</h1>
+    <p class="page-lead">Termos regulatórios, de PLD/FT e do mercado de apostas de quota fixa, em linguagem objetiva, para consulta rápida das áreas de negócio.</p>
+  </div>
+  <div class="filters">
+    <label>Buscar termo</label>
+    <input type="search" id="gFiltro" placeholder="Ex.: KYC, COS, GGR..." autocomplete="off" />
+  </div>
+  <div id="gLista"></div>`;
+}
+
+function renderGlossario() {
+  const wrap = document.getElementById("gLista");
+  if (!wrap) return;
+  const q = norm(((document.getElementById("gFiltro") || {}).value || "").trim());
+  const list = D.glossario
+    .filter(g => !q || norm(g.t).includes(q) || norm(g.d).includes(q))
+    .sort((a,b) => a.t.localeCompare(b.t, "pt-BR"));
+  if (!list.length) { wrap.innerHTML = `<div class="notice">${svg("info")}<div><strong>Nenhum termo</strong><p>Nenhum termo corresponde à busca.</p></div></div>`; return; }
+  let letra = "";
+  wrap.innerHTML = list.map(g => {
+    const l = g.t.charAt(0).toUpperCase();
+    const head = l !== letra ? `<div class="gloss-letra">${(letra = l)}</div>` : "";
+    return `${head}<div class="gloss-item"><dt>${esc(g.t)}</dt><dd>${esc(g.d)}</dd></div>`;
+  }).join("");
+}
+
+function pageFaq() {
+  return `
+  ${crumb([{label:"Início",href:"#/inicio"},{label:"FAQ"}])}
+  <div class="page-head">
+    <div class="page-eyebrow">Suporte</div>
+    <h1 class="page-title">Perguntas Frequentes</h1>
+    <p class="page-lead">Respostas objetivas às dúvidas mais comuns sobre compliance, PLD/FTP e integridade.</p>
+  </div>
+  ${D.faq.map((f,i)=>`<div class="faq-item" data-faq="${i}">
+    <div class="faq-q">${esc(f.q)}<span class="chev">${svg("chev")}</span></div>
+    <div class="faq-a"><div class="faq-a-inner">${esc(f.a)}</div></div>
+  </div>`).join("")}`;
+}
+
+function pageNotFound() {
+  return `<div class="page-head"><h1 class="page-title">Conteúdo não encontrado</h1><p class="page-lead">O item solicitado não foi localizado. <a href="#/inicio">Voltar ao início</a>.</p></div>`;
+}
+
+/* ----------------- ROUTER ----------------- */
+function router() {
+  const hash = location.hash.replace(/^#\/?/, "") || "inicio";
+  const [route, param] = hash.split("/");
+  const content = document.getElementById("content");
+  let html = "", active = route;
+
+  switch (route) {
+    case "inicio": html = pageInicio(); break;
+    case "comunicados": html = pageComunicados(); break;
+    case "compliance": case "pldftp": case "integridade": html = pageArea(route); break;
+    case "doc": { const d = docById(param); html = docPage(param); active = d ? d.area : ""; break; }
+    case "treinamentos": html = pageTreinamentos(); break;
+    case "formularios": html = pageFormularios(); break;
+    case "marco-regulatorio": html = pageMarco(); active = "marco-regulatorio"; break;
+    case "governanca": html = pageGovernanca(); break;
+    case "faq": html = pageFaq(); break;
+    case "glossario": html = pageGlossario(); break;
+    default: html = pageNotFound(); active = "";
+  }
+
+  content.innerHTML = html;
+  renderNav(active);
+  window.scrollTo(0, 0);
+  content.focus({ preventScroll: true });
+  closeSidebar();
+  bindPageEvents(route);
+}
+
+function bindPageEvents(route) {
+  if (route === "comunicados") {
+    renderComList();
+    ["fStatus","fAno"].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener("change", renderComList); });
+  }
+  if (route === "glossario") {
+    renderGlossario();
+    const gf = document.getElementById("gFiltro");
+    if (gf) gf.addEventListener("input", renderGlossario);
+  }
+  if (route === "faq") {
+    document.querySelectorAll(".faq-item").forEach(item => {
+      item.querySelector(".faq-q").addEventListener("click", () => item.classList.toggle("open"));
+    });
+  }
+  const hs = document.getElementById("heroSearch");
+  if (hs) {
+    hs.addEventListener("focus", openSearch);
+    hs.addEventListener("input", (e) => { openSearch(); document.getElementById("overlaySearch").value = e.target.value; runSearch(e.target.value); });
+  }
+}
+
+/* ----------------- BUSCA GLOBAL ----------------- */
+function buildIndex() {
+  const idx = [];
+  D.documentos.forEach(d => idx.push({ tipo: "Documento", cat: AREA_LABEL[d.area], titulo: d.titulo, sub: `${d.codigo} . ${d.tipo}`, text: (d.titulo+" "+d.codigo+" "+d.resumo+" "+d.tipo).toLowerCase(), href: `#/doc/${d.id}`, icon: "doc" }));
+  D.comunicados.forEach(c => idx.push({ tipo: "Comunicado", cat: c.status === "publicado" ? "Publicado" : "Planejado", titulo: c.tema, sub: `${c.mes}/${c.ano} . ${c.periodo}`, text: (c.tema+" "+c.mes+" "+c.ano+" "+c.publico+" "+c.periodo).toLowerCase(), href: (c.status === "publicado" && c.link) ? c.link : "#/comunicados", icon: "comunicados" }));
+  D.treinamentos.forEach(t => idx.push({ tipo: "Treinamento", cat: t.tipo, titulo: t.titulo, sub: t.descricao, text: (t.titulo+" "+t.descricao+" "+t.tipo).toLowerCase(), href: `#/treinamentos`, icon: "treinamentos" }));
+  D.formularios.forEach(f => idx.push({ tipo: "Formulário", cat: "Formulário", titulo: f.titulo, sub: f.id, text: (f.titulo+" "+f.id+" "+f.descricao).toLowerCase(), href: `#/formularios`, icon: "formularios" }));
+  D.glossario.forEach(g => idx.push({ tipo: "Glossário", cat: "Termo", titulo: g.t, sub: g.d.slice(0, 90) + (g.d.length > 90 ? "..." : ""), text: (g.t+" "+g.d).toLowerCase(), href: `#/glossario`, icon: "glossario" }));
+  [...D.marcoRegulatorio.legislacao, ...D.marcoRegulatorio.portarias, ...D.marcoRegulatorio.obrigacoes].forEach(r => idx.push({ tipo: "Marco Regulatório", cat: "Regulatório", titulo: r.ref, sub: r.desc, text: (r.ref+" "+r.desc).toLowerCase(), href: `#/marco-regulatorio`, icon: "marco" }));
+  return idx;
+}
+const SEARCH_INDEX = buildIndex();
+
+function norm(s) { return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); }
+
+function runSearch(q) {
+  const box = document.getElementById("searchResults");
+  const query = norm((q || "").trim());
+  if (!query) { box.innerHTML = `<div class="sr-empty">Digite para buscar em políticas, procedimentos, comunicados, formulários e marco regulatório.</div>`; return; }
+  const hits = SEARCH_INDEX.filter(i => norm(i.text).includes(query));
+  if (!hits.length) { box.innerHTML = `<div class="sr-empty">Nenhum resultado para "${esc(q)}".</div>`; return; }
+  box.innerHTML = hits.slice(0, 20).map((h,i) => `<a class="sr-item${i===0?' sel':''}" href="${h.href}" data-sr>
+    <span class="sr-ico">${svg(h.icon)}</span>
+    <span><span class="sr-t">${esc(h.titulo)}</span><span class="sr-c">${esc(h.sub)}</span></span>
+    <span class="sr-cat">${esc(h.tipo)}</span>
+  </a>`).join("");
+  box.querySelectorAll("[data-sr]").forEach(a => a.addEventListener("click", closeSearch));
+}
+
+function openSearch() { const o = document.getElementById("searchOverlay"); o.classList.add("open"); o.setAttribute("aria-hidden","false"); const i = document.getElementById("overlaySearch"); i.focus(); if(!i.value) runSearch(""); }
+function closeSearch() { const o = document.getElementById("searchOverlay"); o.classList.remove("open"); o.setAttribute("aria-hidden","true"); }
+
+/* ----------------- SIDEBAR MOBILE ----------------- */
+function openSidebar() { document.getElementById("sidebar").classList.add("open"); }
+function closeSidebar() { document.getElementById("sidebar").classList.remove("open"); }
+
+/* ----------------- INIT ----------------- */
+function init() {
+  capturarRetornoCiencia();
+  window.addEventListener("hashchange", router);
+
+  const cmArea = document.getElementById("cmArea");
+  cmArea.innerHTML = '<option value="">Selecione...</option>' + AREAS_LBBR.map(a => `<option>${a}</option>`).join("");
+  document.getElementById("cienciaModal").addEventListener("click", (e) => { if (e.target.id === "cienciaModal") fecharCiencia(); });
+
+  document.getElementById("globalSearch").addEventListener("focus", openSearch);
+  document.getElementById("globalSearch").addEventListener("input", (e) => { openSearch(); document.getElementById("overlaySearch").value = e.target.value; runSearch(e.target.value); });
+  document.getElementById("overlaySearch").addEventListener("input", (e) => runSearch(e.target.value));
+  document.getElementById("searchClose").addEventListener("click", closeSearch);
+  document.getElementById("searchOverlay").addEventListener("click", (e) => { if (e.target.id === "searchOverlay") closeSearch(); });
+
+  document.getElementById("menuToggle").addEventListener("click", openSidebar);
+  document.getElementById("sidebarBackdrop").addEventListener("click", closeSidebar);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { closeSearch(); fecharCiencia(); }
+    if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); openSearch(); }
+  });
+
+  router();
+}
+document.addEventListener("DOMContentLoaded", init);
+
+  </script>
+</body>
+</html>
