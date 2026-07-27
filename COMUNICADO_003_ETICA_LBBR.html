@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunicado 003 · Ética, Integridade e Conflito de Interesses | Grupo LBBR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#185FA5;--blue-light:#E6F1FB;--blue-mid:#1E6FD9;--blue-dark:#0C447C;--red:#A32D2D;--red-light:#FCEBEB;--amber:#BA7517;--amber-light:#FAEEDA;--green:#0F6E56;--green-light:#E1F5EE;--green-dark:#085041}
+.doc{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);max-width:780px;margin:0 auto;padding:0 0 3rem}
+
+/* HEADER */
+.hdr{border-bottom:3px solid var(--blue);padding-bottom:1.5rem;margin-bottom:0}
+.hdr-meta{font-family:'IBM Plex Sans',sans-serif;font-size:.8rem;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem;padding-top:1.5rem;text-align:center}
+.hdr-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1.2;color:var(--color-text-primary);margin-bottom:.5rem}
+.hdr-title em{font-style:italic;color:var(--blue);font-weight:400}
+.hdr-subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--color-text-secondary);line-height:1.6;text-align:justify}
+
+/* NORMA BAR */
+.norma-bar{background:var(--color-background-secondary);border-left:3px solid var(--blue);padding:.9rem 1.2rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.norma-bar-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:.55rem}
+.norma-list{display:block;line-height:2}
+.norma-tag{font-size:11px;font-family:'IBM Plex Sans',monospace;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:3px 8px;border-radius:3px;display:inline-block;margin:2px 4px 2px 0}
+
+/* SECTIONS */
+.section{margin:2rem 0}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.1rem}
+.section-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;background:var(--blue-light);padding:2px 7px;border-radius:3px;flex-shrink:0}
+.section-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--color-text-primary)}
+.divider{height:1px;background:#c8cdd2;margin:1.8rem 0}
+
+/* BODY TEXT */
+.body-p{font-size:.93rem;line-height:1.78;color:var(--color-text-primary);margin-bottom:1rem;text-align:justify}
+.body-p strong{font-weight:600}
+
+/* CALLOUTS */
+.callout-blue{border-left:2px solid var(--blue-mid);padding:.9rem 1.2rem;background:var(--blue-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-blue p{font-size:.9rem;line-height:1.72;color:var(--blue-dark);text-align:justify}
+.callout-blue p strong{font-weight:600;color:var(--blue-dark)}
+.callout-amber{border-left:2px solid var(--amber);padding:.9rem 1.2rem;background:var(--amber-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-amber p{font-size:.9rem;line-height:1.72;color:#412402;text-align:justify}
+.callout-green{border-left:2px solid var(--green);padding:.9rem 1.2rem;background:var(--green-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-green p{font-size:.9rem;line-height:1.72;color:var(--green-dark);text-align:justify}
+.callout-green p strong{font-weight:600;color:var(--green-dark)}
+
+/* PILARES */
+.pilares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.pilar-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:1.1rem;background:var(--color-background-primary);border-top:2px solid var(--blue)}
+.pilar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);margin-bottom:.4rem}
+.pilar-head{font-size:.9rem;font-weight:600;color:var(--color-text-primary);margin-bottom:.35rem}
+.pilar-body{font-size:.82rem;color:var(--color-text-secondary);line-height:1.6}
+
+/* SINAIS */
+.sinais-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.sinais-col{}
+.sinais-col-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);background:var(--blue-light);padding:.4rem .8rem;border-radius:4px 4px 0 0;border:0.5px solid #BFD9F7}
+.sinais-list{border:0.5px solid var(--color-border-tertiary);border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+.sinal-item{display:flex;align-items:flex-start;gap:.625rem;padding:.55rem .875rem;border-bottom:.5px solid var(--color-border-tertiary);font-size:.85rem;color:var(--color-text-primary);line-height:1.55}
+.sinal-item:last-child{border-bottom:none}
+.sinal-dot{width:6px;height:6px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:.4rem}
+
+/* CASO PRÁTICO */
+.caso-box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:1rem 1.1rem;margin:1.2rem 0}
+.caso-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-secondary);margin-bottom:.625rem}
+.caso-situacao{font-size:.87rem;color:var(--color-text-primary);line-height:1.65;margin-bottom:.5rem;text-align:justify}
+.caso-resultado{font-size:.87rem;color:var(--red);font-weight:600;line-height:1.6}
+
+/* FERRAMENTAS */
+.ferramentas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.ferramenta-card{display:flex;gap:.8rem;align-items:flex-start;border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:.875rem 1rem;background:var(--color-background-primary)}
+.ferramenta-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;background:var(--blue-light);padding:2px 7px;border-radius:3px;flex-shrink:0;height:fit-content}
+.ferramenta-content{}
+.ferramenta-label{font-size:.82rem;font-weight:600;color:var(--color-text-primary);margin-bottom:.25rem}
+.ferramenta-body{font-size:.78rem;color:var(--color-text-secondary);line-height:1.55}
+
+/* TABELA DE LIMITES */
+.limites-table{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;margin:1.2rem 0;font-size:.85rem}
+.limites-header{display:grid;grid-template-columns:2fr 2fr 2fr;background:var(--blue-light);border-bottom:0.5px solid #BFD9F7}
+.limites-header div{padding:.6rem .875rem;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark)}
+.limites-row{display:grid;grid-template-columns:2fr 2fr 2fr;border-bottom:0.5px solid var(--color-border-tertiary)}
+.limites-row:last-child{border-bottom:none}
+.limites-row.alt{background:#FAFAFA}
+.limites-col-a{padding:.75rem .875rem;font-size:.83rem;color:var(--color-text-primary);line-height:1.55;border-right:0.5px solid var(--color-border-tertiary)}
+.limites-col-b{padding:.75rem .875rem;font-size:.83rem;color:var(--green-dark);line-height:1.55;border-right:0.5px solid var(--color-border-tertiary)}
+.limites-col-c{padding:.75rem .875rem;font-size:.83rem;color:var(--red);line-height:1.55}
+
+/* CONDUTA POR ÁREA */
+.conduta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.conduta-card{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+.conduta-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);background:var(--blue-light);padding:.5rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.conduta-list{padding:.625rem .875rem;list-style:none}
+.conduta-list li{font-size:.82rem;color:var(--color-text-secondary);padding:.2rem 0 .2rem .875rem;position:relative;line-height:1.5}
+.conduta-list li::before{content:"";position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--green);border-radius:50%}
+
+/* PORQUE BOX */
+.porque-box{background:var(--green-light);border:0.5px solid #9ED8CC;border-radius:8px;padding:1rem 1.1rem;margin:1rem 0}
+.porque-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.625rem}
+.porque-list{list-style:none}
+.porque-list li{font-size:.87rem;color:var(--green-dark);padding:.25rem 0 .25rem 1rem;position:relative;line-height:1.6}
+.porque-list li::before{content:"";position:absolute;left:0;top:.6rem;width:5px;height:5px;background:var(--green);border-radius:50%}
+
+/* FOOTER */
+.footer{border-top:2px solid var(--color-border-tertiary);padding-top:1.2rem;margin-top:2.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem}
+.footer-left{font-family:'Playfair Display',serif;font-size:1rem;color:var(--color-text-secondary);font-style:italic}
+.footer-right{font-size:10.5px;color:var(--color-text-tertiary);text-align:right;line-height:1.8}
+.footer-right strong{font-weight:500;color:var(--color-text-secondary)}
+
+@media(max-width:640px){
+  .pilares-grid,.sinais-grid,.ferramentas-grid,.conduta-grid{grid-template-columns:1fr}
+  .limites-header,.limites-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body style="background:#f5f5f5;padding:20px;">
+
+<div class="doc">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <p class="hdr-meta">Comunicado 003 &nbsp;·&nbsp; Compliance, Ética e Integridade</p>
+    <h1 class="hdr-title"><em>Ética e Integridade</em> | Conflito de Interesses e Conduta Esperada</h1>
+    <p class="hdr-subtitle">Comunicado oficial da área de Compliance sobre os princípios de conduta do Grupo LBBR, a forma correta de identificar e declarar conflitos de interesses e o papel de cada colaborador, em todas as áreas, na preservação da integridade e da confiança do regulador e do mercado.</p>
+  </div>
+
+  <!-- BASE NORMATIVA -->
+  <div class="norma-bar">
+    <div class="norma-bar-title">Base normativa e interna aplicável</div>
+    <div class="norma-list">
+      <span class="norma-tag">Código de Conduta</span>
+      <span class="norma-tag">Política de Conflito de Interesses (em desenvolvimento)</span>
+      <span class="norma-tag">Política Anticorrupção (em desenvolvimento)</span>
+      <span class="norma-tag">Lei nº 12.846/2013</span>
+      <span class="norma-tag">Lei nº 14.790/2023</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <p class="body-p">Este comunicado é para todos que fazem parte da nossa operação, com atenção especial à Liderança, Compras, Comercial e Jurídico. A forma como cada um age define a reputação de todo o Grupo. <strong>O Código de Conduta do Grupo LBBR já está em vigor e sua leitura e ciência são obrigatórias para todos os colaboradores.</strong></p>
+
+  <!-- 01 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Integridade: o que esperamos de cada um</span>
+    </div>
+    <p class="body-p">Integridade é agir de forma correta de maneira consistente, inclusive quando ninguém está observando. Mais do que cumprir regras, é sustentar a confiança de colegas, clientes, parceiros e do regulador no nome do Grupo.</p>
+    <p class="body-p">A conduta esperada não é abstrata, ela se traduz no dia a dia. A atuação de cada colaborador se apoia em três princípios centrais:</p>
+
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-label">Princípio 1</div>
+        <div class="pilar-head">Ética</div>
+        <div class="pilar-body">Decisões guiadas por honestidade e respeito, acima de interesses individuais e de pressões circunstanciais.</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-label">Princípio 2</div>
+        <div class="pilar-head">Transparência</div>
+        <div class="pilar-body">Informação clara e tempestiva. O que precisa ser declarado é declarado, sem zonas de sombra.</div>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-label">Princípio 3</div>
+        <div class="pilar-head">Responsabilidade</div>
+        <div class="pilar-body">Cada um responde pelas próprias escolhas e zela pelos recursos, pelos dados e pela reputação do Grupo.</div>
+      </div>
+    </div>
+
+    <div class="callout-blue">
+      <p><strong>Por que isso importa:</strong> a integridade sustenta a confiança do regulador e do mercado nas marcas do Grupo. Falhas de conduta podem gerar sanções, dano reputacional e responsabilização de pessoas e da organização.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Conflito de Interesses: como reconhecer</span>
+    </div>
+    <p class="body-p">Há conflito de interesses sempre que um interesse pessoal, familiar ou financeiro possa influenciar, ainda que apenas em tese, uma decisão tomada em nome do Grupo. O conflito não depende de haver prejuízo: basta a possibilidade de a sua imparcialidade ser colocada em dúvida.</p>
+
+    <div class="sinais-grid">
+      <div class="sinais-col">
+        <div class="sinais-col-head">Exemplos comuns</div>
+        <div class="sinais-list">
+          <div class="sinal-item"><div class="sinal-dot"></div>Participar da contratação ou avaliação de familiar ou pessoa próxima</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Indicar fornecedor ou parceiro com quem você tenha relação pessoal</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Decidir sobre assunto no qual você tenha interesse direto</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Manter atividade externa que concorra com o Grupo</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Usar informação interna em benefício próprio ou de terceiros</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Contratar empresa ligada a um familiar sem informar</div>
+        </div>
+      </div>
+      <div class="sinais-col">
+        <div class="sinais-col-head">Sinais de alerta</div>
+        <div class="sinais-list">
+          <div class="sinal-item"><div class="sinal-dot"></div>Resistência em informar uma relação pessoal envolvida</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Pressa ou pressão para aprovar sem o trâmite normal</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Benefício pessoal, ainda que indireto, em uma decisão</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Tratamento privilegiado a um fornecedor ou candidato</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Recebimento de brindes ou convites acima do simbólico</div>
+          <div class="sinal-item"><div class="sinal-dot"></div>Decisão que você evitaria que viesse a público</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <p><strong>Atenção:</strong> ter um conflito não é, por si só, uma falta. Falta é deixar de declarar. Na dúvida, declare e consulte o Compliance antes de decidir.</p>
+    </div>
+
+    <div class="caso-box">
+      <div class="caso-label">Caso Prático - O que acontece quando o conflito não é declarado?</div>
+      <p class="caso-situacao"><strong>Situação:</strong> um colaborador participa da escolha de um fornecedor e, entre os concorrentes, está uma empresa de um familiar próximo. Ele acredita ser capaz de decidir com isenção e não comenta a relação. A empresa do familiar é contratada.</p>
+      <p class="caso-resultado"><strong>Resultado:</strong> ainda que a escolha fosse tecnicamente defensável, a omissão compromete a lisura do processo e expõe o colaborador e o Grupo a questionamentos. Bastava declarar a relação e afastar-se da decisão.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Brindes, Presentes e Hospitalidades</span>
+    </div>
+    <p class="body-p">Cortesias fazem parte do ambiente de negócios, mas podem comprometer a imparcialidade. A orientação a seguir vale para o que se recebe e para o que se oferece, sempre com bom senso e transparência.</p>
+
+    <div class="ferramentas-grid">
+      <div class="ferramenta-card">
+        <div class="ferramenta-num">01</div>
+        <div class="ferramenta-content">
+          <div class="ferramenta-label">Valor simbólico</div>
+          <div class="ferramenta-body">Cortesias de pequeno valor e ocasionais, sem relação com uma decisão, em geral podem ser aceitas.</div>
+        </div>
+      </div>
+      <div class="ferramenta-card">
+        <div class="ferramenta-num">02</div>
+        <div class="ferramenta-content">
+          <div class="ferramenta-label">Acima do limite</div>
+          <div class="ferramenta-body">Brindes acima dos limites, convites e hospitalidades exigem aprovação prévia da Diretoria de Compliance.</div>
+        </div>
+      </div>
+      <div class="ferramenta-card">
+        <div class="ferramenta-num">03</div>
+        <div class="ferramenta-content">
+          <div class="ferramenta-label">Condicionado a favor</div>
+          <div class="ferramenta-body">Nunca aceite ou ofereça algo condicionado a uma decisão, contratação ou favorecimento. Isso é vedado.</div>
+        </div>
+      </div>
+      <div class="ferramenta-card">
+        <div class="ferramenta-num">04</div>
+        <div class="ferramenta-content">
+          <div class="ferramenta-label">Na dúvida, consulte</div>
+          <div class="ferramenta-body">Se não souber se deve aceitar ou recusar, recuse com cortesia e consulte o Compliance antes.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-green">
+      <p><strong>Regra fundamental:</strong> nenhuma cortesia pode comprar ou parecer comprar uma decisão. Transparência protege você e o Grupo. Registre e submeta ao Compliance sempre que houver dúvida.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Limites de Conduta e Responsabilidades</span>
+    </div>
+    <p class="body-p">Diante de um possível conflito, a conduta correta é sempre a mesma: declarar e consultar. Decidir por conta própria, ocultar a situação ou seguir adiante como se nada houvesse é que configura desvio.</p>
+
+    <div class="limites-table">
+      <div class="limites-header">
+        <div>Situação</div>
+        <div>Conduta correta</div>
+        <div>O que não fazer</div>
+      </div>
+      <div class="limites-row">
+        <div class="limites-col-a">Um familiar se candidata a vaga ou contrato na sua área</div>
+        <div class="limites-col-b">Declarar a relação e afastar-se da decisão</div>
+        <div class="limites-col-c">Participar da seleção ou influenciar o resultado</div>
+      </div>
+      <div class="limites-row alt">
+        <div class="limites-col-a">Fornecedor oferece presente ou convite acima do simbólico</div>
+        <div class="limites-col-b">Recusar ou submeter ao Compliance para aprovação</div>
+        <div class="limites-col-c">Aceitar sem informar ninguém</div>
+      </div>
+      <div class="limites-row">
+        <div class="limites-col-a">Você tem interesse pessoal em uma decisão de negócio</div>
+        <div class="limites-col-b">Declarar o interesse e pedir que outro decida</div>
+        <div class="limites-col-c">Decidir mesmo assim, por achar que é imparcial</div>
+      </div>
+      <div class="limites-row alt">
+        <div class="limites-col-a">Identifica um colega em situação de conflito não declarado</div>
+        <div class="limites-col-b">Orientar a declarar ou comunicar ao Compliance</div>
+        <div class="limites-col-c">Ignorar ou acobertar a situação</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 05 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Conduta Esperada por Área</span>
+    </div>
+    <p class="body-p">O cuidado com a integridade vale para todos, mas algumas áreas lidam com decisões de maior exposição. Em qualquer caso, o caminho é o mesmo: declarar e consultar o Compliance antes de decidir.</p>
+
+    <div class="conduta-grid">
+      <div class="conduta-card">
+        <div class="conduta-head">Liderança</div>
+        <ul class="conduta-list">
+          <li>Dê o exemplo e reforce a cultura de integridade</li>
+          <li>Garanta a segregação de decisões com conflito</li>
+          <li>Apoie quem declara, sem qualquer retaliação</li>
+          <li>Leve ao Compliance os casos sensíveis</li>
+        </ul>
+      </div>
+      <div class="conduta-card">
+        <div class="conduta-head">Compras e Comercial</div>
+        <ul class="conduta-list">
+          <li>Declare relações com fornecedores e clientes</li>
+          <li>Trate brindes e convites pela política</li>
+          <li>Documente os critérios de cada escolha</li>
+          <li>Submeta ao Compliance o que exigir aprovação</li>
+        </ul>
+      </div>
+      <div class="conduta-card">
+        <div class="conduta-head">Jurídico</div>
+        <ul class="conduta-list">
+          <li>Sinalize riscos de conflito nas relações</li>
+          <li>Apoie a análise de casos sensíveis</li>
+          <li>Articule com o Compliance as medidas cabíveis</li>
+          <li>Zele pela conformidade dos contratos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="porque-box">
+      <div class="porque-head">Por que integridade é prioridade?</div>
+      <ul class="porque-list">
+        <li>Sustenta a confiança de clientes, parceiros e do regulador no Grupo</li>
+        <li>Previne fraude, corrupção e favorecimentos que geram sanções</li>
+        <li>Protege o colaborador, ao deixar claro o caminho diante da dúvida</li>
+        <li>Fortalece a reputação das marcas Luck.Bet, 1Pra1.Bet e StartBet</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Grupo LBBR · Luck.Bet · 1Pra1.Bet · StartBet</div>
+    <div class="footer-right">
+      <strong>Classificação:</strong> Interno / Institucional<br>
+      <strong>Vigência:</strong> Junho 2026<br>
+      <strong>Responsável:</strong> Diretoria de Compliance
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

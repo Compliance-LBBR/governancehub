@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunicado 001 · PLD/FT | Grupo LBBR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#185FA5;
+  --blue-light:#E6F1FB;
+  --blue-mid:#1E6FD9;
+  --blue-dark:#0C447C;
+  --red:#A32D2D;
+  --red-light:#FCEBEB;
+  --amber:#BA7517;
+  --amber-light:#FAEEDA;
+  --green:#0F6E56;
+  --green-light:#E1F5EE;
+  --green-dark:#085041
+}
+.doc{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);max-width:780px;margin:0 auto;padding:0 0 3rem}
+
+/* HEADER */
+.hdr{border-bottom:3px solid var(--blue);padding-bottom:1.5rem;margin-bottom:0}
+.hdr-meta{font-family:'IBM Plex Sans',sans-serif;font-size:.8rem;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem;padding-top:1.5rem;text-align:center}
+.hdr-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1.2;color:var(--color-text-primary);margin-bottom:.5rem}
+.hdr-title em{font-style:italic;color:var(--blue);font-weight:400}
+.hdr-subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--color-text-secondary);line-height:1.6;text-align:justify}
+.uso-badge{display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;background:var(--blue-light);color:var(--blue-dark);border:0.5px solid #BFD9F7;padding:3px 10px;border-radius:3px;margin-bottom:1rem}
+
+/* NORMA BAR */
+.norma-bar{background:var(--color-background-secondary);border-left:3px solid var(--blue);padding:.9rem 1.2rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.norma-bar-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:.55rem}
+.norma-list{display:block;line-height:2}
+.norma-tag{font-size:11px;font-family:'IBM Plex Sans',monospace;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:3px 8px;border-radius:3px;display:inline-block;margin:2px 4px 2px 0}
+
+/* SECTIONS */
+.section{margin:2rem 0}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.1rem}
+.section-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;background:var(--blue-light);padding:2px 7px;border-radius:3px;flex-shrink:0}
+.section-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--color-text-primary)}
+.divider{height:1px;background:#c8cdd2;margin:1.8rem 0}
+
+/* BODY TEXT */
+.body-p{font-size:.93rem;line-height:1.78;color:var(--color-text-primary);margin-bottom:1rem;text-align:justify}
+.body-p strong{font-weight:600}
+
+/* CALLOUTS */
+.callout-blue{border-left:2px solid var(--blue-mid);padding:.9rem 1.2rem;background:var(--blue-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-blue p{font-size:.9rem;line-height:1.72;color:var(--blue-dark);text-align:justify}
+.callout-blue p strong{font-weight:600;color:var(--blue-dark)}
+.callout-amber{border-left:2px solid var(--amber);padding:.9rem 1.2rem;background:var(--amber-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-amber p{font-size:.9rem;line-height:1.72;color:#412402;text-align:justify}
+.callout-red{border-left:2px solid var(--red);padding:.9rem 1.2rem;background:var(--red-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-red p{font-size:.9rem;line-height:1.72;color:#501313;text-align:justify}
+
+/* FASES */
+.fases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.fase-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:1rem 1.1rem;background:var(--color-background-primary);border-top:2px solid var(--blue)}
+.fase-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);margin-bottom:.5rem}
+.fase-head{font-size:.9rem;font-weight:600;color:var(--color-text-primary);margin-bottom:.35rem}
+.fase-body{font-size:.82rem;color:var(--color-text-secondary);line-height:1.6}
+
+/* FLAGS GRID */
+.flags-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.flags-col{}
+.flags-col-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);background:var(--blue-light);padding:.4rem .8rem;border-radius:4px 4px 0 0;border:0.5px solid #BFD9F7;margin-bottom:0}
+.flags-list{border:0.5px solid var(--color-border-tertiary);border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+.flag-item{display:flex;align-items:flex-start;gap:.625rem;padding:.55rem .875rem;border-bottom:.5px solid var(--color-border-tertiary);font-size:.85rem;color:var(--color-text-primary);line-height:1.55}
+.flag-item:last-child{border-bottom:none}
+.flag-dot{width:6px;height:6px;background:var(--blue-mid);border-radius:50%;flex-shrink:0;margin-top:.4rem}
+
+/* CASO PRÁTICO */
+.caso-box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:1rem 1.1rem;margin:1.2rem 0}
+.caso-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-secondary);margin-bottom:.625rem}
+.caso-situacao{font-size:.87rem;color:var(--color-text-primary);line-height:1.65;margin-bottom:.5rem;text-align:justify}
+.caso-resultado{font-size:.87rem;color:var(--red);font-weight:600;line-height:1.6}
+
+/* PASSOS */
+.proto-flow{display:flex;gap:0;margin:1.1rem 0;overflow-x:auto}
+.proto-step{flex:1;min-width:120px;padding:.8rem .9rem;border:0.5px solid var(--color-border-tertiary);border-right:none;background:var(--color-background-primary);position:relative}
+.proto-step:last-child{border-right:0.5px solid var(--color-border-tertiary);border-radius:0 8px 8px 0}
+.proto-step:first-child{border-radius:8px 0 0 8px}
+.proto-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;margin-bottom:4px}
+.proto-label{font-size:.8rem;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;line-height:1.35}
+.proto-body{font-size:.75rem;color:var(--color-text-secondary);line-height:1.5}
+.proto-arrow{position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:8px solid var(--color-border-secondary);z-index:2}
+
+/* VEDAÇÕES */
+.vedacoes-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.2rem 0}
+.vedacao-item{display:flex;gap:.625rem;align-items:flex-start;background:var(--red-light);border:0.5px solid #F5C6C2;border-radius:6px;padding:.625rem .875rem}
+.vedacao-x{color:var(--red);font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px}
+.vedacao-item span{font-size:.83rem;color:#501313;line-height:1.5}
+
+/* RESPONSABILIDADES */
+.resp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.resp-card{border-radius:8px;padding:1rem;border:0.5px solid}
+.resp-card.colab{background:var(--amber-light);border-color:#F6D5A0}
+.resp-card.empresa{background:var(--red-light);border-color:#F5C6C2}
+.resp-card h3{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+.resp-card.colab h3{color:var(--amber)}
+.resp-card.empresa h3{color:var(--red)}
+.resp-card p{font-size:.85rem;line-height:1.65}
+.resp-card.colab p{color:#7B3D05}
+.resp-card.empresa p{color:#501313}
+
+/* MONITORAMENTO */
+.monitor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.monitor-card{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+.monitor-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);background:var(--blue-light);padding:.5rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.monitor-list{padding:.625rem .875rem;list-style:none}
+.monitor-list li{font-size:.82rem;color:var(--color-text-secondary);padding:.2rem 0 .2rem .875rem;position:relative;line-height:1.5}
+.monitor-list li::before{content:"";position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--blue-mid);border-radius:50%}
+
+.porque-box{background:var(--green-light);border:0.5px solid #9ED8CC;border-radius:8px;padding:1rem 1.1rem;margin:1rem 0}
+.porque-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.625rem}
+.porque-list{list-style:none}
+.porque-list li{font-size:.87rem;color:var(--green-dark);padding:.25rem 0 .25rem 1rem;position:relative;line-height:1.6}
+.porque-list li::before{content:"";position:absolute;left:0;top:.6rem;width:5px;height:5px;background:var(--green);border-radius:50%}
+
+/* FOOTER */
+.footer{border-top:2px solid var(--color-border-tertiary);padding-top:1.2rem;margin-top:2.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem}
+.footer-left{font-family:'Playfair Display',serif;font-size:1rem;color:var(--color-text-secondary);font-style:italic}
+.footer-right{font-size:10.5px;color:var(--color-text-tertiary);text-align:right;line-height:1.8}
+.footer-right strong{font-weight:500;color:var(--color-text-secondary)}
+.footer-right a{color:var(--blue);text-decoration:none}
+.assinatura{font-family:'Source Serif 4',serif;font-style:italic;font-size:.85rem;color:var(--color-text-secondary);margin-top:1.2rem;padding-top:.8rem;border-top:0.5px solid var(--color-border-tertiary)}
+
+@media(max-width:640px){
+  .fases-grid,.flags-grid,.vedacoes-grid,.resp-grid,.monitor-grid{grid-template-columns:1fr}
+  .proto-flow{flex-direction:column}
+  .proto-step{border-right:0.5px solid var(--color-border-tertiary)!important;border-radius:0!important;border-bottom:none}
+  .proto-step:last-child{border-bottom:0.5px solid var(--color-border-tertiary);border-radius:0 0 8px 8px!important}
+  .proto-step:first-child{border-radius:8px 8px 0 0!important}
+  .proto-arrow{display:none}
+}
+</style>
+</head>
+<body style="background:#f5f5f5;padding:20px;">
+
+<div class="doc">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <p class="hdr-meta">Comunicado 001 &nbsp;·&nbsp; Compliance, PLD e Regulatório</p>
+    <h1 class="hdr-title">Prevenção à <em>Lavagem de Dinheiro</em> e ao Financiamento do Terrorismo | PLD/FT</h1>
+    <p class="hdr-subtitle">Comunicado oficial da área de Compliance sobre conceitos, sinais de alerta, dever de escalonamento e importância do monitoramento de operações no Grupo LBBR.</p>
+  </div>
+
+  <!-- BASE NORMATIVA -->
+  <div class="norma-bar">
+    <div class="norma-bar-title">Base normativa aplicável</div>
+    <div class="norma-list">
+      <span class="norma-tag">Lei nº 9.613/1998</span>
+      <span class="norma-tag">Lei nº 14.790/2023</span>
+      <span class="norma-tag">Portaria MF nº 1.231/2024</span>
+      <span class="norma-tag">Portaria SPA/MF nº 1.143/2024</span>
+      <span class="norma-tag">COAF</span>
+      <span class="norma-tag">Lei nº 13.260/2016</span>
+      <span class="norma-tag">GAFI/FATF</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <p class="body-p">Este comunicado é para todos que fazem parte da nossa operação. A <strong>Lei nº 14.790/2023</strong> e a <strong>Portaria MF nº 1.231/2024</strong> colocam sobre cada colaborador a responsabilidade de identificar e reportar sinais de lavagem de dinheiro. <strong>Quem se omite também responde.</strong></p>
+
+  <!-- 1. CONCEITOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Conceitos-Base: O que é PLD/FT?</span>
+    </div>
+    <p class="body-p"><strong>Lavagem de Dinheiro (LD)</strong> é o processo pelo qual recursos de origem ilícita, como tráfico, corrupção e fraude, são inseridos no sistema financeiro com aparência de legitimidade. <strong>Financiamento do Terrorismo (FT)</strong> é a captação ou movimentação de recursos, lícitos ou ilícitos, destinados a financiar atos ou organizações terroristas. Qualquer valor é relevante.</p>
+    <p class="body-p">O processo de lavagem ocorre em três fases sequenciais, cada uma mais difícil de rastrear que a anterior:</p>
+    <div class="fases-grid">
+      <div class="fase-card">
+        <div class="fase-label">Fase 1</div>
+        <div class="fase-head">Colocação</div>
+        <div class="fase-body">O recurso ilícito entra na plataforma via depósito com dados falsos ou por terceiros.</div>
+      </div>
+      <div class="fase-card">
+        <div class="fase-label">Fase 2</div>
+        <div class="fase-head">Ocultação</div>
+        <div class="fase-body">Movimentação em múltiplas apostas e contas para dificultar o rastreamento da origem.</div>
+      </div>
+      <div class="fase-card">
+        <div class="fase-label">Fase 3</div>
+        <div class="fase-head">Integração</div>
+        <div class="fase-body">O recurso é sacado como prêmio legítimo, reingressando limpo no sistema financeiro.</div>
+      </div>
+    </div>
+    <div class="callout-blue">
+      <p><strong>Por que isso afeta nossa operação:</strong> Plataformas de apostas são altamente atrativas para lavagem de dinheiro pela velocidade das transações, volume de usuários e possibilidade de simular ganhos legítimos. A licença federal e a reputação do Grupo LBBR dependem diretamente da nossa capacidade de identificar e bloquear essas tentativas.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 2. RED FLAGS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Sinais de Alerta (Red Flags)</span>
+    </div>
+    <p class="body-p">Os sinais abaixo devem ser monitorados de forma contínua. A identificação de qualquer padrão suspeito, mesmo isolado, é suficiente para acionar o fluxo de escalonamento. Não é necessário ter certeza para reportar.</p>
+    <div class="flags-grid">
+      <div class="flags-col">
+        <div class="flags-col-head">Sinais relacionados ao cliente</div>
+        <div class="flags-list">
+          <div class="flag-item"><div class="flag-dot"></div>Recusa em fornecer documentos para KYC ou identificação</div>
+          <div class="flag-item"><div class="flag-dot"></div>Dados cadastrais inconsistentes com o perfil declarado</div>
+          <div class="flag-item"><div class="flag-dot"></div>Terceiros depositando ou sacando em nome do cliente</div>
+          <div class="flag-item"><div class="flag-dot"></div>Volume movimentado incompatível com a renda declarada</div>
+          <div class="flag-item"><div class="flag-dot"></div>PEP (Pessoa Exposta Politicamente) não identificada no cadastro</div>
+          <div class="flag-item"><div class="flag-dot"></div>Múltiplas contas com mesmo CPF, endereço ou dispositivo</div>
+        </div>
+      </div>
+      <div class="flags-col">
+        <div class="flags-col-head">Sinais relacionados a transações</div>
+        <div class="flags-list">
+          <div class="flag-item"><div class="flag-dot"></div>Múltiplos depósitos pequenos seguidos de saque consolidado (smurfing)</div>
+          <div class="flag-item"><div class="flag-dot"></div>Apostas compensatórias com retorno garantido, independentemente do resultado</div>
+          <div class="flag-item"><div class="flag-dot"></div>Saques imediatos após depósito, sem atividade real de apostas</div>
+          <div class="flag-item"><div class="flag-dot"></div>Movimentações incompatíveis com o histórico transacional do usuário</div>
+          <div class="flag-item"><div class="flag-dot"></div>Recursos originários de países em listas de alto risco do FATF/GAFI</div>
+          <div class="flag-item"><div class="flag-dot"></div>Tentativas frequentes de transações recusadas ou canceladas</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout-amber">
+      <p><strong>Atenção:</strong> A suspeita razoável já é suficiente para comunicar. Errar por cautela nunca será punido. Omitir, sim.</p>
+    </div>
+    <div class="caso-box">
+      <div class="caso-label">Caso Prático - O que acontece quando um colaborador ignora os sinais?</div>
+      <p class="caso-situacao"><strong>Situação:</strong> Um cliente cadastrado há 3 meses começa a realizar 15 depósitos de R$ 490 por dia, sempre abaixo do limite de R$ 500, por diferentes meios de pagamento. Em seguida, aposta tudo em eventos com odds baixíssimas, garantindo retorno quase certo, e solicita saque imediato. O atendente percebe o padrão, mas decide não reportar para não criar problema com um cliente ativo.</p>
+      <p class="caso-resultado"><strong>Resultado:</strong> Clássico smurfing + aposta compensatória. A omissão do atendente o expõe ao mesmo crime. Reporte imediato é obrigatório.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 3. ESCALONAMENTO -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Dever de Escalonamento Interno</span>
+    </div>
+    <p class="body-p">Ao identificar qualquer sinal de alerta, o colaborador deve seguir obrigatoriamente o fluxo abaixo. Cada etapa gera registro rastreável e é evidência de conformidade perante o COAF e a SPA/MF.</p>
+    <div class="proto-flow">
+      <div class="proto-step">
+        <div class="proto-arrow"></div>
+        <div class="proto-num">01</div>
+        <div class="proto-label">Documente</div>
+        <div class="proto-body">Data, horário, canal, dados do cliente e descrição clara. Guarde prints sem modificar.</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-arrow"></div>
+        <div class="proto-num">02</div>
+        <div class="proto-label">Comunique</div>
+        <div class="proto-body">Avise seu gestor e o Compliance imediatamente. Não espere ter certeza.</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-arrow"></div>
+        <div class="proto-num">03</div>
+        <div class="proto-label">Não aja sozinho</div>
+        <div class="proto-body">Nenhuma ação sobre a conta sem instrução do Compliance. Não bloqueie nem encerre nada.</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-arrow"></div>
+        <div class="proto-num">04</div>
+        <div class="proto-label">Sem tipping off</div>
+        <div class="proto-body">Não avise o cliente que está sendo investigado. Isso é crime.</div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">05</div>
+        <div class="proto-label">Acompanhe</div>
+        <div class="proto-body">O Compliance analisa e, se necessário, comunica ao COAF. Mantenha seus registros organizados.</div>
+      </div>
+    </div>
+    <div class="callout-blue">
+      <p>Cada etapa desse protocolo gera registro rastreável. Em caso de fiscalização ou auditoria da SPA/MF, devemos demonstrar, com evidência documental: <strong>quando, como e com qual resultado</strong> cada escalonamento foi realizado.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 4. VEDAÇÕES -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Vedação e Omissão</span>
+    </div>
+    <p class="body-p">A omissão é uma infração grave, de natureza civil, criminal e trabalhista. Deixar de comunicar uma suspeita de lavagem por receio, conveniência ou julgamento próprio de que não parece crime configura descumprimento legal. Essa conduta pode gerar responsabilização penal do colaborador e pesadas sanções à empresa.</p>
+    <div class="vedacoes-grid">
+      <div class="vedacao-item"><span class="vedacao-x">✕</span><span>Omitir ou ignorar sinais de alerta em operações e cadastros</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">✕</span><span>Alertar o cliente de que está sob investigação ou monitoramento (tipping off)</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">✕</span><span>Facilitar, direta ou indiretamente, movimentação de recursos de origem suspeita</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">✕</span><span>Interferir no processo de comunicação ao COAF ou destruir evidências</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">✕</span><span>Pressionar ou aceitar pressão de terceiros para não escalonar suspeitas</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">✕</span><span>Realizar operações sem o devido processo de KYC quando exigido</span></div>
+    </div>
+    <div class="resp-grid">
+      <div class="resp-card colab">
+        <h3>Responsabilidade do colaborador</h3>
+        <p>Crime de lavagem por equiparação (art. 1°, §2°, Lei nº 9.613/1998): pena de 3 a 10 anos de reclusão, mais multa, além de demissão por justa causa.</p>
+      </div>
+      <div class="resp-card empresa">
+        <h3>Responsabilidade da empresa</h3>
+        <p>Multas de até R$ 20 milhões, cancelamento da licença de operação e inabilitação de dirigentes perante o COAF e a SPA/Ministério da Fazenda.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 5. MONITORAMENTO -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Monitoramento de Operações e Perfis de Risco</span>
+    </div>
+    <p class="body-p">O monitoramento contínuo é obrigação regulatória e pilar central do programa de PLD/FT do Grupo LBBR. Ele cobre três dimensões complementares:</p>
+    <div class="monitor-grid">
+      <div class="monitor-card">
+        <div class="monitor-head">KYC: Conheça Seu Cliente</div>
+        <ul class="monitor-list">
+          <li>Verificação de identidade (CPF e selfie)</li>
+          <li>Comprovação de renda p/ alto volume</li>
+          <li>Identificação de PEPs e listas restritivas</li>
+          <li>Atualização periódica de cadastros</li>
+        </ul>
+      </div>
+      <div class="monitor-card">
+        <div class="monitor-head">Monitoramento Transacional</div>
+        <ul class="monitor-list">
+          <li>Padrões de depósito, aposta e saque</li>
+          <li>Alertas por volume ou frequência atípica</li>
+          <li>Smurfing e apostas compensatórias</li>
+          <li>Transações em horários incomuns</li>
+        </ul>
+      </div>
+      <div class="monitor-card">
+        <div class="monitor-head">Gestão de Perfis de Risco</div>
+        <ul class="monitor-list">
+          <li>Classificação: baixo, médio e alto risco</li>
+          <li>Diligência reforçada (EDD) p/ alto risco</li>
+          <li>Revisão periódica dos perfis</li>
+          <li>Registros mantidos por mín. 5 anos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="porque-box">
+      <div class="porque-head">Por que monitorar?</div>
+      <ul class="porque-list">
+        <li>Protege a empresa de ser utilizada como veículo de lavagem de dinheiro</li>
+        <li>Garante a manutenção da licença de operação junto à SPA/Ministério da Fazenda</li>
+        <li>Evita multas, inabilitação de dirigentes e demonstra conformidade regulatória perante o COAF</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Grupo LBBR · Luck.Bet · 1Pra1.Bet · StartBet</div>
+    <div class="footer-right">
+      <strong>Classificação:</strong> Interno / Institucional<br>
+      <strong>Vigência:</strong> Abril 2026<br>
+      <strong>Responsável:</strong> Diretoria de Compliance
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
