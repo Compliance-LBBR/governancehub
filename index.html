@@ -603,6 +603,13 @@ ul.clean li { margin-bottom: 7px; color: var(--ink-2); }
 }
 
   </style>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xt5ujzpyy5");
+  </script>
 </head>
 <body>
   <!-- TOPBAR -->
@@ -1794,7 +1801,7 @@ async function carregarMinhasConfirmacoes() {
     regs.forEach(g => { if (g.protocolo) guardarRecibo(Object.assign({ email: email }, g)); });
     const porChave = {};
     regs.forEach(g => { const k = g.documento + "|" + g.versao; if (!porChave[k]) porChave[k] = g; });
-    const linhas = D.documentos.map(d => {
+    const linhas = D.documentos.filter(d => DOCS_COM_CONFIRMACAO.includes(d.codigo)).map(d => {
       const k = d.codigo + "|v" + d.versao;
       const g = porChave[k];
       return g
@@ -1868,7 +1875,7 @@ const NAV = [
 /* Secoes ainda em desenvolvimento: rota aqui = item marcado "em breve"
    e o clique abre um aviso, sem navegar. Para liberar uma secao,
    remova a rota desta lista. */
-const EM_DESENVOLVIMENTO = ["integridadeesportiva", "treinamentos", "formularios", "minhas-confirmacoes"];
+const EM_DESENVOLVIMENTO = ["integridadeesportiva", "treinamentos", "formularios"];
 /* Documentos específicos ainda em desenvolvimento (badge "em breve" e aviso ao abrir).
    Para liberar um documento, remova o código desta lista. */
 const PDF_LINKS = {
@@ -1879,6 +1886,8 @@ const PDF_LINKS = {
 };
 const EM_DESENVOLVIMENTO_DOCS = ["PROC-DEN-001", "PROC-EDD-001", "POL-GRC-001", "POL-ANTIC-001", "POL-INTES-001", "POL-BRIND-001", "PROC-KYC-001", "PROC-MON-001", "PROC-COS-001", "PROG-INTEG-001", "PROC-INV-001", "POP-JR-001", "FRM-JR-001"];
 const DOCS_LIBERADOS = ["COMP-COD-001", "POL-PLDFT-001", "POL-DILIG-001", "POL-JR-001"];
+/* Documentos com confirmação de leitura habilitada. Para habilitar outro, adicione o código aqui. */
+const DOCS_COM_CONFIRMACAO = ["COMP-COD-001"];
 
 function renderNav(active) {
   const nav = document.getElementById("mainNav");
@@ -2078,7 +2087,7 @@ function docPage(id) {
         <div class="trilha">${trilha.map(n=>`<div class="trilha-node"><div class="trilha-rail"><div class="trilha-dot"></div><div class="trilha-line"></div></div><div class="trilha-body"><strong>${esc(n.strong)}</strong><span>${esc(n.span)}</span></div></div>`).join("")}</div>
       </div>
 
-      <div class="doc-section">
+      ${DOCS_COM_CONFIRMACAO.includes(d.codigo) ? `<div class="doc-section">
         <div class="ciencia">
           <div class="ciencia-head">${svg("compliance")}<strong>Confirmação de leitura</strong></div>
           <p>Declare que leu e está ciente desta versão do documento. A confirmação é validada pelo seu e-mail corporativo: na primeira vez, você recebe um link de confirmação; nas seguintes, basta um clique. O registro guarda nome, área, e-mail, data e hora, e fica disponível para a Diretoria de Compliance.</p>
@@ -2086,7 +2095,7 @@ function docPage(id) {
             ? `<button class="btn confirmado" onclick="abrirReciboDoc('${d.id}')">${svg("compliance")} Leitura confirmada em ${fmtData(rec.quando)}</button>`
             : `<button class="btn primary" onclick="abrirCiencia('${d.id}')">${svg("compliance")} Confirmar leitura</button>`; })()}
         </div>
-      </div>
+      </div>` : ``}
     </div>
 
     <div>
