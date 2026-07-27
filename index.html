@@ -1210,6 +1210,24 @@ const LBBR_DATA = {
       relacionados: ["COMP-COD-001", "POL-PLDFT-001", "POL-DILIG-001"]
     },
     {
+      id: "POP-JR-001", codigo: "POP-JR-001", titulo: "Procedimento Operacional de Jogo Responsável",
+      area: "jogoresponsavel", tipo: "Procedimento", versao: "1.0", status: "planejado",
+      dataAprovacao: null, aprovador: "Diretoria de Compliance", proximaRevisao: null,
+      resumo: "Define os fluxos operacionais, critérios de monitoramento, parâmetros de intervenção, escalonamento e registros relacionados ao Programa de Jogo Responsável e Proteção ao Apostador do Grupo LBBR, complementando a POL-JR-001.",
+      conteudo: [],
+      historico: [],
+      relacionados: ["POL-JR-001", "COMP-COD-001"]
+    },
+    {
+      id: "FRM-JR-001", codigo: "FRM-JR-001", titulo: "Formulário de Autoexclusão e Gestão de Limites",
+      area: "jogoresponsavel", tipo: "Formulário", versao: "1.0", status: "planejado",
+      dataAprovacao: null, aprovador: "Diretoria de Compliance", proximaRevisao: null,
+      resumo: "Formulário padronizado para registro e processamento de solicitações de autoexclusão, pausa temporária e alteração de limites de depósito, perda e tempo de sessão pelo apostador.",
+      conteudo: [],
+      historico: [],
+      relacionados: ["POL-JR-001", "POP-JR-001"]
+    },
+    {
       id: "POL-PLDFT-001", codigo: "POL-PLDFT-001", titulo: "Política de PLD/FTP",
       area: "pldftp", tipo: "Política", versao: "2.0", status: "vigente",
       dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
@@ -1898,7 +1916,7 @@ const EM_DESENVOLVIMENTO = ["integridadeesportiva", "treinamentos", "formularios
 /* Documentos específicos ainda em desenvolvimento (badge "em breve" e aviso ao abrir).
    Para liberar um documento, remova o código desta lista. */
 const EM_DESENVOLVIMENTO_DOCS = ["PROC-DEN-001", "PROC-EDD-001", "POL-COMP-001", "POL-ANTIC-001", "POL-INTES-001", "POL-BRIND-001", "PROC-KYC-001", "PROC-MON-001", "PROC-COS-001", "MAT-RISCO-001", "AIR-PLDFT-001", "POL-RISCO-001", "PROG-INTEG-001", "PROC-INV-001"];
-const DOCS_LIBERADOS = ["COMP-COD-001", "POL-PLDFT-001", "POL-DILIG-001", "POL-JR-001"];
+const DOCS_LIBERADOS = ["COMP-COD-001", "POL-PLDFT-001", "POL-DILIG-001", "POL-JR-001", "POL-ANTIC-001"];
 
 function renderNav(active) {
   const nav = document.getElementById("mainNav");
