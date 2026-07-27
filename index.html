@@ -360,6 +360,7 @@ a.doc-row:hover .dr-ext { color: var(--brand); }
 .badge.em-revisao { color: var(--st-revisao); background: var(--st-revisao-bg); }
 .badge.revogado { color: var(--st-revogado); background: var(--st-revogado-bg); }
 .badge.substituido { color: var(--st-substituido); background: var(--st-substituido-bg); }
+.badge.planejado { color: var(--st-revisao); background: var(--st-revisao-bg); }
 
 /* Section cards (landing) */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -756,7 +757,7 @@ const LBBR_DATA = {
   documentos: [
     {
       id: "COMP-COD-001", codigo: "COMP-COD-001", titulo: "Código de Conduta e Ética",
-      area: "compliance", tipo: "Código", versao: "2.0", status: "vigente",
+      area: "compliance", tipo: "Código", versao: "1.0", status: "vigente",
       dataAprovacao: "12/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "12/02/2027",
       resumo: "Estabelece os princípios éticos, os padrões de conduta e os compromissos de integridade exigidos de todos os colaboradores, administradores e parceiros do Grupo LBBR no exercício de suas atividades.",
       conteudo: [
@@ -910,23 +911,17 @@ const LBBR_DATA = {
       relacionados: ["POL-ANTIC-001", "POL-INTES-001", "PROC-DEN-001"]
     },
     {
-      id: "POL-COMP-001", codigo: "POL-COMP-001", titulo: "Política de Compliance",
-      area: "compliance", tipo: "Política", versao: "1.2", status: "vigente",
-      dataAprovacao: "20/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "20/01/2027",
-      resumo: "Define a estrutura, os papéis e as responsabilidades do programa de compliance do Grupo LBBR, além dos pilares de governança que sustentam a conformidade regulatória da operação de apostas de quota fixa.",
-      conteudo: [
-        { t: "Pilares do programa", p: "Comprometimento da alta administração, avaliação de riscos, políticas e procedimentos, comunicação e treinamento, monitoramento e melhoria contínua." },
-        { t: "Estrutura de governança", p: "A Diretoria de Compliance responde pela coordenação do programa, com independência funcional e acesso direto à alta administração." }
-      ],
-      historico: [
-        { v: "v1.2", d: "20/01/2026", r: "Diretoria de Compliance", desc: "Atualização da estrutura de governança" },
-        { v: "v1.0", d: "04/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
-      ],
-      relacionados: ["COMP-COD-001", "POL-RISCO-001", "POL-PLDFT-001"]
+      id: "POL-GRC-001", codigo: "POL-GRC-001", titulo: "Política de Gestão de Riscos Corporativos",
+      area: "compliance", tipo: "Política", versao: "1.0", status: "planejado",
+      dataAprovacao: null, aprovador: "Diretoria de Compliance", proximaRevisao: null,
+      resumo: "Define os princípios, estrutura e responsabilidades da gestão de riscos corporativos do Grupo LBBR, estabelecendo a abordagem baseada em risco para identificação, avaliação, tratamento e monitoramento dos riscos inerentes à operação de apostas esportivas e iGaming.",
+      conteudo: [],
+      historico: [],
+      relacionados: ["COMP-COD-001", "POL-PLDFT-001"]
     },
     {
-      id: "POL-ANTIC-001", codigo: "POL-ANTIC-001", titulo: "Política Anticorrupção",
-      area: "compliance", tipo: "Política", versao: "1.1", status: "vigente",
+      id: "POL-ANTIC-001", codigo: "POL-ANTIC-001", titulo: "Política Anticorrupção & Antissuborno",
+      area: "compliance", tipo: "Política", versao: "1.1", status: "planejado",
       dataAprovacao: "15/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "15/01/2027",
       resumo: "Estabelece as diretrizes de prevenção e combate à corrupção, ao suborno e à fraude, em conformidade com a Lei 12.846/2013, vedando o oferecimento ou recebimento de vantagens indevidas.",
       conteudo: [
@@ -967,8 +962,8 @@ const LBBR_DATA = {
       relacionados: ["POL-ANTIC-001", "COMP-COD-001"]
     },
     {
-      id: "POL-DILIG-001", codigo: "POL-DILIG-001", titulo: "Política de Due Diligence de Terceiros",
-      area: "compliance", tipo: "Política", versao: "1.1", status: "vigente",
+      id: "POL-DILIG-001", codigo: "POL-DILIG-001", titulo: "Política de Diligência de Terceiros & Colaboradores",
+      area: "compliance", tipo: "Política", versao: "1.0", status: "vigente",
       dataAprovacao: "18/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "18/01/2027",
       resumo: "Estabelece o processo de avaliação de integridade de fornecedores, parceiros e demais terceiros (KYS, KYP e KYE), com classificação de risco e periodicidade de revisão.",
       conteudo: [
@@ -1330,6 +1325,20 @@ const LBBR_DATA = {
       relacionados: ["PROC-KYC-001", "PROC-EDD-001", "PROC-MON-001", "PROC-COS-001", "AIR-PLDFT-001"]
     },
     {
+      id: "PROC-MON-001", codigo: "PROC-MON-001", titulo: "Procedimento de Monitoramento",
+      area: "pldftp", tipo: "Procedimento", versao: "1.0", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Define as regras, os parâmetros e os fluxos de tratamento de alertas para o monitoramento contínuo das operações, com vistas à detecção de operações atípicas.",
+      conteudo: [
+        { t: "Regras de monitoramento", p: "Conjunto de cenários e limites parametrizados para identificação de operações incompatíveis com o perfil do apostador." },
+        { t: "Tratamento de alertas", p: "Fluxo de análise, classificação e encerramento de alertas, com registro de fundamentação e trilha de auditoria." }
+      ],
+      historico: [
+        { v: "v1.0", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
+      ],
+      relacionados: ["POL-PLDFT-001", "PROC-COS-001"]
+    },
+    {
       id: "PROC-KYC-001", codigo: "PROC-KYC-001", titulo: "Procedimento de KYC",
       area: "pldftp", tipo: "Procedimento", versao: "1.2", status: "vigente",
       dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
@@ -1343,35 +1352,6 @@ const LBBR_DATA = {
         { v: "v1.0", d: "03/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
       ],
       relacionados: ["POL-PLDFT-001", "PROC-EDD-001"]
-    },
-    {
-      id: "PROC-EDD-001", codigo: "PROC-EDD-001", titulo: "Procedimento de EDD",
-      area: "pldftp", tipo: "Procedimento", versao: "1.1", status: "vigente",
-      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
-      resumo: "Estabelece a diligência aprofundada (Enhanced Due Diligence) aplicável a clientes de maior risco, incluindo pessoas expostas politicamente e operações de elevado volume ou complexidade.",
-      conteudo: [
-        { t: "Gatilhos", p: "Define as situações que exigem diligência aprofundada, como PEP, alto volume, inconsistência cadastral e alertas de monitoramento." },
-        { t: "Medidas reforçadas", p: "Verificação de origem de recursos, aprovação em nível superior e monitoramento intensificado." }
-      ],
-      historico: [
-        { v: "v1.1", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Inclusão de critérios para PEP" },
-        { v: "v1.0", d: "04/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
-      ],
-      relacionados: ["POL-PLDFT-001", "PROC-KYC-001", "FORM-EDD-001"]
-    },
-    {
-      id: "PROC-MON-001", codigo: "PROC-MON-001", titulo: "Procedimento de Monitoramento",
-      area: "pldftp", tipo: "Procedimento", versao: "1.0", status: "vigente",
-      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
-      resumo: "Define as regras, os parâmetros e os fluxos de tratamento de alertas para o monitoramento contínuo das operações, com vistas à detecção de operações atípicas.",
-      conteudo: [
-        { t: "Regras de monitoramento", p: "Conjunto de cenários e limites parametrizados para identificação de operações incompatíveis com o perfil do apostador." },
-        { t: "Tratamento de alertas", p: "Fluxo de análise, classificação e encerramento de alertas, com registro de fundamentação e trilha de auditoria." }
-      ],
-      historico: [
-        { v: "v1.0", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
-      ],
-      relacionados: ["POL-PLDFT-001", "PROC-COS-001", "MAT-RISCO-001"]
     },
     {
       id: "PROC-COS-001", codigo: "PROC-COS-001", titulo: "Procedimento de COS",
@@ -1388,47 +1368,19 @@ const LBBR_DATA = {
       relacionados: ["POL-PLDFT-001", "PROC-MON-001"]
     },
     {
-      id: "MAT-RISCO-001", codigo: "MAT-RISCO-001", titulo: "Matriz de Risco PLD/FTP",
-      area: "pldftp", tipo: "Matriz", versao: "1.1", status: "vigente",
-      dataAprovacao: "28/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "28/07/2026",
-      resumo: "Consolida os fatores de risco de cliente, produto, canal e geografia, com critérios de pontuação e enquadramento que orientam a intensidade dos controles de PLD/FTP.",
+      id: "PROC-EDD-001", codigo: "PROC-EDD-001", titulo: "Procedimento de EDD",
+      area: "pldftp", tipo: "Procedimento", versao: "1.1", status: "vigente",
+      dataAprovacao: "05/02/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "05/02/2027",
+      resumo: "Estabelece a diligência aprofundada (Enhanced Due Diligence) aplicável a clientes de maior risco, incluindo pessoas expostas politicamente e operações de elevado volume ou complexidade.",
       conteudo: [
-        { t: "Dimensões", p: "Avalia risco por cliente, produto, canal de distribuição e jurisdição, atribuindo pontuação consolidada." },
-        { t: "Enquadramento", p: "Classificação final em quatro níveis, vinculada à periodicidade de revisão e ao escopo de diligência." }
+        { t: "Gatilhos", p: "Define as situações que exigem diligência aprofundada, como PEP, alto volume, inconsistência cadastral e alertas de monitoramento." },
+        { t: "Medidas reforçadas", p: "Verificação de origem de recursos, aprovação em nível superior e monitoramento intensificado." }
       ],
       historico: [
-        { v: "v1.1", d: "28/01/2026", r: "Diretoria de Compliance", desc: "Recalibração de pesos por dimensão" },
-        { v: "v1.0", d: "06/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
+        { v: "v1.1", d: "05/02/2026", r: "Diretoria de Compliance", desc: "Inclusão de critérios para PEP" },
+        { v: "v1.0", d: "04/2025", r: "Diretoria de Compliance", desc: "Criação do documento" }
       ],
-      relacionados: ["AIR-PLDFT-001", "POL-RISCO-001", "POL-PLDFT-001"]
-    },
-    {
-      id: "AIR-PLDFT-001", codigo: "AIR-PLDFT-001", titulo: "Avaliação Interna de Riscos",
-      area: "pldftp", tipo: "Avaliação", versao: "1.0", status: "vigente",
-      dataAprovacao: "28/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "28/01/2027",
-      resumo: "Documenta a avaliação interna de riscos de lavagem de dinheiro e financiamento do terrorismo do Grupo LBBR, identificando riscos inerentes, controles e risco residual.",
-      conteudo: [
-        { t: "Metodologia", p: "Identificação de riscos inerentes, avaliação da efetividade dos controles e mensuração do risco residual por categoria." },
-        { t: "Plano de ação", p: "Definição de medidas de mitigação para riscos residuais acima do apetite definido." }
-      ],
-      historico: [
-        { v: "v1.0", d: "28/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
-      ],
-      relacionados: ["MAT-RISCO-001", "POL-PLDFT-001", "POL-RISCO-001"]
-    },
-    {
-      id: "POL-RISCO-001", codigo: "POL-RISCO-001", titulo: "Política de Gestão de Riscos",
-      area: "pldftp", tipo: "Política", versao: "1.0", status: "vigente",
-      dataAprovacao: "22/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "22/01/2027",
-      resumo: "Estabelece o modelo de identificação, avaliação, tratamento e monitoramento de riscos do Grupo LBBR, incluindo riscos de compliance, regulatórios, operacionais e reputacionais.",
-      conteudo: [
-        { t: "Apetite a risco", p: "Define os limites de exposição aceitáveis e os critérios de escalonamento de riscos relevantes." },
-        { t: "Ciclo de gestão", p: "Identificar, avaliar, tratar, monitorar e reportar, em ciclos periódicos e sempre que houver evento relevante." }
-      ],
-      historico: [
-        { v: "v1.0", d: "22/01/2026", r: "Diretoria de Compliance", desc: "Criação do documento" }
-      ],
-      relacionados: ["AIR-PLDFT-001", "MAT-RISCO-001", "POL-COMP-001"]
+      relacionados: ["POL-PLDFT-001", "PROC-KYC-001", "FORM-EDD-001"]
     },
     {
       id: "PROG-INTEG-001", codigo: "PROG-INTEG-001", titulo: "Programa de Integridade",
@@ -1621,7 +1573,7 @@ const ICON = {
 };
 
 const AREA_LABEL = { compliance: "Compliance", pldftp: "PLD/FTP", jogoresponsavel: "Jogo Responsável", integridadeesportiva: "Integridade Esportiva", integridade: "Integridade" };
-const STATUS_LABEL = { vigente: "Vigente", "em-revisao": "Em Revisão", revogado: "Revogado", substituido: "Substituído" };
+const STATUS_LABEL = { vigente: "Vigente", "em-revisao": "Em Revisão", revogado: "Revogado", substituido: "Substituído", planejado: "Planejado" };
 
 /* ----------------- HELPERS ----------------- */
 const svg = (name) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[name] || ""}</svg>`;
@@ -1863,7 +1815,7 @@ function comCard(c, full) {
   return `<a class="com-card" href="${href}"${attrs}>
     <div class="com-head"><span class="com-num">${c.mes}/${c.ano}</span><span class="com-date">${esc(c.periodo)}</span>${comStatusBadge(c.status)}</div>
     <h3>${esc(c.tema)}</h3>
-    ${full ? `<p>${esc(c.publico)}</p>` : ""}
+    <p>${esc(c.publico)}</p>
   </a>`;
 }
 
@@ -1915,8 +1867,8 @@ const NAV = [
 const EM_DESENVOLVIMENTO = ["integridadeesportiva", "treinamentos", "formularios", "minhas-confirmacoes"];
 /* Documentos específicos ainda em desenvolvimento (badge "em breve" e aviso ao abrir).
    Para liberar um documento, remova o código desta lista. */
-const EM_DESENVOLVIMENTO_DOCS = ["PROC-DEN-001", "PROC-EDD-001", "POL-COMP-001", "POL-ANTIC-001", "POL-INTES-001", "POL-BRIND-001", "PROC-KYC-001", "PROC-MON-001", "PROC-COS-001", "MAT-RISCO-001", "AIR-PLDFT-001", "POL-RISCO-001", "PROG-INTEG-001", "PROC-INV-001"];
-const DOCS_LIBERADOS = ["COMP-COD-001", "POL-PLDFT-001", "POL-DILIG-001", "POL-JR-001", "POL-ANTIC-001"];
+const EM_DESENVOLVIMENTO_DOCS = ["PROC-DEN-001", "PROC-EDD-001", "POL-GRC-001", "POL-ANTIC-001", "POL-INTES-001", "POL-BRIND-001", "PROC-KYC-001", "PROC-MON-001", "PROC-COS-001", "PROG-INTEG-001", "PROC-INV-001", "POP-JR-001", "FRM-JR-001"];
+const DOCS_LIBERADOS = ["COMP-COD-001", "POL-PLDFT-001", "POL-DILIG-001", "POL-JR-001"];
 
 function renderNav(active) {
   const nav = document.getElementById("mainNav");
@@ -1997,12 +1949,12 @@ function pageInicio() {
       <div class="com-list">${atualizadas.map(d => `<a class="com-card" href="#/doc/${d.id}">
         <div class="com-head"><span class="com-num">${d.codigo}</span>${badge(d.status)}<span class="tag">v${d.versao}</span></div>
         <h3>${esc(d.titulo)}</h3>
-        <p style="margin:6px 0 0;font-size:12.5px;color:var(--ink-2)">Atualizada em ${d.dataAprovacao}</p>
+        <p style="margin:6px 0 0;font-size:12.5px;color:var(--ink-2)">${d.status === "planejado" ? "Em elaboração" : "Atualizada em " + d.dataAprovacao}</p>
       </a>`).join("")}</div>
     </div>
     <div>
       <h2 class="sec-title" style="margin-top:0">Comunicados recentes</h2>
-      <div class="com-list">${[...D.comunicados.filter(c=>c.status==="publicado"), ...D.comunicados.filter(c=>c.status==="planejado")].slice(0,5).map(c => comCard(c)).join("")}</div>
+      <div class="com-list">${[...D.comunicados.filter(c=>c.status==="publicado"), ...D.comunicados.filter(c=>c.status==="planejado")].slice(0,4).map(c => comCard(c)).join("")}</div>
     </div>
   </div>`;
 }
@@ -2088,7 +2040,7 @@ function docPage(id) {
   <div class="doc-layout">
     <div class="doc-main">
       <div class="doc-title-block">
-        <div class="dr-sub" style="font-size:13px"><span class="code-chip">${d.codigo}</span> ${badge(d.status)} <span class="muted">${esc(d.tipo)}</span> <span class="doc-views" id="docViews" title="Visualizações únicas por dispositivo">${svg("eye")}<span id="docViewsN" class="doc-views-n">&middot;</span></span></div>
+        <div class="dr-sub" style="font-size:13px"><span class="code-chip">${d.codigo}</span> ${badge(d.status)} <span class="muted">${esc(d.tipo)}</span></div>
         <h1>${esc(d.titulo)}</h1>
         <p class="muted">${esc(d.resumo)}</p>
         <div class="doc-actions">
