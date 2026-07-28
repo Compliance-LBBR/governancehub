@@ -774,7 +774,7 @@ const LBBR_DATA = {
             { p: "Nenhuma meta comercial, urgência operacional ou orientação interna justifica condutas que contrariem a lei, as normas da SPA/MF, as políticas internas ou os valores do Grupo LBBR. Crescer de forma sustentável exige responsabilidade, registro adequado das decisões, respeito aos controles internos e compromisso com o jogo responsável." },
             { p: "Cada colaborador, líder, parceiro, fornecedor, afiliado, influenciador ou terceiro que atua em nome do Grupo tem papel essencial na proteção da nossa reputação e na construção de uma operação íntegra. Em caso de dúvida, a orientação é simples: pare, avalie, registre quando necessário e procure a liderança, a Diretoria de Compliance ou o Canal de Denúncias." },
             { p: "Conto com o compromisso de todos para que o Grupo LBBR seja reconhecido não apenas pela força de suas marcas, mas pela seriedade, ética e responsabilidade com que conduz suas operações." },
-            { p: "[NOME DO CEO]CEO, Grupo LBBR" },
+            { p: "Ivan Dutra - CEO, Grupo LBBR" },
           ] },
           { t: "2. Quem Somos", blocks: [
             { p: "O Grupo LBBR opera as marcas luck.bet, 1PRA1 e STARTBET no mercado brasileiro de apostas de quota fixa, licenciado pela Secretaria de Prêmios e Apostas do Ministério da Fazenda. Atuamos com o propósito de oferecer entretenimento digital responsável, com integridade e respeito a apostadores, colaboradores e à sociedade." },
@@ -900,7 +900,7 @@ const LBBR_DATA = {
             { p: "O Grupo LBBR disponibiliza canal de denúncias para que qualquer pessoa possa reportar violações a este Código, às políticas internas ou à legislação vigente. O canal está disponível para colaboradores, parceiros, afiliados, apostadores e qualquer parte interessada, com possibilidade de anonimato para quem optar por não se identificar." },
             { p: "O Grupo LBBR não admite retaliação contra quem reporte de boa-fé. Qualquer tentativa de retaliação será tratada como descumprimento relevante deste Código e estará sujeita às medidas cabíveis. As denúncias são recebidas e tratadas pela Diretoria de Compliance com sigilo, imparcialidade e proporcionalidade. Todos os envolvidos em investigações internas devem cooperar de forma honesta e tempestiva." },
             { st: "Canal de Denúncias" },
-            { itens: ["Acesse: [INSERIR LINK / CONTATO DO CANAL DE DENÚNCIAS];", "Disponível 24 horas por dia, 7 dias por semana;", "Anonimato garantido. Retaliações não são toleradas."] },
+            { itens: ["Acesse: lbbr.denuncia.pro;", "Disponível 24 horas por dia, 7 dias por semana;", "Anonimato garantido. Retaliações não são toleradas."] },
           ] },
           { t: "21. Consequências do Descumprimento", blocks: [
             { p: "O descumprimento deste Código e das políticas internas do Grupo LBBR sujeita o responsável a medidas proporcionais à natureza e à gravidade da conduta, que podem incluir orientação, advertência, suspensão, restrição de acessos, encerramento do vínculo, rescisão contratual e, quando aplicável, comunicação às autoridades competentes e adoção das providências legais cabíveis." },
@@ -2029,6 +2029,10 @@ function pageArea(area) {
   <div class="doc-list">${docs.map(docRow).join("")}</div>`;
 }
 
+function linkCanal(txt) {
+  return txt.replace(/lbbr\.denuncia\.pro/g, '<a href="https://lbbr.denuncia.pro" target="_blank" rel="noopener">lbbr.denuncia.pro</a>');
+}
+
 function renderSecoes(conteudo) {
   return (conteudo || []).map(s => {
     let h = "";
@@ -2036,8 +2040,8 @@ function renderSecoes(conteudo) {
     const blocks = (s.blocks && s.blocks.length) ? s.blocks : [s];
     blocks.forEach(b => {
       if (b.st) h += `<h3>${esc(b.st)}</h3>`;
-      if (b.p) h += `<p>${esc(b.p)}</p>`;
-      if (b.itens) h += `<ul class="doc-ul">${b.itens.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+      if (b.p) h += `<p>${linkCanal(esc(b.p))}</p>`;
+      if (b.itens) h += `<ul class="doc-ul">${b.itens.map(i => `<li>${linkCanal(esc(i))}</li>`).join("")}</ul>`;
     });
     return `<div class="doc-section">${h}</div>`;
   }).join("");
