@@ -1412,7 +1412,7 @@ const LBBR_DATA = {
       relacionados: ["COMP-COD-001", "PROC-DEN-001", "PROC-INV-001"]
     },
     {
-      id: "PROC-DEN-001", codigo: "PROC-DEN-001", titulo: "Canal de Denúncias",
+      id: "PROC-DEN-001", codigo: "PROC-DEN-001", titulo: "Procedimento do Canal de Denúncias",
       area: "compliance", tipo: "Procedimento", versao: "1.1", status: "vigente",
       dataAprovacao: "16/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "16/01/2027",
       resumo: "Disciplina o funcionamento do canal de denúncias, garantindo anonimato, confidencialidade, não retaliação e tratamento independente dos relatos recebidos.",
@@ -1427,7 +1427,7 @@ const LBBR_DATA = {
       relacionados: ["PROG-INTEG-001", "PROC-INV-001", "COMP-COD-001"]
     },
     {
-      id: "PROC-INV-001", codigo: "PROC-INV-001", titulo: "Investigações Internas",
+      id: "PROC-INV-001", codigo: "PROC-INV-001", titulo: "Procedimento de Investigações Internas",
       area: "compliance", tipo: "Procedimento", versao: "1.0", status: "vigente",
       dataAprovacao: "16/01/2026", aprovador: "Diretoria de Compliance", proximaRevisao: "16/01/2027",
       resumo: "Estabelece a metodologia de condução de investigações internas, assegurando imparcialidade, devido processo, sigilo e preservação de evidências.",
@@ -1663,7 +1663,11 @@ async function pedirOtp(email, pendente) {
     headers: { "Content-Type": "application/json", "apikey": CIENCIA_DB.anonKey },
     body: JSON.stringify({ email: email, create_user: true })
   });
-  if (!r.ok) { const err = new Error("HTTP " + r.status); err.status = r.status; throw err; }
+  if (!r.ok) {
+    let detalhe = "";
+    try { const j = await r.json(); detalhe = j.msg || j.message || j.error_description || j.error || ""; } catch (x) {}
+    const err = new Error("HTTP " + r.status); err.status = r.status; err.detalhe = detalhe; throw err;
+  }
   localStorage.setItem(PKEY, JSON.stringify(pendente));
 }
 
@@ -1747,9 +1751,7 @@ async function enviarCiencia() {
     msg.innerHTML = '<span class="cm-ok">Link enviado para ' + esc(email) + '. Abra o e-mail e clique no link para concluir o registro desta política.</span>';
   } catch (e) {
     btn.disabled = false;
-    msg.innerHTML = e.status === 429
-      ? '<span class="cm-err">Aguarde cerca de um minuto entre envios de link e tente novamente.</span>'
-      : '<span class="cm-err">Não foi possível enviar o link agora. Verifique o e-mail digitado ou comunique a Diretoria de Compliance.</span>';
+    msg.innerHTML = msgErroOtp(e);
   }
 }
 
@@ -1770,6 +1772,22 @@ function abrirReciboDoc(docId) {
 }
 
 /* ---- minhas confirmacoes (consulta por OTP) ---- */
+function msgErroOtp(e) {
+  /* Diagnóstico completo apenas no console (F12), para a administração do portal. */
+  const causas = {
+    429: "limite de envios por hora do e-mail nativo do Supabase",
+    400: "requisição rejeitada: verificar signups habilitados e URL do portal autorizada",
+    422: "cadastro de novos usuários desabilitado (Allow new users to sign up)",
+    500: "falha no envio do e-mail: SMTP não configurado ou serviço nativo restrito ao time do projeto"
+  };
+  console.error("[Governance Hub] Falha no envio de OTP - HTTP " + (e.status || "sem resposta")
+    + (e.detalhe ? " | " + e.detalhe : "")
+    + (causas[e.status] ? " | Causa provável: " + causas[e.status] : ""));
+  return e.status === 429
+    ? '<span class="cm-err">Aguarde alguns minutos e tente novamente.</span>'
+    : '<span class="cm-err">Não foi possível enviar o link agora. Verifique o e-mail digitado ou comunique a Diretoria de Compliance.</span>';
+}
+
 async function enviarOtpConsulta() {
   const msg = document.getElementById("mcMsg");
   const email = document.getElementById("mcEmail").value.trim().toLowerCase();
@@ -1785,9 +1803,7 @@ async function enviarOtpConsulta() {
     msg.innerHTML = '<span class="cm-ok">Link enviado para ' + esc(email) + '. Abra o e-mail e clique no link para visualizar suas confirmações.</span>';
   } catch (e) {
     btn.disabled = false;
-    msg.innerHTML = e.status === 429
-      ? '<span class="cm-err">Aguarde cerca de um minuto entre envios de link e tente novamente.</span>'
-      : '<span class="cm-err">Não foi possível enviar o link agora. Tente novamente em instantes.</span>';
+    msg.innerHTML = msgErroOtp(e);
   }
 }
 
@@ -1849,7 +1865,7 @@ function docRow(d) {
     <span class="dr-ico">${svg("doc")}</span>
     <span class="dr-main">
       <span class="dr-title">${esc(d.titulo)}</span>
-      <span class="dr-sub"><span class="code-chip">${d.codigo}</span> ${EM_DESENVOLVIMENTO_DOCS.includes(d.id) ? '<span class="badge em-revisao">Planejado</span>' : badge(d.status)} <span>${esc(d.tipo)}</span>${DOCS_LIBERADOS.includes(d.id) ? `<span class="leitura-chip">${svg("relogio")} ${tempoLeitura(d)} min</span>` : ``}</span>
+      <span class="dr-sub"><span class="code-chip">${d.codigo}</span> ${EM_DESENVOLVIMENTO_DOCS.includes(d.id) ? '<span class="badge em-revisao">Planejado</span>' : badge(d.status)}${DOCS_LIBERADOS.includes(d.id) ? `<span class="leitura-chip">${svg("relogio")} ${tempoLeitura(d)} min</span>` : ``}</span>
     </span>
     <span class="dr-meta">v${d.versao}</span>
     <span class="arrow">${svg("arrow")}</span>
@@ -2080,7 +2096,7 @@ function docPage(id) {
   <div class="doc-layout">
     <div class="doc-main">
       <div class="doc-title-block">
-        <div class="dr-sub" style="font-size:13px"><span class="code-chip">${d.codigo}</span> ${badge(d.status)} <span class="muted">${esc(d.tipo)}</span></div>
+        <div class="dr-sub" style="font-size:13px"><span class="code-chip">${d.codigo}</span> ${badge(d.status)}</div>
         <h1>${esc(d.titulo)}</h1>
         <p class="muted">${esc(d.resumo)}</p>
         <div class="doc-actions">
