@@ -376,8 +376,8 @@ a.doc-row:hover .dr-ext { color: var(--brand); }
 }
 .info-card .doc-actions, .info-card > .muted:last-child { margin-top: auto; }
 .info-card:hover { border-color: #cfe0f0; box-shadow: var(--shadow-sm); }
-.info-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; color: var(--ink); min-height: 52px; display: flex; align-items: flex-start; }
-.info-card p { margin: 0 0 14px; font-size: 13.5px; color: var(--muted); }
+.info-card h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; color: var(--ink); min-height: 46px; display: flex; align-items: flex-end; line-height: 1.25; }
+.info-card p { margin: 0 0 8px; font-size: 13.5px; color: var(--muted); text-align: justify; text-justify: inter-word; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; min-height: 108px; }
 
 .panel {
   border: 1px solid var(--line); border-radius: var(--radius);
@@ -458,8 +458,8 @@ a.doc-row:hover .dr-ext { color: var(--brand); }
 .meta-row .mv { color: var(--ink); font-weight: 500; text-align: right; }
 
 /* Metadados de cards (treinamentos etc.): rotulo com largura fixa, valor sempre alinhado a esquerda, sem justificar */
-.meta-grid { display: flex; flex-direction: column; gap: 0; margin-top: 12px; }
-.meta-grid-row { display: grid; grid-template-columns: 108px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; }
+.meta-grid { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+.meta-grid-row { display: grid; grid-template-columns: 108px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; min-height: 56px; align-items: start; }
 .meta-grid-row:last-child { border-bottom: none; }
 .meta-grid-row .ml { color: var(--muted); }
 .meta-grid-row .mv { color: var(--ink); font-weight: 500; text-align: left; }
@@ -2175,7 +2175,7 @@ function pageTreinamentos() {
   </div>
   <div class="card-grid-wide">
     ${D.treinamentos.map(t=>`<div class="info-card">
-      <div class="dr-sub" style="margin-bottom:8px">
+      <div class="dr-sub" style="margin-bottom:5px">
         <span class="tag">${esc(t.tipo)}</span>
         ${t.status === "realizado" ? badge("vigente").replace("Vigente","Realizado") : badge("em-revisao").replace("Em Revisão","Planejado")}
         <span class="muted" style="font-size:12px">${esc(t.data)}</span>
