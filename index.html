@@ -462,7 +462,7 @@ a.doc-row:hover .dr-ext { color: var(--brand); }
 .meta-grid-row { display: grid; grid-template-columns: 108px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; min-height: 56px; align-items: start; }
 .meta-grid-row:last-child { border-bottom: none; }
 .meta-grid-row .ml { color: var(--muted); }
-.meta-grid-row .mv { color: var(--ink); font-weight: 500; text-align: left; }
+.meta-grid-row .mv { color: var(--ink); font-weight: 500; text-align: left; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 
 /* Version history table */
 .vtable { width: 100%; border-collapse: collapse; font-size: 13.5px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
@@ -1471,7 +1471,7 @@ const LBBR_DATA = {
   /* -------------------- TREINAMENTOS -------------------- */
   treinamentos: [
     { id: "TRN-PLDFT-002", titulo: "PLD/FT Avançado", tipo: "Treinamento", descricao: "Treinamento avançado de PLD/FTP para áreas de maior exposição a risco: tipologias de lavagem de dinheiro, financiamento ao terrorismo, sinais de alerta na operação e fluxo de comunicação ao Siscoaf.", publico: "Áreas operacionais (Pagamentos, Risco, KYC, Atendimento, Compliance + interessados)", data: "Out/2026", cargaHoraria: "1h", formato: "Presencial / EAD", status: "planejado", relacionado: "POL-PLDFT-001" },
-    { id: "TRN-COND-001", titulo: "Código de Conduta e Canal de Denúncias", tipo: "Apresentação", descricao: "Treinamento obrigatório de lançamento do Código de Conduta: por que compliance importa, o Código na prática, regras essenciais do dia a dia, a regra de ouro sobre apostas e informação privilegiada, e o Canal de Denúncias.", publico: "Colaboradores dos níveis táticos e operacionais", data: "Agosto/2026", cargaHoraria: "40 a 45 minutos", formato: "Presencial / EAD", obrigatorio: true, status: "realizado", relacionado: "COMP-COD-001" },
+    { id: "TRN-COND-001", titulo: "Código de Conduta e Canal de Denúncias", tipo: "Apresentação", descricao: "Treinamento obrigatório de lançamento do Código de Conduta: por que compliance importa, o Código na prática, regras essenciais do dia a dia, a regra de ouro sobre apostas e informação privilegiada, e o Canal de Denúncias.", publico: "Todos os colaboradores do Grupo", data: "Agosto/2026", cargaHoraria: "40 a 45 minutos", formato: "Presencial / EAD", obrigatorio: true, status: "realizado", relacionado: "COMP-COD-001" },
     { id: "TRN-ANTIC-001", titulo: "Dia Internacional Anticorrupção", tipo: "Treinamento", descricao: "Treinamento anual em referência ao Dia Internacional Anticorrupção: fundamentos da Lei 12.846/2013, vedações do Código de Conduta e o papel do Canal de Denúncias. Sessão aberta com convidado externo.", publico: "Todos os colaboradores do Grupo", data: "Dez/2026", cargaHoraria: "1h", formato: "100% EAD + convidado externo", status: "planejado", relacionado: "POL-ANTIC-001" }
   ],
 
@@ -2089,16 +2089,28 @@ function renderSecoes(conteudo) {
   }).join("");
 }
 
+const TRILHA_EVIDENCIAS = {
+  "COMP-COD-001": [
+    { strong: "Ata de aprovação", span: "Evidência de governança - 07/07/2026" },
+    { strong: "Comunicado interno", span: "Vinculação de comunicado - 30/06/2026" },
+    { strong: "Treinamento", span: "Capacitação associada - 05/08/2026" },
+    { strong: "Lista de presença e certificados", span: "Evidência de treinamento - em implementação" }
+  ]
+};
+
 function docPage(id) {
   const d = docById(id);
   if (!d) return pageNotFound();
   const rel = (d.relacionados || []).map(x => docById(x) || D.formularios.find(f=>f.id===x) || D.treinamentos.find(t=>t.id===x)).filter(Boolean);
-  const trilha = [
-    { strong: d.titulo, span: `${d.codigo} . versão ${d.versao}` },
+  const trilhaPadrao = [
     { strong: "Ata de aprovação", span: "Evidência de governança - em implementação" },
     { strong: "Comunicado interno", span: "Vinculação de comunicado - em implementação" },
     { strong: "Treinamento", span: "Capacitação associada - em implementação" },
     { strong: "Lista de presença e certificados", span: "Evidência de treinamento - em implementação" }
+  ];
+  const trilha = [
+    { strong: d.titulo, span: `${d.codigo} . versão ${d.versao}` },
+    ...(TRILHA_EVIDENCIAS[d.id] || trilhaPadrao)
   ];
   return `
   ${crumb([{label:"Início",href:"#/inicio"},{label:AREA_LABEL[d.area],href:"#/"+d.area},{label:d.codigo}])}
