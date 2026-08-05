@@ -368,12 +368,15 @@ a.doc-row:hover .dr-ext { color: var(--brand); }
 
 /* Section cards (landing) */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card-grid-wide { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
 .info-card {
+  display: flex; flex-direction: column; height: 100%;
   border: 1px solid var(--line); border-radius: var(--radius);
   background: #fff; padding: 22px; transition: border-color .15s, box-shadow .15s;
 }
+.info-card .doc-actions, .info-card > .muted:last-child { margin-top: auto; }
 .info-card:hover { border-color: #cfe0f0; box-shadow: var(--shadow-sm); }
-.info-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; color: var(--ink); }
+.info-card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; color: var(--ink); min-height: 52px; display: flex; align-items: flex-start; }
 .info-card p { margin: 0 0 14px; font-size: 13.5px; color: var(--muted); }
 
 .panel {
@@ -453,6 +456,13 @@ a.doc-row:hover .dr-ext { color: var(--brand); }
 .meta-row:last-child { border-bottom: none; }
 .meta-row .ml { color: var(--muted); }
 .meta-row .mv { color: var(--ink); font-weight: 500; text-align: right; }
+
+/* Metadados de cards (treinamentos etc.): rotulo com largura fixa, valor sempre alinhado a esquerda, sem justificar */
+.meta-grid { display: flex; flex-direction: column; gap: 0; margin-top: 12px; }
+.meta-grid-row { display: grid; grid-template-columns: 108px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-2); font-size: 13px; }
+.meta-grid-row:last-child { border-bottom: none; }
+.meta-grid-row .ml { color: var(--muted); }
+.meta-grid-row .mv { color: var(--ink); font-weight: 500; text-align: left; }
 
 /* Version history table */
 .vtable { width: 100%; border-collapse: collapse; font-size: 13.5px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
@@ -919,7 +929,7 @@ const LBBR_DATA = {
         { v: "v1.0", d: "Jun/2026", r: "Diretoria de Compliance", desc: "Aprovação pela Alta Administração" },
         { v: "v1.0", d: "Jul/2026", r: "Diretoria de Compliance", desc: "Publicação e entrada em vigência" }
       ],
-      relacionados: ["POL-ANTIC-001", "POL-INTES-001", "PROC-DEN-001"]
+      relacionados: ["POL-ANTIC-001", "POL-INTES-001", "PROC-DEN-001", "TRN-COND-001"]
     },
     {
       id: "POL-GRC-001", codigo: "POL-GRC-001", titulo: "Política de Gestão de Riscos Corporativos",
@@ -1337,7 +1347,7 @@ const LBBR_DATA = {
         { v: "v2.0", d: "Jun/2026", r: "Diretoria de Compliance", desc: "Aprovação pela Alta Administração" },
         { v: "v2.0", d: "Jul/2026", r: "Diretoria de Compliance", desc: "Publicação e entrada em vigência" }
       ],
-      relacionados: ["PROC-KYC-001", "PROC-EDD-001", "PROC-MON-001", "PROC-COS-001", "AIR-PLDFT-001"]
+      relacionados: ["PROC-KYC-001", "PROC-EDD-001", "PROC-MON-001", "PROC-COS-001", "AIR-PLDFT-001", "TRN-PLDFT-002"]
     },
     {
       id: "PROC-MON-001", codigo: "PROC-MON-001", titulo: "Procedimento de Monitoramento",
@@ -1460,10 +1470,9 @@ const LBBR_DATA = {
 
   /* -------------------- TREINAMENTOS -------------------- */
   treinamentos: [
-    { id: "TRN-PLDFT-001", titulo: "Treinamento de PLD/FTP", tipo: "Apresentação", descricao: "Capacitação sobre prevenção à lavagem de dinheiro e financiamento do terrorismo no contexto de apostas de quota fixa, com estudos de caso.", publico: "Todos os colaboradores", data: "20/05/2026" },
-    { id: "TRN-COND-001", titulo: "Código de Conduta na prática", tipo: "Cartilha", descricao: "Material de apoio sobre a aplicação do código de conduta no dia a dia, com exemplos e orientações de decisão ética.", publico: "Todos os colaboradores", data: "12/03/2026" },
-    { id: "TRN-ANTI-001", titulo: "Anticorrupção e relação com o poder público", tipo: "Apresentação", descricao: "Diretrizes de prevenção à corrupção e controles para interações com órgãos reguladores.", publico: "Liderança e áreas de relacionamento institucional", data: "18/02/2026" },
-    { id: "TRN-INTE-001", titulo: "Integridade e canal de denúncias", tipo: "Cartilha", descricao: "Orientações sobre o programa de integridade, como reportar desvios e as garantias do denunciante.", publico: "Todos os colaboradores", data: "15/01/2026" }
+    { id: "TRN-PLDFT-002", titulo: "PLD/FT Avançado", tipo: "Treinamento", descricao: "Treinamento avançado de PLD/FTP para áreas de maior exposição a risco: tipologias de lavagem de dinheiro, financiamento ao terrorismo, sinais de alerta na operação e fluxo de comunicação ao Siscoaf.", publico: "Áreas operacionais (Pagamentos, Risco, KYC, Atendimento, Compliance + interessados)", data: "Out/2026", cargaHoraria: "1h", formato: "Presencial / EAD", status: "planejado", relacionado: "POL-PLDFT-001" },
+    { id: "TRN-COND-001", titulo: "Código de Conduta e Canal de Denúncias", tipo: "Apresentação", descricao: "Treinamento obrigatório de lançamento do Código de Conduta: por que compliance importa, o Código na prática, regras essenciais do dia a dia, a regra de ouro sobre apostas e informação privilegiada, e o Canal de Denúncias.", publico: "Colaboradores dos níveis táticos e operacionais", data: "Agosto/2026", cargaHoraria: "40 a 45 minutos", formato: "Presencial / EAD", obrigatorio: true, status: "realizado", relacionado: "COMP-COD-001" },
+    { id: "TRN-ANTIC-001", titulo: "Dia Internacional Anticorrupção", tipo: "Treinamento", descricao: "Treinamento anual em referência ao Dia Internacional Anticorrupção: fundamentos da Lei 12.846/2013, vedações do Código de Conduta e o papel do Canal de Denúncias. Sessão aberta com convidado externo.", publico: "Todos os colaboradores do Grupo", data: "Dez/2026", cargaHoraria: "1h", formato: "100% EAD + convidado externo", status: "planejado", relacionado: "POL-ANTIC-001" }
   ],
 
   /* -------------------- FORMULARIOS -------------------- */
@@ -1538,7 +1547,7 @@ const LBBR_DATA = {
     { t: "SPA/MF", d: "Secretaria de Prêmios e Apostas do Ministério da Fazenda. Órgão regulador do mercado de apostas de quota fixa no Brasil, responsável por autorização, regulação e fiscalização." }
   ],
   faq: [
-    { q: "Posso apostar nas plataformas do próprio Grupo (luck.bet, 1pra1 e startbet)?", a: "O Código de Conduta (COMP-COD-001) trata das apostas por colaboradores nas marcas do Grupo. A regra geral é a vedação para quem tem acesso a informações operacionais, de risco ou privilegiadas, de modo a evitar conflito de interesses e uso de informação privilegiada. Consulte o documento para os termos aplicáveis ao seu cargo e, em caso de dúvida, fale com o Compliance." },
+    { q: "Posso apostar nas plataformas do próprio Grupo (luck.bet, 1PRA1 e STARTBET)?", a: "O Código de Conduta (COMP-COD-001) trata das apostas por colaboradores nas marcas do Grupo. A regra geral é a vedação para quem tem acesso a informações operacionais, de risco ou privilegiadas, de modo a evitar conflito de interesses e uso de informação privilegiada. Consulte o documento para os termos aplicáveis ao seu cargo e, em caso de dúvida, fale com o Compliance." },
     { q: "O que caracteriza um conflito de interesses e quando devo declarar?", a: "Há conflito quando interesses pessoais, familiares ou financeiros podem influenciar, ainda que potencialmente, decisões que você toma em nome do Grupo. A declaração deve ser feita tempestivamente, sempre que a situação surgir, por meio do formulário de Declaração de Conflito de Interesse (FORM-INTES-001), conforme a POL-INTES-001." },
     { q: "Posso receber brindes, presentes ou convites de fornecedores e parceiros?", a: "Cortesias de valor simbólico e ocasionais podem ser aceitas. Brindes acima dos limites definidos, convites para eventos ou qualquer oferta que possa influenciar uma decisão exigem aprovação prévia da Diretoria de Compliance, solicitada pelo formulário FORM-SOL-001, conforme a POL-BRIND-001. Na dúvida, recuse e consulte o Compliance." },
     { q: "Posso indicar familiares ou pessoas próximas para trabalhar ou prestar serviço ao Grupo?", a: "A indicação não é proibida, mas deve ser transparente. Você não pode participar de decisões de contratação, gestão ou avaliação de pessoa com quem tenha relação pessoal ou familiar. Declare a situação pelo FORM-INTES-001, conforme a POL-INTES-001, para que se adotem medidas de segregação." },
@@ -1896,7 +1905,7 @@ const NAV = [
 /* Secoes ainda em desenvolvimento: rota aqui = item marcado "em breve"
    e o clique abre um aviso, sem navegar. Para liberar uma secao,
    remova a rota desta lista. */
-const EM_DESENVOLVIMENTO = ["integridadeesportiva", "treinamentos", "formularios"];
+const EM_DESENVOLVIMENTO = ["integridadeesportiva", "formularios"];
 /* Documentos específicos ainda em desenvolvimento (badge "em breve" e aviso ao abrir).
    Para liberar um documento, remova o código desta lista. */
 const PDF_LINKS = {
@@ -2006,7 +2015,7 @@ function pageComunicados() {
   <div class="page-head">
     <div class="page-eyebrow">Comunicação corporativa</div>
     <h1 class="page-title">Comunicados</h1>
-    <p class="page-lead">Cronograma de comunicados de Compliance do Grupo LBBR (luck.bet, 1pra1 e startbet), de abril de 2026 a março de 2027. ${pub} comunicado(s) já publicado(s) e disponível(is) para leitura; os demais seguem planejados conforme o calendário aprovado.</p>
+    <p class="page-lead">Cronograma de comunicados de Compliance do Grupo LBBR (luck.bet, 1PRA1 e STARTBET), de abril de 2026 a março de 2027. ${pub} comunicado(s) já publicado(s) e disponível(is) para leitura; os demais seguem planejados conforme o calendário aprovado.</p>
   </div>
   <div class="filters">
     <label>Status</label>
@@ -2145,7 +2154,13 @@ function docPage(id) {
         <div class="meta-row"><span class="ml">Aprovador</span><span class="mv">${esc(d.aprovador)}</span></div>
         <div class="meta-row"><span class="ml">Próxima revisão</span><span class="mv">${d.proximaRevisao}</span></div>
       </div>
-      ${rel.length ? `<div class="meta-card" style="margin-top:16px"><h4>Documentos relacionados</h4><div class="rel-list">${rel.map(r=>`<a class="rel-item" href="#/doc/${r.id}">${svg("link")}<span><span class="ri-t">${esc(r.titulo)}</span><span class="ri-c">${r.codigo||r.id}</span></span></a>`).join("")}</div></div>` : ""}
+      ${rel.length ? `<div class="meta-card" style="margin-top:16px"><h4>Documentos relacionados</h4><div class="rel-list">${rel.map(r=>{
+        const isDoc = !!docById(r.id);
+        const isTreinamentoPendente = !isDoc && D.treinamentos.find(t=>t.id===r.id) && D.treinamentos.find(t=>t.id===r.id).status !== "realizado";
+        const href = isDoc ? '#/doc/'+r.id : (isTreinamentoPendente ? '#/treinamentos' : 'assets/docs/'+r.id+'.pdf');
+        const attrs = isDoc ? '' : (isTreinamentoPendente ? '' : ' target="_blank" rel="noopener"');
+        return `<a class="rel-item" href="${href}"${attrs}>${svg("link")}<span><span class="ri-t">${esc(r.titulo)}</span><span class="ri-c">${r.codigo||r.id}</span></span></a>`;
+      }).join("")}</div></div>` : ""}
     </div>
   </div>`;
 }
@@ -2156,15 +2171,26 @@ function pageTreinamentos() {
   <div class="page-head">
     <div class="page-eyebrow">Centro de conhecimento</div>
     <h1 class="page-title">Treinamentos</h1>
-    <p class="page-lead">Biblioteca de cartilhas, apresentações e materiais de capacitação. Estruturada para futura associação com evidências de treinamento.</p>
+    <p class="page-lead">Cronograma de treinamentos de Compliance do Grupo LBBR (luck.bet, 1PRA1 e STARTBET), com materiais disponíveis para os treinamentos já realizados.</p>
   </div>
-  <div class="card-grid">
+  <div class="card-grid-wide">
     ${D.treinamentos.map(t=>`<div class="info-card">
-      <div class="dr-sub" style="margin-bottom:8px"><span class="tag">${esc(t.tipo)}</span><span class="muted" style="font-size:12px">${t.data}</span></div>
+      <div class="dr-sub" style="margin-bottom:8px">
+        <span class="tag">${esc(t.tipo)}</span>
+        ${t.status === "realizado" ? badge("vigente").replace("Vigente","Realizado") : badge("em-revisao").replace("Em Revisão","Planejado")}
+        <span class="muted" style="font-size:12px">${esc(t.data)}</span>
+      </div>
       <h3>${esc(t.titulo)}</h3>
       <p>${esc(t.descricao)}</p>
-      <div class="meta-row" style="border:none;padding:0"><span class="ml">Público-alvo</span><span class="mv">${esc(t.publico)}</span></div>
-      <div class="doc-actions" style="margin-top:14px"><a class="btn" href="assets/docs/${t.id}.pdf">${svg("download")} Download</a></div>
+      <div class="meta-grid">
+        <div class="meta-grid-row"><span class="ml">Público-alvo</span><span class="mv">${esc(t.publico)}</span></div>
+        <div class="meta-grid-row"><span class="ml">Carga horária</span><span class="mv">${esc(t.cargaHoraria)}</span></div>
+        <div class="meta-grid-row"><span class="ml">Formato</span><span class="mv">${esc(t.formato)}</span></div>
+        ${t.relacionado ? `<div class="meta-grid-row"><span class="ml">Documento base</span><span class="mv"><a href="#/doc/${t.relacionado}">${t.relacionado}</a></span></div>` : ``}
+      </div>
+      <div class="doc-actions" style="margin-top:14px">${t.status === "realizado"
+        ? `<a class="btn" href="assets/docs/${t.id}.pdf" target="_blank" rel="noopener">${svg("download")} Download</a>`
+        : `<span class="muted" style="font-size:12.5px">Material disponível após a realização</span>`}</div>
     </div>`).join("")}
   </div>`;
 }
