@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunicado 005 · Comunicação com Regulador, COAF e Preservação de Sigilo | Grupo LBBR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#185FA5;--blue-light:#E6F1FB;--blue-mid:#1E6FD9;--blue-dark:#0C447C;--red:#A32D2D;--red-light:#FCEBEB;--amber:#BA7517;--amber-light:#FAEEDA;--green:#0F6E56;--green-light:#E1F5EE;--green-dark:#085041}
+.doc{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);max-width:780px;margin:0 auto;padding:0 0 3rem}
+
+/* HEADER */
+.hdr{border-bottom:3px solid var(--blue);padding-bottom:1.5rem;margin-bottom:0}
+.hdr-meta{font-family:'IBM Plex Sans',sans-serif;font-size:.8rem;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem;padding-top:1.5rem;text-align:center}
+.hdr-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1.2;color:var(--color-text-primary);margin-bottom:.5rem}
+.hdr-title em{font-style:italic;color:var(--blue);font-weight:400}
+.hdr-subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--color-text-secondary);line-height:1.6;text-align:justify}
+
+/* NORMA BAR */
+.norma-bar{background:var(--color-background-secondary);border-left:3px solid var(--blue);padding:.9rem 1.2rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.norma-bar-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:.55rem}
+.norma-list{display:block;line-height:2}
+.norma-tag{font-size:11px;font-family:'IBM Plex Sans',monospace;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:3px 8px;border-radius:3px;display:inline-block;margin:2px 4px 2px 0}
+
+/* SECTIONS */
+.section{margin:2rem 0}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.1rem}
+.section-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;background:var(--blue-light);padding:2px 7px;border-radius:3px;flex-shrink:0}
+.section-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--color-text-primary)}
+.divider{height:1px;background:#c8cdd2;margin:1.8rem 0}
+
+/* BODY TEXT */
+.body-p{font-size:.93rem;line-height:1.78;color:var(--color-text-primary);margin-bottom:1rem;text-align:justify}
+.body-p strong{font-weight:600}
+
+/* CALLOUTS */
+.callout-blue{border-left:2px solid var(--blue-mid);padding:.9rem 1.2rem;background:var(--blue-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-blue p{font-size:.9rem;line-height:1.72;color:var(--blue-dark);text-align:justify}
+.callout-blue p strong{font-weight:600;color:var(--blue-dark)}
+.callout-amber{border-left:2px solid var(--amber);padding:.9rem 1.2rem;background:var(--amber-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-amber p{font-size:.9rem;line-height:1.72;color:#412402;text-align:justify}
+.callout-amber p strong{font-weight:600;color:#412402}
+.callout-green{border-left:2px solid var(--green);padding:.9rem 1.2rem;background:var(--green-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-green p{font-size:.9rem;line-height:1.72;color:var(--green-dark);text-align:justify}
+.callout-green p strong{font-weight:600;color:var(--green-dark)}
+
+/* VETORES GRID (3 colunas) */
+.vetores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.vetor-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:1rem 1.1rem;background:var(--color-background-primary);border-top:2px solid var(--blue)}
+.vetor-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);margin-bottom:.5rem}
+.vetor-head{font-size:.9rem;font-weight:600;color:var(--color-text-primary);margin-bottom:.35rem}
+.vetor-body{font-size:.82rem;color:var(--color-text-secondary);line-height:1.6}
+
+/* TIPOLOGIAS GRID (2 colunas) */
+.tipologias-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.tip-card{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+.tip-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);background:var(--blue-light);padding:.5rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.tip-def{font-size:.82rem;color:var(--color-text-secondary);line-height:1.55;padding:.625rem .875rem;border-bottom:0.5px solid var(--color-border-tertiary);font-style:italic}
+.tip-list{padding:.625rem .875rem;list-style:none}
+.tip-list li{font-size:.82rem;color:var(--color-text-secondary);padding:.2rem 0 .2rem .875rem;position:relative;line-height:1.5}
+.tip-list li::before{content:"";position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--blue-mid);border-radius:50%}
+
+/* PASSOS */
+.proto-flow{display:flex;gap:0;margin:1.1rem 0;overflow-x:auto}
+.proto-step{flex:1;min-width:120px;padding:.8rem .9rem;border:0.5px solid var(--color-border-tertiary);border-right:none;background:var(--color-background-primary);position:relative}
+.proto-step:last-child{border-right:0.5px solid var(--color-border-tertiary);border-radius:0 8px 8px 0}
+.proto-step:first-child{border-radius:8px 0 0 8px}
+.proto-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;margin-bottom:4px}
+.proto-label{font-size:.8rem;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;line-height:1.35}
+.proto-body{font-size:.75rem;color:var(--color-text-secondary);line-height:1.5}
+.proto-arrow{position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:8px solid var(--color-border-secondary);z-index:2}
+
+/* TABELA DE CONDUTA */
+.conduta-table{width:100%;border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;margin:1.2rem 0;font-size:.85rem;border-collapse:separate;border-spacing:0}
+.conduta-table thead th{text-align:left;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-dark);background:var(--blue-light);padding:.6rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.conduta-table tbody td{font-size:.83rem;line-height:1.55;vertical-align:top;padding:.75rem .875rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.conduta-table tbody tr:last-child td{border-bottom:none}
+.conduta-table tbody tr:nth-child(even) td{background:#FAFAFA}
+.td-certo{color:var(--green-dark)}
+.td-errado{color:var(--red)}
+
+/* VEDAÇÕES */
+.vedacoes-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.2rem 0}
+.vedacao-item{display:flex;gap:.625rem;align-items:flex-start;background:var(--red-light);border:0.5px solid #F5C6C2;border-radius:6px;padding:.625rem .875rem}
+.vedacao-x{color:var(--red);font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px}
+.vedacao-item span{font-size:.83rem;color:#501313;line-height:1.5}
+
+/* CONDUTA POR ÁREA */
+.area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.área-card{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+.área-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);background:var(--blue-light);padding:.5rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.área-list{padding:.625rem .875rem;list-style:none}
+.área-list li{font-size:.82rem;color:var(--color-text-secondary);padding:.2rem 0 .2rem .875rem;position:relative;line-height:1.5}
+.área-list li::before{content:"";position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--green);border-radius:50%}
+
+/* PORQUE BOX */
+.porque-box{background:var(--green-light);border:0.5px solid #9ED8CC;border-radius:8px;padding:1rem 1.1rem;margin:1rem 0}
+.porque-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.625rem}
+.porque-list{list-style:none}
+.porque-list li{font-size:.87rem;color:var(--green-dark);padding:.25rem 0 .25rem 1rem;position:relative;line-height:1.6}
+.porque-list li::before{content:"";position:absolute;left:0;top:.6rem;width:5px;height:5px;background:var(--green);border-radius:50%}
+
+/* PRAZOS TABLE */
+.prazo-table{width:100%;border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;margin:1.2rem 0;border-collapse:separate;border-spacing:0}
+.prazo-table thead th{text-align:left;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-dark);background:var(--blue-light);padding:.6rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.prazo-table tbody td{font-size:.83rem;line-height:1.55;vertical-align:top;padding:.7rem .875rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.prazo-table tbody tr:last-child td{border-bottom:none}
+.prazo-table tbody tr:nth-child(even) td{background:#FAFAFA}
+.prazo-tag{font-size:10px;font-weight:600;background:var(--amber-light);color:var(--amber);padding:2px 6px;border-radius:3px;display:inline-block}
+
+/* FOOTER */
+.footer{border-top:2px solid var(--color-border-tertiary);padding-top:1.2rem;margin-top:2.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem}
+.footer-left{font-family:'Playfair Display',serif;font-size:1rem;color:var(--color-text-secondary);font-style:italic}
+.footer-right{font-size:10.5px;color:var(--color-text-tertiary);text-align:right;line-height:1.8}
+.footer-right strong{font-weight:500;color:var(--color-text-secondary)}
+
+@media(max-width:640px){
+  .vetores-grid,.tipologias-grid,.vedacoes-grid,.area-grid{grid-template-columns:1fr}
+  .proto-flow{flex-direction:column}
+  .proto-step{border-right:0.5px solid var(--color-border-tertiary)!important;border-radius:0!important;border-bottom:none}
+  .proto-step:last-child{border-bottom:0.5px solid var(--color-border-tertiary);border-radius:0 0 8px 8px!important}
+  .proto-step:first-child{border-radius:8px 8px 0 0!important}
+  .proto-arrow{display:none}
+}
+</style>
+</head>
+<body style="background:#f5f5f5;padding:20px;">
+
+<div class="doc">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <p class="hdr-meta">Comunicado 005 &nbsp;·&nbsp; Compliance e PLD/FT</p>
+    <h1 class="hdr-title"><em>Comunicação com Regulador, COAF e Preservação de Sigilo</em> | Escalonamento, Reporte Tempestivo e Restrição ao Compartilhamento Indevido</h1>
+    <p class="hdr-subtitle">Comunicado oficial da área de Compliance sobre os fluxos internos de escalonamento de operações atípicas, a obrigação legal de comunicação ao COAF e ao regulador, a reserva de informação durante a análise e as restrições ao compartilhamento indevido de dados de investigação em curso.</p>
+  </div>
+
+  <!-- BASE NORMATIVA -->
+  <div class="norma-bar">
+    <div class="norma-bar-title">Base normativa e interna aplicavel</div>
+    <div class="norma-list">
+      <span class="norma-tag">Lei n. 9.613/1998 (arts. 11 e 11-A)</span>
+      <span class="norma-tag">Lei n. 14.790/2023</span>
+      <span class="norma-tag">Portaria SPA/MF n. 1.231/2024</span>
+      <span class="norma-tag">Portaria SPA/MF n. 1.143/2024</span>
+      <span class="norma-tag">Portaria SPA/MF n. 1.232/2024 (SIGAP)</span>
+      <span class="norma-tag">Lei n. 13.709/2018 (LGPD)</span>
+      <span class="norma-tag">Codigo de Conduta LBBR</span>
+      <span class="norma-tag">Politica de PLD/FTP (COMP-PLDFTP-001)</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <p class="body-p">Este comunicado e dirigido a todos os colaboradores, com atenção especial as áreas de Compliance, Operações, Pagamentos, Atendimento, TI e Seguranca da Informação. Comunicar ao COAF e ao regulador não e opção de gestao: e dever legal imposto a toda pessoa juridica que opera como agente de apostas de quota fixa no Brasil. <strong>A omissão configura infracionalidade própria, independente do crime que a originou.</strong></p>
+
+  <!-- 01 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Comunicar e uma Obrigação, não uma Escolha</span>
+    </div>
+    <p class="body-p">A Lei n. 9.613/1998 e a regulamentacao da SPA/MF impoe ao Grupo LBBR a obrigação de comunicar ao COAF, via Siscoaf, as operações que apresentem indicios de lavagem de dinheiro ou financiamento do terrorismo, independente de certeza sobre a ilicitude. O critério e o indicio, não a prova.</p>
+    <p class="body-p">A mesma logica se aplica a comunicação com o regulador federal (SPA/MF): dúvidas, demandas, notificacoes e determinacoes são processadas exclusivamente pela área de Compliance, que mantem o relacionamento institucional com a SPA/MF, com o SIGAP e com os demais órgãos competentes.</p>
+
+    <div class="vetores-grid">
+      <div class="vetor-card">
+        <div class="vetor-label">Obrigação 1</div>
+        <div class="vetor-head">Comunicação ao COAF</div>
+        <div class="vetor-body">Reporte de operações atípicas via Siscoaf, dentro do prazo previsto, vedada a ciencia do comunicado ao interessado.</div>
+      </div>
+      <div class="vetor-card">
+        <div class="vetor-label">Obrigação 2</div>
+        <div class="vetor-head">Comunicação ao regulador</div>
+        <div class="vetor-body">Resposta a demandas da SPA/MF, SIGAP e órgãos de fiscalização, sempre canalizada e validada pela Diretoria de Compliance.</div>
+      </div>
+      <div class="vetor-card">
+        <div class="vetor-label">Obrigação 3</div>
+        <div class="vetor-head">Preservação de sigilo</div>
+        <div class="vetor-body">Manutenção da confidencialidade de análises, relatorios e comunicações em curso, com restrição estrita de acesso e de compartilhamento.</div>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <p><strong>Atenção:</strong> a omissão de comunicação ao COAF sujeita a pessoa juridica e seus dirigentes a multas administrativas, suspensão de autorização e responsabilização penal independente. A comunicação feita de boa-fe, ainda que o fato não se confirme como crime, não gera responsabilidade civil ou penal para o comunicante (art. 11-A, Lei n. 9.613/1998).</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">A Cadeia de Comunicação Regulatória</span>
+    </div>
+    <p class="body-p">No Grupo LBBR, o fluxo de comunicação regulatória e sequencial e não pode ser encurtado ou iniciado por área que não seja o Compliance. O colaborador que identifica a operação atípica não comunica ao COAF diretamente: ele documenta e escala ao Compliance, que conduz a análise e toma a decisão de comunicar.</p>
+
+    <div class="tipologias-grid">
+      <div class="tip-card">
+        <div class="tip-head">Canal Siscoaf - COAF</div>
+        <div class="tip-def">Plataforma federal de comunicação de operações suspeitas. Acesso restrito ao MLRO designado pela Diretoria de Compliance.</div>
+        <ul class="tip-list">
+          <li>Operações com indicio de lavagem de dinheiro</li>
+          <li>Operações com indicio de financiamento do terrorismo</li>
+          <li>Operações com indicio de intermediação de apostas suspeitas</li>
+          <li>Prazo: comunicação tempestiva conforme regulamentacao vigente</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-head">Canal SIGAP - SPA/MF</div>
+        <div class="tip-def">Sistema de Gestao de Apostas do Ministerio da Fazenda. Canal de relacionamento regulatório, reportes e autoexclusão.</div>
+        <ul class="tip-list">
+          <li>Comunicação de autoexclusão e restrição de conta</li>
+          <li>Resposta a demandas de fiscalização</li>
+          <li>Reporte de eventos relevantes de compliance</li>
+          <li>Acesso restrito ao Compliance e Diretoria</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-head">SPA/MF - Regulador Federal</div>
+        <div class="tip-def">Secretaria de Premios e Apostas do Ministerio da Fazenda, responsavel pela licença operacional do Grupo LBBR.</div>
+        <ul class="tip-list">
+          <li>Respostas a oficio e demandas institucionais</li>
+          <li>Comunicação de incidentes relevantes</li>
+          <li>Atualizacao cadastral e documental da licença</li>
+          <li>Intermediação exclusiva pela Diretoria de Compliance</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-head">Outros Órgãos</div>
+        <div class="tip-def">Procon, Bacen, Ministerio Público e demais autoridades que possam demandar ou fiscalizar a operação do Grupo.</div>
+        <ul class="tip-list">
+          <li>Notificacoes de Procon estaduais e federais</li>
+          <li>Demandas do Banco Central em relacao a fluxos financeiros</li>
+          <li>Requisicoes do Ministerio Público e do Poder Judiciario</li>
+          <li>Qualquer demanda deve ser imediatamente encaminhada ao Compliance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Fluxo Interno de Escalonamento</span>
+    </div>
+    <p class="body-p">O escalonamento e o mecanismo pelo qual qualquer colaborador leva ao Compliance a identificação de operação atípica ou demanda regulatória. Ele deve ser imediato, formal e acompanhado das evidencias disponiveis. Não ha escalonamento verbal sem registro posterior.</p>
+
+    <div class="proto-flow">
+      <div class="proto-step">
+        <div class="proto-num">01</div>
+        <div class="proto-label">Identificação</div>
+        <div class="proto-body">Colaborador identifica operação atípica, demanda regulatória ou indicio relevante</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">02</div>
+        <div class="proto-label">Documentação</div>
+        <div class="proto-body">Registra o fato com dados, capturas e contexto, sem alterar ou excluir evidencias</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">03</div>
+        <div class="proto-label">Escalonamento</div>
+        <div class="proto-body">Comunica formalmente ao Compliance via canal definido, sem resolver, investigar ou avisar o usuario</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">04</div>
+        <div class="proto-label">Análise</div>
+        <div class="proto-body">Compliance conduz a análise técnica, decide sobre comunicação e registra o parecer com fundamentação</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">05</div>
+        <div class="proto-label">Comunicação</div>
+        <div class="proto-body">Se aplicavel, Compliance comunica ao COAF via Siscoaf e ao regulador, dentro do prazo regulatório</div>
+      </div>
+    </div>
+
+    <div class="callout-blue">
+      <p><strong>Regra basica:</strong> o colaborador que identifica não e o que comunica ao órgão externo. Ele documenta e escala. A comunicação ao COAF e ao regulador e competência exclusiva da Diretoria de Compliance, por meio do MLRO formalmente designado. Desviar esse fluxo compromete o sigilo e invalida a comunicação.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Reserva de Informação: O que Nunca Pode ser Compartilhado</span>
+    </div>
+    <p class="body-p">A reserva de informação, também chamada de tipping off, e a proibicao legal de informar ao usuario analisado, a terceiros ou a qualquer pessoa não autorizada que ha uma investigação ou comunicação em curso. A violacao e infração grave e pode anular o efeito da comunicação ao COAF.</p>
+    <p class="body-p">A restrição se aplica a qualquer colaborador que tenha acesso, direto ou indireto, a informações sobre análises, alertas, relatorios de investigação ou comunicações ao COAF e ao regulador:</p>
+
+    <div class="vedacoes-grid">
+      <div class="vedacao-item"><span class="vedacao-x">&#x2715;</span><span>Informar ao usuario que sua conta, transacao ou comportamento esta sendo analisado</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">&#x2715;</span><span>Comunicar a qualquer pessoa que uma COS foi ou sera submetida ao COAF</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">&#x2715;</span><span>Compartilhar com colegas não envolvidos o conteudo de relatorios de investigação</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">&#x2715;</span><span>Revelar identidade do colaborador que realizou o escalonamento</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">&#x2715;</span><span>Divulgar parametros internos de monitoramento, alertas ou critérios de deteccao</span></div>
+      <div class="vedacao-item"><span class="vedacao-x">&#x2715;</span><span>Discutir casos em andamento em ambientes públicos, grupos de mensagens ou canais informais</span></div>
+    </div>
+
+    <div class="callout-amber">
+      <p><strong>Tipping off:</strong> avisar o usuario ou qualquer parte relacionada de que ha análise, bloqueio ou comunicação em curso e a infração mais frequente nesse tema. Mesmo que a intenção seja ajudar ou esclarecer, o efeito e prejudicar a efetividade da comunicação e comprometer o Grupo perante o COAF e o regulador.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 05 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Reporte Tempestivo: Prazos e Responsabilidades</span>
+    </div>
+    <p class="body-p">Tempestividade significa comunicar dentro do prazo legal e regulatório, contado a partir do momento em que o fato gerador e identificado e analisado. O atraso no reporte, ainda que a comunicação seja feita posteriormente, caracteriza descumprimento autonomo da obrigação.</p>
+
+    <table class="prazo-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>Prazo</th>
+          <th>Canal</th>
+          <th>Responsavel</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Comunicação de operação suspeita ao COAF</td>
+          <td><span class="prazo-tag">Conforme Portaria 1.143/2024</span></td>
+          <td>Siscoaf</td>
+          <td>Compliance / MLRO</td>
+        </tr>
+        <tr>
+          <td>Comunicação ao SIGAP de evento relevante</td>
+          <td><span class="prazo-tag">Imediato ou conforme demanda</span></td>
+          <td>SIGAP</td>
+          <td>Compliance</td>
+        </tr>
+        <tr>
+          <td>Resposta a demanda ou oficio da SPA/MF</td>
+          <td><span class="prazo-tag">Prazo do oficio ou 10 dias uteis</span></td>
+          <td>Canal indicado pelo regulador</td>
+          <td>Compliance e Diretoria</td>
+        </tr>
+        <tr>
+          <td>Escalonamento interno de operação atípica</td>
+          <td><span class="prazo-tag">Imediato apos identificação</span></td>
+          <td>Canal interno de Compliance</td>
+          <td>Colaborador que identificou</td>
+        </tr>
+        <tr>
+          <td>Resposta a demanda de Procon ou outro órgão</td>
+          <td><span class="prazo-tag">Prazo do oficio ou legal</span></td>
+          <td>Canal indicado pelo órgão</td>
+          <td>Compliance e área envolvida</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout-blue">
+      <p><strong>O prazo comeca com a identificação, não com a decisão de comunicar.</strong> Análises que se prolongam sem justificativa técnica registrada comprometem a tempestividade. Qualquer dúvida sobre prazo deve ser imediatamente levada ao Compliance, que avaliara a urgencia e orientara o curso de acao.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 06 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Conduta Esperada por Área</span>
+    </div>
+    <p class="body-p">A cadeia de comunicação regulatória depende de cada área cumprir seu papel sem atalhos. Nenhuma área tem autonomia para resolver, arquivar ou comunicar externamente sem passar pelo Compliance. O caminho e sempre o mesmo: identificar, documentar, escalar.</p>
+
+    <table class="conduta-table">
+      <thead>
+        <tr>
+          <th>Situação</th>
+          <th>Conduta correta</th>
+          <th>O que não fazer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Usuario questiona por que seu saque esta retido</td>
+          <td class="td-certo">Informar que o processo esta em análise, sem detalhar o motivo</td>
+          <td class="td-errado">Explicar que ha suspeita, alerta ou comunicação ao COAF</td>
+        </tr>
+        <tr>
+          <td>Você recebe um oficio ou email de órgão externo</td>
+          <td class="td-certo">Encaminhar imediatamente ao Compliance, sem responder por conta própria</td>
+          <td class="td-errado">Responder diretamente ao órgão ou arquivar sem ciencia do Compliance</td>
+        </tr>
+        <tr>
+          <td>Você identifica padrao de transacoes atípicas em um cliente</td>
+          <td class="td-certo">Documentar o padrao e escalar ao Compliance com as evidencias</td>
+          <td class="td-errado">Bloquear, liberar ou questionar o cliente antes de escalar</td>
+        </tr>
+        <tr>
+          <td>Colega pergunta sobre o andamento de um caso de PLD</td>
+          <td class="td-certo">Informar que o caso esta sob análise do Compliance e que não pode detalhar</td>
+          <td class="td-errado">Compartilhar dados, resultado ou andamento da investigação</td>
+        </tr>
+        <tr>
+          <td>Você recebe solicitacao de dados de cliente de autoridade policial</td>
+          <td class="td-certo">Acionar imediatamente o Compliance e a Diretoria, sem fornecer qualquer dado</td>
+          <td class="td-errado">Atender a solicitacao informal ou sem ordem judicial/legal fundamentada</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="área-grid">
+      <div class="área-card">
+        <div class="área-head">Compliance</div>
+        <ul class="área-list">
+          <li>Conduz todas as comunicações ao COAF e regulador</li>
+          <li>Registra e fundamenta cada decisão de comunicar ou não comunicar</li>
+          <li>Define prazos e garante a tempestividade do reporte</li>
+          <li>Orienta as áreas sobre conduta diante de demandas externas</li>
+        </ul>
+      </div>
+      <div class="área-card">
+        <div class="área-head">Operações e Pagamentos</div>
+        <ul class="área-list">
+          <li>Identifica e documenta padroes atipicos de movimentacao</li>
+          <li>Escala ao Compliance sem resolver ou alertar o usuario</li>
+          <li>Preserva logs, registros e evidencias das operações</li>
+          <li>Não canaliza nenhuma demanda regulatória diretamente</li>
+        </ul>
+      </div>
+      <div class="área-card">
+        <div class="área-head">Atendimento, TI e Demais Áreas</div>
+        <ul class="área-list">
+          <li>Encaminha ao Compliance qualquer contato de órgão externo</li>
+          <li>Não comenta com o usuario sobre análises ou restrições em curso</li>
+          <li>Preserva e não altera dados de contas sob investigação</li>
+          <li>Reporta imediatamente incidentes de segurança com potencial regulatório</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="porque-box">
+      <div class="porque-head">Por que preservar o sigilo e proteger o prazo?</div>
+      <ul class="porque-list">
+        <li>A efetividade da comunicação ao COAF depende de que o investigado não seja alertado</li>
+        <li>O descumprimento de prazo e infração administrativa autonoma, independente do merito do caso</li>
+        <li>A exposição de parametros internos de deteccao compromete a eficácia de todo o programa de PLD</li>
+        <li>A reputação do Grupo perante a SPA/MF e construida na qualidade e tempestividade das comunicações</li>
+        <li>Colaboradores que seguem o fluxo correto estao protegidos; quem desvia responde individualmente</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Grupo LBBR &nbsp;·&nbsp; luck.bet &nbsp;·&nbsp; 1PRA1 &nbsp;·&nbsp; STARTBET</div>
+    <div class="footer-right">
+      <strong>Classificação:</strong> Interno / Institucional<br>
+      <strong>Vigência:</strong> Agosto 2026<br>
+      <strong>Responsavel:</strong> Diretoria de Compliance
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
