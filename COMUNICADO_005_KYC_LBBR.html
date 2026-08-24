@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunicado 005 · KYC, Cadastro e Diligência do Cliente | Grupo LBBR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#185FA5;--blue-light:#E6F1FB;--blue-mid:#1E6FD9;--blue-dark:#0C447C;--red:#A32D2D;--red-light:#FCEBEB;--amber:#BA7517;--amber-light:#FAEEDA;--green:#0F6E56;--green-light:#E1F5EE;--green-dark:#085041}
+.doc{font-family:'IBM Plex Sans',sans-serif;color:var(--color-text-primary);max-width:780px;margin:0 auto;padding:0 0 3rem}
+
+/* HEADER */
+.hdr{border-bottom:3px solid var(--blue);padding-bottom:1.5rem;margin-bottom:0}
+.hdr-meta{font-family:'IBM Plex Sans',sans-serif;font-size:.8rem;font-weight:500;color:var(--color-text-secondary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem;padding-top:1.5rem;text-align:center}
+.hdr-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1.2;color:var(--color-text-primary);margin-bottom:.5rem}
+.hdr-title em{font-style:italic;color:var(--blue);font-weight:400}
+.hdr-subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--color-text-secondary);line-height:1.6;text-align:justify}
+
+/* NORMA BAR */
+.norma-bar{background:var(--color-background-secondary);border-left:3px solid var(--blue);padding:.9rem 1.2rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.norma-bar-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:.55rem}
+.norma-list{display:block;line-height:2}
+.norma-tag{font-size:11px;font-family:'IBM Plex Sans',monospace;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:3px 8px;border-radius:3px;display:inline-block;margin:2px 4px 2px 0}
+
+/* SECTIONS */
+.section{margin:2rem 0}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.1rem}
+.section-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;background:var(--blue-light);padding:2px 7px;border-radius:3px;flex-shrink:0}
+.section-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--color-text-primary)}
+.divider{height:1px;background:#c8cdd2;margin:1.8rem 0}
+
+/* BODY TEXT */
+.body-p{font-size:.93rem;line-height:1.78;color:var(--color-text-primary);margin-bottom:1rem;text-align:justify}
+.body-p strong{font-weight:600}
+
+/* CALLOUTS */
+.callout-blue{border-left:2px solid var(--blue-mid);padding:.9rem 1.2rem;background:var(--blue-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-blue p{font-size:.9rem;line-height:1.72;color:var(--blue-dark);text-align:justify}
+.callout-blue p strong{font-weight:600;color:var(--blue-dark)}
+.callout-amber{border-left:2px solid var(--amber);padding:.9rem 1.2rem;background:var(--amber-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-amber p{font-size:.9rem;line-height:1.72;color:#412402;text-align:justify}
+.callout-amber p strong{font-weight:600;color:#412402}
+.callout-green{border-left:2px solid var(--green);padding:.9rem 1.2rem;background:var(--green-light);border-radius:0 8px 8px 0;margin:1.2rem 0}
+.callout-green p{font-size:.9rem;line-height:1.72;color:var(--green-dark);text-align:justify}
+.callout-green p strong{font-weight:600;color:var(--green-dark)}
+
+/* VETORES GRID (3 colunas) */
+.vetores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.vetor-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:1rem 1.1rem;background:var(--color-background-primary);border-top:2px solid var(--blue)}
+.vetor-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--blue);margin-bottom:.5rem}
+.vetor-head{font-size:.9rem;font-weight:600;color:var(--color-text-primary);margin-bottom:.35rem}
+.vetor-body{font-size:.82rem;color:var(--color-text-secondary);line-height:1.6}
+
+/* TIPOLOGIAS GRID (2 colunas) */
+.tipologias-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.tip-card{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+.tip-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);background:var(--blue-light);padding:.5rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.tip-def{font-size:.82rem;color:var(--color-text-secondary);line-height:1.55;padding:.625rem .875rem;border-bottom:0.5px solid var(--color-border-tertiary);font-style:italic}
+.tip-list{padding:.625rem .875rem;list-style:none}
+.tip-list li{font-size:.82rem;color:var(--color-text-secondary);padding:.2rem 0 .2rem .875rem;position:relative;line-height:1.5}
+.tip-list li::before{content:"";position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--blue-mid);border-radius:50%}
+
+/* PASSOS */
+.proto-flow{display:flex;gap:0;margin:1.1rem 0;overflow-x:auto}
+.proto-step{flex:1;min-width:120px;padding:.8rem .9rem;border:0.5px solid var(--color-border-tertiary);border-right:none;background:var(--color-background-primary);position:relative}
+.proto-step:last-child{border-right:0.5px solid var(--color-border-tertiary);border-radius:0 8px 8px 0}
+.proto-step:first-child{border-radius:8px 0 0 8px}
+.proto-num{font-family:'IBM Plex Sans',monospace;font-size:11px;color:var(--blue);font-weight:600;margin-bottom:4px}
+.proto-label{font-size:.8rem;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;line-height:1.35}
+.proto-body{font-size:.75rem;color:var(--color-text-secondary);line-height:1.5}
+.proto-arrow{position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:8px solid var(--color-border-secondary);z-index:2}
+
+/* TABELA DE CONDUTA */
+.conduta-table{width:100%;border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;margin:1.2rem 0;font-size:.85rem;border-collapse:separate;border-spacing:0}
+.conduta-table thead th{text-align:left;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-dark);background:var(--blue-light);padding:.6rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.conduta-table tbody td{font-size:.83rem;line-height:1.55;vertical-align:top;padding:.75rem .875rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.conduta-table tbody tr:last-child td{border-bottom:none}
+.conduta-table tbody tr:nth-child(even) td{background:#FAFAFA}
+.td-certo{color:var(--green-dark)}
+.td-errado{color:var(--red)}
+
+/* VEDAÇÕES - design melhorado */
+.vedacoes-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.2rem 0}
+.vedacao-item{display:flex;gap:1rem;align-items:flex-start;background:var(--red-light);border:0.5px solid #F0C0BB;border-radius:10px;padding:1rem 1.1rem;border-left:4px solid var(--red)}
+.vedacao-icon{font-size:1.25rem;font-weight:700;color:var(--red);flex-shrink:0;line-height:1;margin-top:1px;font-family:'IBM Plex Sans',monospace}
+.vedacao-content{display:flex;flex-direction:column;gap:3px}
+.vedacao-label{font-size:11px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.06em}
+.vedacao-texto{font-size:.82rem;color:#4A1414;line-height:1.55}
+
+/* CONDUTA POR ÁREA */
+.area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.2rem 0}
+.area-card{border:0.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden}
+.area-head{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);background:var(--blue-light);padding:.5rem .875rem;border-bottom:0.5px solid #BFD9F7}
+.area-list{padding:.625rem .875rem;list-style:none}
+.area-list li{font-size:.82rem;color:var(--color-text-secondary);padding:.2rem 0 .2rem .875rem;position:relative;line-height:1.5}
+.area-list li::before{content:"";position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--green);border-radius:50%}
+
+/* PORQUE BOX */
+.porque-box{background:var(--green-light);border:0.5px solid #9ED8CC;border-radius:8px;padding:1rem 1.1rem;margin:1rem 0}
+.porque-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.625rem}
+.porque-list{list-style:none}
+.porque-list li{font-size:.87rem;color:var(--green-dark);padding:.25rem 0 .25rem 1rem;position:relative;line-height:1.6}
+.porque-list li::before{content:"";position:absolute;left:0;top:.6rem;width:5px;height:5px;background:var(--green);border-radius:50%}
+
+/* FOOTER */
+.footer{border-top:2px solid var(--color-border-tertiary);padding-top:1.2rem;margin-top:2.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem}
+.footer-left{font-family:'Playfair Display',serif;font-size:1rem;color:var(--color-text-secondary);font-style:italic}
+.footer-right{font-size:10.5px;color:var(--color-text-tertiary);text-align:right;line-height:1.8}
+.footer-right strong{font-weight:500;color:var(--color-text-secondary)}
+
+@media(max-width:640px){
+  .vetores-grid,.tipologias-grid,.vedacoes-grid,.area-grid{grid-template-columns:1fr}
+  .proto-flow{flex-direction:column}
+  .proto-step{border-right:0.5px solid var(--color-border-tertiary)!important;border-radius:0!important;border-bottom:none}
+  .proto-step:last-child{border-bottom:0.5px solid var(--color-border-tertiary);border-radius:0 0 8px 8px!important}
+  .proto-step:first-child{border-radius:8px 8px 0 0!important}
+  .proto-arrow{display:none}
+}
+</style>
+</head>
+<body style="background:#f5f5f5;padding:20px;">
+
+<div class="doc">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <p class="hdr-meta">Comunicado 005 &nbsp;·&nbsp; Compliance e PLD/FT</p>
+    <h1 class="hdr-title"><em>KYC, Cadastro e Diligência do Cliente</em> | Qualidade, Validação e Responsabilidade das Áreas</h1>
+    <p class="hdr-subtitle">Comunicado oficial da área de Compliance sobre qualidade cadastral, validação de identidade, consistência documental, atualização de dados e a responsabilidade de cada área no processo de conhecimento do cliente do Grupo LBBR.</p>
+  </div>
+
+  <!-- BASE NORMATIVA -->
+  <div class="norma-bar">
+    <div class="norma-bar-title">Base normativa e interna aplicável</div>
+    <div class="norma-list">
+      <span class="norma-tag">Lei nº 9.613/1998 (art. 10)</span>
+      <span class="norma-tag">Lei nº 14.790/2023</span>
+      <span class="norma-tag">Portaria SPA/MF nº 1.231/2024</span>
+      <span class="norma-tag">Portaria SPA/MF nº 1.143/2024</span>
+      <span class="norma-tag">Lei nº 13.709/2018 (LGPD)</span>
+      <span class="norma-tag">Resolução Bacen nº 4.753/2019</span>
+      <span class="norma-tag">Política de PLD/FTP (POL-PLDFT-001)</span>
+      <span class="norma-tag">Procedimento de KYC (PROC-KYC-001)</span>
+      <span class="norma-tag">Código de Conduta LBBR</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <p class="body-p">Este comunicado é dirigido a todos os colaboradores, com atenção especial às áreas de Cadastro, KYC, Atendimento, Pagamentos, Operações, Fraude e Compliance. Conhecer o cliente não é formalidade: é a base sobre a qual todo o programa de prevenção à lavagem de dinheiro, gestão de risco e integridade da operação se sustenta. <strong>Cadastro inconsistente é risco que já está dentro da plataforma.</strong></p>
+
+  <!-- 01 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">O que é KYC e por que ele existe</span>
+    </div>
+    <p class="body-p">KYC (Know Your Customer) é o conjunto de procedimentos pelo qual o Grupo LBBR identifica, qualifica e monitora seus clientes ao longo do relacionamento. Não se trata apenas de coletar documentos na abertura de conta: o KYC é um processo contínuo, que deve ser atualizado sempre que houver mudança relevante no perfil ou no comportamento do apostador.</p>
+    <p class="body-p">A obrigação de identificar o cliente decorre diretamente da legislação de PLD/FT e da regulamentação da SPA/MF. Uma conta aberta com dados falsos, inconsistentes ou desatualizados compromete toda a cadeia de controles: desde o monitoramento de operações atípicas até a eventual comunicação ao COAF.</p>
+
+    <div class="vetores-grid">
+      <div class="vetor-card">
+        <div class="vetor-label">Pilar 1</div>
+        <div class="vetor-head">Identificação</div>
+        <div class="vetor-body">Coleta dos dados mínimos exigidos pela regulamentação: nome completo, CPF, data de nascimento, endereço e meio de contato validado.</div>
+      </div>
+      <div class="vetor-card">
+        <div class="vetor-label">Pilar 2</div>
+        <div class="vetor-head">Qualificação</div>
+        <div class="vetor-body">Classificação do apostador por perfil de risco, com base em origem de recursos, padrão de movimentação e vínculos declarados ou identificados.</div>
+      </div>
+      <div class="vetor-card">
+        <div class="vetor-label">Pilar 3</div>
+        <div class="vetor-head">Monitoramento</div>
+        <div class="vetor-body">Acompanhamento contínuo do cliente ao longo do relacionamento, com atualização cadastral periódica e revisão de perfil diante de sinais de mudança.</div>
+      </div>
+    </div>
+
+    <div class="callout-blue">
+      <p><strong>Por que isso importa para a nossa operação:</strong> a SPA/MF exige que o agente de apostas mantenha cadastro atualizado e procedimentos formais de identificação. O descumprimento expõe o Grupo a sanções administrativas, cancelamento de licença e responsabilização de dirigentes. Internamente, cadastro precário alimenta fraude, dificulta a apuração e invalida comunicações ao COAF.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Qualidade Cadastral</span>
+    </div>
+    <p class="body-p">Um cadastro de qualidade vai além de campos preenchidos. Ele precisa ser <strong>completo</strong> (todos os dados obrigatórios presentes), <strong>consistente</strong> (informações que se confirmam entre si e com fontes externas) e <strong>atual</strong> (refletindo a situação real do cliente no momento da consulta).</p>
+
+    <div class="tipologias-grid">
+      <div class="tip-card">
+        <div class="tip-head">Dados obrigatórios na abertura</div>
+        <div class="tip-def">Exigidos pela regulamentação para qualquer conta ativa na plataforma.</div>
+        <ul class="tip-list">
+          <li>Nome completo conforme documento de identificação</li>
+          <li>CPF válido e regularizado na Receita Federal</li>
+          <li>Data de nascimento (verificação de maioridade)</li>
+          <li>Endereço completo com CEP</li>
+          <li>E-mail e telefone validados</li>
+          <li>Meio de pagamento com titular idêntico ao da conta</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-head">Sinais de cadastro inconsistente</div>
+        <div class="tip-def">Situações que indicam risco e devem ser escaladas ao Compliance antes de qualquer ação.</div>
+        <ul class="tip-list">
+          <li>CPF divergente do nome ou data de nascimento declarados</li>
+          <li>Endereço inexistente, incompleto ou incompatível com o perfil</li>
+          <li>Meio de pagamento em nome de terceiro</li>
+          <li>Múltiplas contas associadas ao mesmo CPF ou dispositivo</li>
+          <li>Documentos com sinais de adulteração ou baixa resolução suspeita</li>
+          <li>Dados alterados repetidamente em curto período</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout-amber">
+      <p><strong>Atenção:</strong> cadastro incompleto não é apenas um problema técnico. É um passivo regulatório. Toda conta sem os dados mínimos validados representa um risco que o Grupo assume em desconformidade com a regulamentação vigente. A responsabilidade pela qualidade do dado começa em quem o coleta e processa.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Validação de Identidade</span>
+    </div>
+    <p class="body-p">A validação de identidade é o processo pelo qual confirmamos que a pessoa que abriu a conta é de fato quem afirma ser. Ela deve ocorrer na abertura, em alterações cadastrais sensíveis e sempre que houver indício de uso indevido da conta por terceiro.</p>
+
+    <div class="proto-flow">
+      <div class="proto-step">
+        <div class="proto-num">01</div>
+        <div class="proto-label">Documento</div>
+        <div class="proto-body">RG, CNH ou passaporte válido. Frente e verso, sem cortes e com data de validade vigente</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">02</div>
+        <div class="proto-label">Prova de vida</div>
+        <div class="proto-body">Verificação biométrica ou selfie com documento para confirmar que o titular é uma pessoa real</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">03</div>
+        <div class="proto-label">Validação CPF</div>
+        <div class="proto-body">Consulta à Receita Federal para confirmar situação cadastral e consistência dos dados declarados</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">04</div>
+        <div class="proto-label">Titularidade</div>
+        <div class="proto-body">Confirmação de que conta bancária ou chave Pix pertencem ao mesmo titular do cadastro</div>
+        <div class="proto-arrow"></div>
+      </div>
+      <div class="proto-step">
+        <div class="proto-num">05</div>
+        <div class="proto-label">Registro</div>
+        <div class="proto-body">Guarda das evidências com data, resultado e responsável pelo processo, para fins de auditoria</div>
+      </div>
+    </div>
+
+    <p class="body-p">As fraudes de identidade mais comuns na nossa operação envolvem uso de documentos de terceiros, documentos adulterados e contas abertas em nome de pessoas sem capacidade de entender o que estão assinando. Qualquer sinal de divergência identificado durante o processo deve ser escalado ao Compliance antes da liberação da conta ou do pagamento.</p>
+
+    <div class="callout-blue">
+      <p><strong>Regra sem exceção:</strong> nenhuma alteração de dado sensível (chave Pix, e-mail, telefone, endereço) deve ser processada sem validação de identidade do titular. Urgência alegada pelo cliente não substitui o processo. Quem contorna o controle assume a responsabilidade pela consequência.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Consistência Documental</span>
+    </div>
+    <p class="body-p">Consistência documental significa que as informações constantes nos documentos apresentados pelo cliente se confirmam entre si e com as bases de dados oficiais consultadas. Um documento válido com dados que não batem com o CPF informado é um sinal de alerta, não uma situação normal a ser contornada.</p>
+
+    <table class="conduta-table">
+      <thead>
+        <tr>
+          <th>Situação</th>
+          <th>Conduta correta</th>
+          <th>O que não fazer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nome no documento difere do nome no cadastro</td>
+          <td class="td-certo">Solicitar documento atualizado e escalar ao Compliance se divergência persistir</td>
+          <td class="td-errado">Aceitar a justificativa verbal e liberar sem documentação</td>
+        </tr>
+        <tr>
+          <td>Documento enviado com baixa resolução ou parte cortada</td>
+          <td class="td-certo">Solicitar novo envio e bloquear análise até receber documento legível</td>
+          <td class="td-errado">Aprovar pela urgência ou por julgamento visual parcial</td>
+        </tr>
+        <tr>
+          <td>Data de nascimento no documento diferente da declarada</td>
+          <td class="td-certo">Suspender a conta e acionar o Compliance imediatamente</td>
+          <td class="td-errado">Atualizar o cadastro com o dado novo sem apuração</td>
+        </tr>
+        <tr>
+          <td>CPF regularizado, mas nome não bate com a Receita Federal</td>
+          <td class="td-certo">Documentar a inconsistência e escalar antes de qualquer liberação</td>
+          <td class="td-errado">Considerar "erro de digitação" e seguir em frente</td>
+        </tr>
+        <tr>
+          <td>Cliente envia documento de outra pessoa alegando ser parente</td>
+          <td class="td-certo">Recusar e comunicar o Compliance com os dados da tentativa</td>
+          <td class="td-errado">Aceitar por empatia ou dificuldade operacional do cliente</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 05 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Atualização de Dados e Responsabilidade das Áreas</span>
+    </div>
+    <p class="body-p">O KYC não termina na abertura de conta. A regulamentação exige que os dados sejam mantidos atualizados ao longo de todo o relacionamento. Clientes com dados desatualizados representam risco crescente: um endereço errado impede notificações regulatórias, um telefone inativo bloqueia comunicações críticas e um e-mail inexistente rompe a trilha de consentimento da LGPD.</p>
+    <p class="body-p">Toda solicitação de atualização de dado deve seguir o fluxo formal, com validação de identidade, chamado aberto e registro do responsável. Atualizações feitas de forma manual, verbal ou fora do sistema não têm validade para fins de auditoria e responsabilizam quem as processou.</p>
+
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-head">Cadastro e KYC</div>
+        <ul class="area-list">
+          <li>Valide documentos com atenção à consistência entre dados</li>
+          <li>Não aprove cadastros incompletos sob nenhuma justificativa</li>
+          <li>Escale divergências antes de liberar a conta</li>
+          <li>Mantenha evidências de cada etapa da validação</li>
+        </ul>
+      </div>
+      <div class="area-card">
+        <div class="area-head">Atendimento e Operações</div>
+        <ul class="area-list">
+          <li>Confirme identidade do titular antes de qualquer alteração</li>
+          <li>Registre toda solicitação em chamado formal</li>
+          <li>Não altere dados críticos por e-mail, chat ou telefone sem validação</li>
+          <li>Escale ao KYC qualquer pedido atípico ou com urgência injustificada</li>
+        </ul>
+      </div>
+      <div class="area-card">
+        <div class="area-head">Pagamentos, Fraude e Compliance</div>
+        <ul class="area-list">
+          <li>Bloqueie transações com dados do beneficiário divergentes do titular</li>
+          <li>Sinalize contas com padrão de atualização recorrente para revisão</li>
+          <li>Mantenha rastreabilidade completa de todas as ações sobre o cadastro</li>
+          <li>Reporte ao Compliance casos com indício de identidade falsa ou usurpada</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- VEDAÇÕES REDESENHADAS -->
+    <div class="vedacoes-grid">
+      <div class="vedacao-item">
+        <div class="vedacao-icon">&#x2715;</div>
+        <div class="vedacao-content">
+          <div class="vedacao-label">Documento divergente</div>
+          <div class="vedacao-texto">Liberar conta ou pagamento com documento ilegível ou dados inconsistentes</div>
+        </div>
+      </div>
+      <div class="vedacao-item">
+        <div class="vedacao-icon">&#x2715;</div>
+        <div class="vedacao-content">
+          <div class="vedacao-label">Atualização sem validação</div>
+          <div class="vedacao-texto">Alterar dado sensível sem chamado aberto e sem revalidação formal do titular</div>
+        </div>
+      </div>
+      <div class="vedacao-item">
+        <div class="vedacao-icon">&#x2715;</div>
+        <div class="vedacao-content">
+          <div class="vedacao-label">Justificativa verbal</div>
+          <div class="vedacao-texto">Aceitar relato verbal do cliente como substituto de documentação comprobatória</div>
+        </div>
+      </div>
+      <div class="vedacao-item">
+        <div class="vedacao-icon">&#x2715;</div>
+        <div class="vedacao-content">
+          <div class="vedacao-label">Dado ausente ou vencido</div>
+          <div class="vedacao-texto">Manter conta ativa com dado mínimo exigido ausente, inválido ou desatualizado</div>
+        </div>
+      </div>
+      <div class="vedacao-item">
+        <div class="vedacao-icon">&#x2715;</div>
+        <div class="vedacao-content">
+          <div class="vedacao-label">Pressão como justificativa</div>
+          <div class="vedacao-texto">Contornar etapas do processo por urgência alegada ou insistência do cliente</div>
+        </div>
+      </div>
+      <div class="vedacao-item">
+        <div class="vedacao-icon">&#x2715;</div>
+        <div class="vedacao-content">
+          <div class="vedacao-label">Alteração de chave sem revalidação</div>
+          <div class="vedacao-texto">Processar troca de Pix, e-mail ou telefone sem confirmar identidade do titular</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="porque-box">
+      <div class="porque-head">Por que KYC de qualidade protege a todos?</div>
+      <ul class="porque-list">
+        <li>Reduz exposição à fraude de identidade e ao uso da plataforma para lavagem de dinheiro</li>
+        <li>Sustenta a validade das comunicações ao COAF e das apurações internas</li>
+        <li>Garante conformidade com a SPA/MF e evita sanções à licença de operação</li>
+        <li>Protege o colaborador, que tem no processo formal o respaldo para suas decisões</li>
+        <li>Fortalece a confiança dos usuários legítimos nas marcas Luck.Bet, 1Pra1.Bet e StartBet</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Grupo LBBR &nbsp;·&nbsp; Luck.Bet &nbsp;·&nbsp; 1Pra1.Bet &nbsp;·&nbsp; StartBet</div>
+    <div class="footer-right">
+      <strong>Classificação:</strong> Interno / Institucional<br>
+      <strong>Vigência:</strong> Agosto 2026<br>
+      <strong>Responsável:</strong> Diretoria de Compliance
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
